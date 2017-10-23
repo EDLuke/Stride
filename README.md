@@ -1,6 +1,8 @@
 ## Architecture
 `components`: components that provides functionalities and business logic
+
 `config`: currently only contains `router.js`, which contains navigation logic of the app
+
 `screen`: contains each screen, the views of the app
 
 ## Reference

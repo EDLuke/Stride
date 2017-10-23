@@ -21,6 +21,13 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+# Deco
+.deco
+
+# npm log
+npm-debug.log.*
+
+
 # Gradle
 /build/
 /RNTester/android/app/build/

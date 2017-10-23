@@ -34,7 +34,7 @@ export default class Main extends React.Component {
         }
         <View style={styles.buttonContainer}>
           <Button
-            onPress={() => this.props.navigation.navigate('TabNav')}
+            onPress={() => this.props.navigation.navigate('Login')}
             title="Sign in with email"
           />
         </View>

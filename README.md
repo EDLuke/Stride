@@ -221,3 +221,6 @@ If this causes problems for you, you may want to try changing your terminal's co
 
 ## Reference
 https://docs.expo.io/versions/latest/guides/using-custom-fonts.html
+https://stackoverflow.com/questions/33196334/how-to-do-a-multi-page-app-in-react-native
+https://stackoverflow.com/questions/32923572/react-native-how-to-split-a-file-up-into-multiple-files
+https://hackernoon.com/getting-started-with-react-navigation-the-navigation-solution-for-react-native-ea3f4bd786a4

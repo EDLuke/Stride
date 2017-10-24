@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, Alert} from 'react-native';
+import Api from '../components/Api';
+GLOBAL = require('../components/CurrentUser');
 
 export default class Login extends React.Component{
 	constructor(props) {
@@ -8,6 +10,15 @@ export default class Login extends React.Component{
 					  password: ''
 					};
 	}
+
+  onPressLogin = () => {
+    var userName = this.state.email;
+    var password = this.state.password;
+
+    Api.login(userName, password).then((response) => {
+      console.log(response);
+    });
+  }
 
 	render() {
 		return (
@@ -34,7 +45,7 @@ export default class Login extends React.Component{
         	
         		<View style={styles.buttonContainer}>
           			<Button
-           				onPress={() => this.props.navigation.navigate('TabNav')}
+           				onPress={this.onPressLogin}
            				title="Login"
         			/>
       			</View>

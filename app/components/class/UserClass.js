@@ -1,13 +1,6 @@
-import FitnessRecord from './FitnessRecord.js'
+import FitnessRecord from './FitnessRecordClass.js'
 
 export default class User{
-	username: string;
-	height: int;
-	weight: int;
-	gender: string;
-	age: int;
-	fitnessRecord: FitnessRecord[];
-
 	constructor(username){
 		this.username = username;
 	}

@@ -7,51 +7,68 @@ export default class Login extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {email: '',
-					  password: ''
+					  password: '',
+            responseText: 'responseText',
 					};
 	}
 
-  onPressLogin = () => {
-    var userName = this.state.email;
-    var password = this.state.password;
+  // onPressLogin = () => {
+  //   var userName = this.state.email;
+  //   var password = this.state.password;
 
-    Api.login(userName, password).then((response) => {
-      console.log(response);
-    });
-  }
+  //   Api.login(userName, password).then((response) => {
+  //     console.log(response);
+  //
+  //     (response.statusText) => 
+  //              this.setState({responseText:text});
+  //     
+  //   });
+  // }
 
 	render() {
 		return (
-			<View style={styles.container}>
+			      
+        <View style={styles.container}>
         		<Text>Login With Email</Text>
-
+            
         		<View style={styles.textBoxContainer}>
-					<TextInput
-        				style = {{margin:20,
-        						  height:40}}
+					   <TextInput
+        				style = {{alignItems:'center'}}
         				placeholder="Email Address"
         				onChangeText={(text) => this.setState({email:text})}
         				value = {this.state.email}
         			/>
+            </View>
+            
+            {
+            <View style={styles.textBoxContainer}>
         			<TextInput
         				secureTextEntry = {true}
-        				style = {{margin:20,
-        						  height:40}}
+        				style = {{alignItems:'center'}}
         				placeholder="Password"
         				onChangeText={(text) => this.setState({password:text})}
         				value = {this.state.password}
         			/>
-				</View>
-        	
+				    </View>
+        	  }
+            {
         		<View style={styles.buttonContainer}>
           			<Button
-           				onPress={this.onPressLogin}
+           				// onPress={this.onPressLogin}
+                  onPress = {() => this.props.navigation.navigate('TabNav')}
            				title="Login"
-        			/>
-      			</View>
-      		</View>
+                />
+            </View>
+            }
+            {
+            <View style={styles.Container}>
+              <Text>{this.state.responseText}</Text>
+            </View>
+            } 
+        </View>
+          
 		);
-	}ta
+	}
 }
 
 const styles = StyleSheet.create({
@@ -63,8 +80,10 @@ const styles = StyleSheet.create({
   },
   textBoxContainer: {
   	backgroundColor: '#bbb',
-  	margin: 50,
-  	flexDirection: 'column',
+    height: 30,
+    width: 300,
+  	margin: 20,
+
   	justifyContent: 'space-around',
   },
   buttonContainer: {

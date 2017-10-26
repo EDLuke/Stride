@@ -1,6 +1,6 @@
 import React from 'react';
 import {Font} from 'expo';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default class Today extends React.Component{
 	state = {
@@ -30,10 +30,20 @@ export default class Today extends React.Component{
         			{
         				this.state.fontLoaded ?
         				(	
-        				<Text style={styles.boxtitle}>What did you have for meal?</Text>
+        				<Text style={styles.boxtitle}>MealPlan</Text>
         				) : null
         			}
-        			<View style={styles.chartBoxContainer}></View>
+        			<View style={styles.chartBoxContainer}>
+        				<ScrollView>
+        					<Text style={styles.boxtext}>{
+                    GLOBAL.currentUser.username
+                  } astonishingly weights {
+                    GLOBAL.currentUser.weight
+                  } so probably should not eat anything today.
+                  </Text>
+
+        				</ScrollView>
+        			</View>
         		</View>
         		}
         		{
@@ -41,10 +51,23 @@ export default class Today extends React.Component{
         			{
         				this.state.fontLoaded ?
         				(	
-        				<Text style={styles.boxtitle}>How much exercise did you get?</Text>
+        				<Text style={styles.boxtitle}>Exercise</Text>
         				) : null
         			}
-        			<View style={styles.chartBoxContainer}></View>
+        			<View style={styles.chartBoxContainer}>
+        				<ScrollView>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+
+        				</ScrollView>
+        			</View>
         		</View>
         		}
 			</View>
@@ -76,18 +99,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#686868'
   },
+  boxtext:{
+  	fontFamily: 'Helvetica',
+  	fontSize: 18,
+    height: 33,
+  	color: '#686868'
+  },
   textBoxContainer: {
   	flex: 2,
   	backgroundColor: '#fff',
-    height: 200,
-    width: 300,
   	margin: 20,
   	justifyContent: 'flex-start',
   },
   chartBoxContainer: {
+    flex: 2,
   	backgroundColor: '#bbb',
-  	height: 150,
-  	width: 300,
   	margin: 20,
   	justifyContent: 'flex-start'
   },

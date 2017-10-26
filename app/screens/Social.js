@@ -1,6 +1,6 @@
 import React from 'react';
 import {Font} from 'expo';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default class Social extends React.Component{
 	state = {
@@ -33,7 +33,25 @@ export default class Social extends React.Component{
         				<Text style={styles.boxtitle}>LeaderBoard </Text>
         				) : null
         			}
-        			<View style={styles.leaderBoardBoxContainer}></View>
+        			<View style={styles.leaderBoardBoxContainer}>
+                  <ScrollView>
+                  <Text style={styles.boxtext}>1 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>2 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>3 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>4 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>5 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>6 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>7 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>8 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>9 HEHEXD 1210 Calorie</Text>
+                  <Text style={styles.boxtext}>10 ILLUMINATI 888 Calorie</Text>
+                  <Text style={styles.boxtext}>11 ILLUMINATI 888 Calorie</Text>
+                  <Text style={styles.boxtext}>12 ILLUMINATI 888 Calorie</Text>
+                  <Text style={styles.boxtext}>13 ILLUMINATI 888 Calorie</Text>
+                  <Text style={styles.boxtext}>14 ILLUMINATI 888 Calorie</Text>
+                  <Text style={styles.boxtext}>15 ILLUMINATI 888 Calorie</Text>
+                </ScrollView>
+              </View>
         		</View>
         		}
 			</View>
@@ -63,6 +81,11 @@ const styles = StyleSheet.create({
   	fontFamily: 'Helvetica',
     fontSize: 25,
     fontWeight: 'bold',
+    color: '#686868'
+  },
+  boxtext:{
+    fontFamily: 'Helvetica',
+    fontSize: 20,
     color: '#686868'
   },
   textBoxContainer: {

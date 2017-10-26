@@ -1,6 +1,9 @@
 import React from 'react';
 import {Font} from 'expo';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import User from '../components/class/UserClass.js'
+
+GLOBAL = require('../components/CurrentUser');
 
 export default class Charts extends React.Component{
 	state = {
@@ -39,7 +42,13 @@ export default class Charts extends React.Component{
         				<Text style={styles.boxtitle}>Calorie Output</Text>
         				) : null
         			}
-        			<View style={styles.chartBoxContainer}></View>
+        			<View style={styles.chartBoxContainer}>
+        				<ScrollView>
+        					<Text style = {styles.boxtext}>
+                    {GLOBAL.currentUser.username}
+                  </Text>
+        				</ScrollView>
+        			</View>
         		</View>
         		}
 			</View>
@@ -70,6 +79,11 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     color: '#686868'
+  },
+  boxtext:{
+  	fontFamily: 'Helvetica',
+  	fontSize: 20,
+  	color: '#686868'
   },
   textBoxContainer: {
   	backgroundColor: '#fff',

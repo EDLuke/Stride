@@ -26,6 +26,10 @@ export default class Login extends React.Component{
 
       //Navigate to the tabs
       this.props.navigation.navigate('TabNav');
+    })
+      .catch(error => {
+      console.error(error);
+      (error) => this.setState({responseText:text})
     });
   }
 
@@ -59,7 +63,7 @@ export default class Login extends React.Component{
         		<View style={styles.buttonContainer}>
           			<Button
            				onPress={this.onPressLogin}
-                  //onPress = {() => this.props.navigation.navigate('TabNav')}
+                  // onPress = {() => this.props.navigation.navigate('TabNav')}
            				title="Login"
                 />
             </View>

@@ -34,4 +34,7 @@ export const StackNav = StackNavigator({
 	TabNav:{
 		screen: TabNav,
 	},
+}, 
+{
+	headerMode: 'none',
 });

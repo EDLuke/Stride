@@ -6,7 +6,7 @@ export default class SwipeBackgroundView extends React.Component{
 	state = {
 		swipeVert: new Animated.Value(0),
 		swipeHorz: new Animated.Value(0),
-		swipeDir: Math.floor(Math.random() * 8),
+		swipeDir: Math.floor(Math.random() * 7),
 		scrWidth: Dimensions.get('window').width,
 		scrHeight: Dimensions.get('window').height,
 		colors: ["#92B558", "#DC4C46", "#672E3B", "#F3D6E4", "#C48F65", "#223A5E", "#898E8C", "#005960", "#9C9A40", "#4F84C4", "#D2691E"],
@@ -21,14 +21,14 @@ export default class SwipeBackgroundView extends React.Component{
 			this.state.swipeVert,
 			{
 				toValue: this.state.scrHeight,
-				duration: 5000,
+				duration: 3000,
 			}
 		),
 		Animated.timing(
 			this.state.swipeHorz,
 			{
 				toValue: this.state.scrWidth,
-				duration: 5000,
+				duration: 3000,
 			}
 		)
 		]).start(() => {
@@ -42,11 +42,11 @@ export default class SwipeBackgroundView extends React.Component{
 				this.setState({
 					swipeVert: new Animated.Value(0),
 					swipeHorz: new Animated.Value(0),
-					swipeDir: Math.floor(Math.random() * 8),
+					swipeDir: Math.floor(Math.random() * 7),
 					colorIdx: colorIdx,
 					colorIdxPre: colorIdxPre,
 				});
-			}while(prevDir != this.state.swipeDir);
+			}while(prevDir == this.state.swipeDir);
 
 			this.cycleAnimation();
 		});
@@ -54,6 +54,77 @@ export default class SwipeBackgroundView extends React.Component{
 
 	componentDidMount() {
 		this.cycleAnimation();
+	}
+
+	frontViewStyle = function(swipeDir, swipeVert, swipeHorz, scrWidth, scrHeight, colors, colorIdx) {
+		if(swipeDir == 0){
+			return {
+				backgroundColor: colors[colorIdx],
+				width: scrWidth,
+				height: scrHeight, 
+				top: swipeVert,	
+			}
+		}
+		else if(swipeDir == 1){
+			return {
+				backgroundColor: colors[colorIdx],
+				width: scrWidth,
+				height: scrHeight, 
+				bottom: swipeVert,	
+			}	
+		}
+		else if(swipeDir == 2){
+			return {
+				backgroundColor: colors[colorIdx],
+				width: scrWidth,
+				height: scrHeight, 
+				left: swipeHorz,	
+			}	
+		}
+		else if(swipeDir == 3){
+			return {
+				backgroundColor: colors[colorIdx],
+				width: scrWidth,
+				height: scrHeight, 
+				right: swipeHorz,	
+			}	
+		}
+		else if(swipeDir == 4){
+			return {
+				backgroundColor: colors[colorIdx],
+				width: scrWidth,
+				height: scrHeight, 
+				top: swipeVert,	
+				left: swipeHorz,	
+			}	
+		}
+		else if(swipeDir == 5){
+			return {
+				backgroundColor: colors[colorIdx],
+				width: scrWidth,
+				height: scrHeight, 
+				bottom: swipeVert,	
+				left: swipeHorz,	
+			}	
+		}
+		else if(swipeDir == 6){
+			return {
+				backgroundColor: colors[colorIdx],
+				width: scrWidth,
+				height: scrHeight, 
+				top: swipeVert,	
+				right: swipeHorz,	
+			}	
+		}
+		else if(swipeDir == 7){
+			return {
+				backgroundColor: colors[colorIdx],
+				width: scrWidth,
+				height: scrHeight, 
+				bottom: swipeVert,	
+				right: swipeHorz,	
+			}	
+		}
 	}
 
 	render(){
@@ -67,13 +138,7 @@ export default class SwipeBackgroundView extends React.Component{
 					height: scrHeight,
 				}}>
 				<Animated.View
-				style = {{
-					backgroundColor: colors[colorIdx],
-					width: scrWidth,
-					height: scrHeight,
-					top: swipeVert,
-					left: swipeHorz
-				}}>
+				style = {this.frontViewStyle(swipeDir, swipeVert, swipeHorz, scrWidth, scrHeight, colors, colorIdx)}>
 				</Animated.View>
 				<Animated.View
 					style = {{

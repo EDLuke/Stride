@@ -65,3 +65,7 @@ node_modules
 
 /coverage
 /third-party
+
+# Expo
+/.expo/
+/.expo/packager-info.json

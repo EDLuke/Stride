@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, StyleSheet, Text, TextInput, View, Alert} from 'react-native';
 import Api from '../components/Api';
+import User from '../components/class/UserClass.js'
+
 GLOBAL = require('../components/CurrentUser');
 
 export default class Login extends React.Component{
@@ -12,18 +14,20 @@ export default class Login extends React.Component{
 					};
 	}
 
-  // onPressLogin = () => {
-  //   var userName = this.state.email;
-  //   var password = this.state.password;
+  onPressLogin = () => {
+    var userName = this.state.email;
+    var password = this.state.password;
 
-  //   Api.login(userName, password).then((response) => {
-  //     console.log(response);
-  //
-  //     (response.statusText) => 
-  //              this.setState({responseText:text});
-  //     
-  //   });
-  // }
+    Api.login(userName, password).then((response) => {
+      console.log(response);     
+
+      //Set global user
+      GLOBAL.currentUser = new User(response.UserID, response.Age, response.Gender, response.Height, response.Weight);
+
+      //Navigate to the tabs
+      this.props.navigation.navigate('TabNav');
+    });
+  }
 
 	render() {
 		return (
@@ -54,8 +58,8 @@ export default class Login extends React.Component{
             {
         		<View style={styles.buttonContainer}>
           			<Button
-           				// onPress={this.onPressLogin}
-                  onPress = {() => this.props.navigation.navigate('TabNav')}
+           				onPress={this.onPressLogin}
+                  //onPress = {() => this.props.navigation.navigate('TabNav')}
            				title="Login"
                 />
             </View>

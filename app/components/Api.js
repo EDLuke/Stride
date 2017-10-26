@@ -3,9 +3,18 @@ import ApiUtils from "./ApiUtils"
 var Api = {
 	//Login
 	login: function(userName, password){
-		return fetch('http://localhost:8080', {
+		return fetch('http://192.168.1.58:9090', {
 				  method: 'POST',
-				  body: "LI " + userName + " " + password
+				  headers: {
+				    'Accept': 'application/json',
+				    'Content-Type': 'application/json',
+				  },
+				  body: JSON.stringify({
+				  	Act: 'LI',
+				  	UserID: userName,
+				  	Password: password,
+				  	account: ''
+				  })
 				})
 				.then(ApiUtils.checkStatus)
 				.then(response => response.json())

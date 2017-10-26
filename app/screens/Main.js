@@ -2,6 +2,7 @@ import React from 'react';
 import {Font} from 'expo';
 
 import { Button, StyleSheet, Text, View } from 'react-native';
+import SwipeBackgroundView from '../components/animation/SwipeBackgroundView';
 
 export default class Main extends React.Component {
   state = {
@@ -20,6 +21,7 @@ export default class Main extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <SwipeBackgroundView>
         {
           this.state.fontLoaded ? 
           (
@@ -38,6 +40,7 @@ export default class Main extends React.Component {
             title="Sign in with email"
           />
         </View>
+        </SwipeBackgroundView>
       </View>
     );
   }
@@ -46,21 +49,19 @@ export default class Main extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff'
   },
   title: {
     fontFamily: 'Helvetica',
     fontSize: 35,
     fontStyle: 'italic',
-    color: '#494949'
+    color: '#fff'
   },
   subtitle: {
     fontFamily: 'Helvetica',
     fontSize: 15,
     fontStyle: 'italic',
-    color: '#686868'
+    color: '#fff'
   },
   buttonContainer: {
     margin: 50,

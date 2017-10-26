@@ -19,3 +19,5 @@ https://medium.com/@yoniweisbrod/interacting-with-apis-using-react-native-fetch-
 https://stackoverflow.com/questions/44227235/global-state-in-react-native
 
 https://stackoverflow.com/questions/35804841/react-native-how-to-define-a-javascript-class
+
+https://stackoverflow.com/questions/31578069/repeat-animation-with-new-animated-api

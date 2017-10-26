@@ -27,9 +27,8 @@ export default class Login extends React.Component{
       //Navigate to the tabs
       this.props.navigation.navigate('TabNav');
     })
-      .catch(error => {
+    .catch(error => {
       console.error(error);
-      (error) => this.setState({responseText:text})
     });
   }
 

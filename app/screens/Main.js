@@ -6,39 +6,36 @@ import SwipeBackgroundView from '../components/animation/SwipeBackgroundView';
 
 export default class Main extends React.Component {
   state = {
-    fontLoaded: false,
+    
   };
   
-  async componentDidMount(){
-    /* Load the assets for Expo app*/
-    await Font.loadAsync({
-      'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
-    });
-
-    this.setState({fontLoaded: true});
+  componentDidMount(){
+    
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <SwipeBackgroundView>
-        {
-          this.state.fontLoaded ? 
-          (
-            <Text style={styles.title}>Stride</Text>
-          ) : null
-        }
-        {
-          this.state.fontLoaded ? 
-          (
-            <Text style={styles.subtitle}>Fit with Friends</Text> 
-          ) : null
-        }
+        <SwipeBackgroundView> 
+          <View style={styles.titleContainer}>  
+            <Text style={styles.title}>Stride</Text>  
+          </View>
+          <View style={styles.subtitleContainer}>  
+            <Text style={styles.subtitle}>Fit with Friends</Text>
+          </View>
         <View style={styles.buttonContainer}>
-          <Button
-            onPress={() => this.props.navigation.navigate('Login')}
-            title="Sign in with email"
-          />
+          <View style={styles.loginContainer}>
+            <Button style={styles.loginButton}
+              onPress={() => this.props.navigation.navigate('Login')}
+              title="Login"
+            />
+          </View>
+          <View style={styles.signupContainer}>  
+            <Button style={styles.signupButton}
+              onPress={() => this.props.navigation.navigate('Login')}
+              title="Sign Up"
+            />
+          </View>
         </View>
         </SwipeBackgroundView>
       </View>
@@ -52,18 +49,37 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   title: {
-    fontFamily: 'Helvetica',
-    fontSize: 35,
-    fontStyle: 'italic',
+    fontFamily: 'Roboto',
+    fontSize: 50,
+    fontWeight: '900',
     color: '#fff'
   },
   subtitle: {
-    fontFamily: 'Helvetica',
-    fontSize: 15,
-    fontStyle: 'italic',
+    fontFamily: 'Roboto',
+    fontSize: 20,
     color: '#fff'
   },
   buttonContainer: {
     margin: 50,
-  }
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  loginContainer:{
+    marginRight: 10,
+  },
+  signupContainer:{
+    marginLeft: 10,
+  },
+  titleContainer:{
+  },
+  subtitleContainer:{
+    marginTop: 15,
+  },
+  loginButton:{
+
+  },
+  signupButton:{
+
+  },
+
 });

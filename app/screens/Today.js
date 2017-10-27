@@ -19,7 +19,7 @@ export default class Today extends React.Component{
 	render() {
 		return (
 			<View style = {styles.container}>
-				{
+				    {
           			this.state.fontLoaded ? 
           			(
             		<Text style={styles.title}>Today...</Text>
@@ -33,30 +33,34 @@ export default class Today extends React.Component{
         				<Text style={styles.boxtitle}>MealPlan</Text>
         				) : null
         			}
-        			<View style={styles.chartBoxContainer}>
-        				<ScrollView>
-        					<Text style={styles.boxtext}>{
-                    GLOBAL.currentUser.username
-                  } astonishingly weights {
-                    GLOBAL.currentUser.weight
-                  } so probably should not eat anything today.
-                  </Text>
-
-        				</ScrollView>
-        			</View>
+            </View>
+            }
+            {
+        		<View style={styles.chartBoxContainer}>
+        			<ScrollView>
+        				<Text style={styles.boxtext}>{
+                  GLOBAL.currentUser.username
+                } astonishingly weights {
+                  GLOBAL.currentUser.weight
+                } so probablyweiugwiuqhgouwahguwqh should not eat anything today.
+              </Text>
+              </ScrollView>
         		</View>
         		}
         		{
-        		<View style={styles.textBoxContainer}>
-        			{
-        				this.state.fontLoaded ?
+        		  <View style={styles.textBoxContainer}>
+        			 {
+        			 	this.state.fontLoaded ?
         				(	
         				<Text style={styles.boxtitle}>Exercise</Text>
         				) : null
-        			}
+        			 }  
+              </View> 
+            }
+            {
         			<View style={styles.chartBoxContainer}>
         				<ScrollView>
-        					<Text style={styles.boxtext}>ScrollMePls.</Text>
+        					<Text style={styles.boxtext}>ScrollMePls.--------------</Text>
         					<Text style={styles.boxtext}>ScrollMePls.</Text>
         					<Text style={styles.boxtext}>ScrollMePls.</Text>
         					<Text style={styles.boxtext}>ScrollMePls.</Text>
@@ -68,7 +72,7 @@ export default class Today extends React.Component{
 
         				</ScrollView>
         			</View>
-        		</View>
+        		
         		}
 			</View>
 		);
@@ -106,16 +110,15 @@ const styles = StyleSheet.create({
   	color: '#686868'
   },
   textBoxContainer: {
-  	flex: 2,
+  	flex: 1,
   	backgroundColor: '#fff',
-  	margin: 20,
   	justifyContent: 'flex-start',
+    padding: 10,
   },
   chartBoxContainer: {
     flex: 2,
   	backgroundColor: '#bbb',
-  	margin: 20,
-  	justifyContent: 'flex-start'
+  	justifyContent: 'flex-start',
   },
   buttonContainer: {
     margin: 50,

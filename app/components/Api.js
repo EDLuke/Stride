@@ -3,7 +3,7 @@ import ApiUtils from "./ApiUtils"
 var Api = {
 	//Login
 	login: function(userName, password){
-		return fetch('http://160.39.212.181:9090', {
+		return fetch('http://160.39.212.221:9090', {
 				  method: 'POST',
 				  headers: {
 				    'Accept': 'application/json',

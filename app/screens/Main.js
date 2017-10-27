@@ -6,22 +6,36 @@ import SwipeBackgroundView from '../components/animation/SwipeBackgroundView';
 
 export default class Main extends React.Component {
   state = {
-    
+      fontLoaded: false,
   };
   
-  componentDidMount(){
-    
+  async componentDidMount(){
+    await Font.loadAsync({
+      'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
+    });
+
+    this.setState({fontLoaded: true});
   }
 
   render() {
     return (
       <View style={styles.container}>
         <SwipeBackgroundView> 
-          <View style={styles.titleContainer}>  
+          <View style={styles.titleContainer}>
+          {
+            this.state.fontLoaded ?
+            (  
             <Text style={styles.title}>Stride</Text>  
+            ) : null
+          }
           </View>
           <View style={styles.subtitleContainer}>  
+          {
+            this.state.fontLoaded ?
+            (
             <Text style={styles.subtitle}>Fit with Friends</Text>
+            ) : null
+          }
           </View>
         <View style={styles.buttonContainer}>
           <View style={styles.loginContainer}>
@@ -49,13 +63,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   title: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Helvetica',
     fontSize: 50,
     fontWeight: '900',
     color: '#fff'
   },
   subtitle: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Helvetica',
     fontSize: 20,
     color: '#fff'
   },
@@ -65,14 +79,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   loginContainer:{
+    backgroundColor: 'rgba(0,0,0,0)',
     marginRight: 10,
   },
   signupContainer:{
+    backgroundColor: 'rgba(0,0,0,0)',
     marginLeft: 10,
   },
   titleContainer:{
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   subtitleContainer:{
+    backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 15,
   },
   loginButton:{

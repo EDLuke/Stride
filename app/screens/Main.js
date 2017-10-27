@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Roboto',
-    fontSize: 50,
+    fontSize: 100,
     fontWeight: '900',
     color: '#fff'
   },
@@ -61,16 +61,16 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: 50,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
   },
   loginContainer:{
-    marginRight: 10,
+    
   },
   signupContainer:{
-    marginLeft: 10,
+    marginTop: 10,
   },
   titleContainer:{
+
   },
   subtitleContainer:{
     marginTop: 15,

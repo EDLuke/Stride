@@ -1,3 +1,6 @@
+# Server Util
+ServerUtils.js
+
 # Xcode
 !**/*.xcodeproj
 !**/*.pbxproj

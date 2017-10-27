@@ -1,13 +1,34 @@
 import React from 'react';
 import {Font} from 'expo';
 
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
 import SwipeBackgroundView from '../components/animation/SwipeBackgroundView';
+import Api from '../components/Api';
+import User from '../components/class/UserClass.js'
+
+GLOBAL = require('../components/CurrentUser');
 
 export default class Main extends React.Component {
   state = {
       fontLoaded: false,
+      email: '',
+      password: '',
   };
+
+  onPressLogin = () => {
+    var userName = this.state.email;
+    var password = this.state.password;
+
+    Api.login(userName, password).then((response) => {
+      console.log(response);     
+
+      //Set global user
+      GLOBAL.currentUser = new User(response.UserID, response.Age, response.Gender, response.Height, response.Weight);
+
+      //Navigate to the tabs
+      this.props.navigation.navigate('TabNav');
+    });
+  }
   
   async componentDidMount(){
     await Font.loadAsync({
@@ -37,20 +58,43 @@ export default class Main extends React.Component {
             ) : null
           }
           </View>
-        <View style={styles.buttonContainer}>
+
+          <View style={styles.emailContainer}>
+             <TextInput
+                style = {{alignItems:'center', color: '#FFF'}}
+                underlineColorAndroid="transparent"
+                placeholder="Email"
+                placeholderTextColor="#FFF"
+                onChangeText={(text) => this.setState({email:text})}
+                value = {this.state.email}
+              />
+          </View>
+
+          <View style={styles.passwordContainer}>
+              <TextInput
+                secureTextEntry = {true}
+                underlineColorAndroid="transparent"
+                style = {{alignItems:'center', color: '#FFF'}}
+                placeholder="Password"
+                placeholderTextColor="#FFF"
+                onChangeText={(text) => this.setState({password:text})}
+                value = {this.state.password}
+              />
+            </View>
+
           <View style={styles.loginContainer}>
             <Button style={styles.loginButton}
-              onPress={() => this.props.navigation.navigate('Login')}
+              onPress={this.onPressLogin}
               title="Login"
             />
           </View>
           <View style={styles.signupContainer}>  
-            <Button style={styles.signupButton}
-              onPress={() => this.props.navigation.navigate('Login')}
-              title="Sign Up"
-            />
+            <Text style={styles.signupText}
+               onPress={() => this.props.navigation.navigate('Signup')}
+               >
+               No account yet? Create one
+            </Text>
           </View>
-        </View>
         </SwipeBackgroundView>
       </View>
     );
@@ -63,6 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   title: {
+    backgroundColor: 'rgba(0,0,0,0)',
     fontFamily: 'Helvetica',
     fontSize: 50,
     fontWeight: '900',
@@ -73,11 +118,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff'
   },
-  buttonContainer: {
-    margin: 50,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
+
   loginContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
     marginRight: 10,
@@ -88,16 +129,44 @@ const styles = StyleSheet.create({
   },
   titleContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
+    width: 250,
+    marginTop: 35
+  },
+  signupContainer:{
+    backgroundColor: 'rgba(0,0,0,0)',
+    width: 250,
+    marginTop: 35
+  },
+  titleContainer:{
+
+  },
+  emailContainer: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    height: 30,
+    width: 250,
+    marginTop: 50,
+    borderBottomWidth: 1,
+    borderColor: "#FFF",
+  },
+  passwordContainer: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    height: 30,
+    width: 250,
+    marginTop: 35,
+    borderBottomWidth: 1,
+    borderColor: "#FFF",
   },
   subtitleContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 15,
   },
   loginButton:{
-
+    borderRadius:0,
   },
-  signupButton:{
-
+  signupText:{
+    textAlign: 'center',
+    color: '#FFF',
+    opacity: 0.5,
   },
 
 });

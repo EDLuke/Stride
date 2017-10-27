@@ -2,7 +2,6 @@ import React from 'react';
 import {StackNavigator, TabNavigator} from 'react-navigation';
 
 import Main from '../screens/Main';
-import Login from '../screens/Login';
 import Today from '../screens/Today';
 import Charts from '../screens/Charts';
 import Social from '../screens/Social';
@@ -28,9 +27,6 @@ export const TabNav = TabNavigator({
 export const StackNav = StackNavigator({
 	Main:{
 		screen: Main,
-	},
-	Login:{
-		screen: Login,
 	},
 	Signup:{
 		screen: Signup,

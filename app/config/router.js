@@ -7,6 +7,16 @@ import Charts from '../screens/Charts';
 import Social from '../screens/Social';
 import Setting from '../screens/Setting';
 import Signup from '../screens/Signup';
+import SocialDetail from '../screens/SocialDetail';
+
+export const StackNavSocial = StackNavigator({
+	Social:{
+		screen: Social,
+	},
+	SocialDetail:{
+		screen: SocialDetail,
+	}
+});
 
 export const TabNav = TabNavigator({
 	Today:{
@@ -16,7 +26,7 @@ export const TabNav = TabNavigator({
 		screen: Charts,
 	},
 	Social:{
-		screen: Social,
+		screen: StackNavSocial,
 	},
 	Settings:{
 		screen: Setting,

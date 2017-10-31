@@ -10,7 +10,6 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Main extends React.Component {
   state = {
-      fontLoaded: false,
       email: '',
       password: '',
   };
@@ -30,33 +29,15 @@ export default class Main extends React.Component {
     });
   }
   
-  async componentDidMount(){
-    await Font.loadAsync({
-      'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
-    });
-
-    this.setState({fontLoaded: true});
-  }
-
   render() {
     return (
       <View style={styles.container}>
         <SwipeBackgroundView> 
           <View style={styles.titleContainer}>
-          {
-            this.state.fontLoaded ?
-            (  
             <Text style={styles.title}>Stride</Text>  
-            ) : null
-          }
           </View>
           <View style={styles.subtitleContainer}>  
-          {
-            this.state.fontLoaded ?
-            (
             <Text style={styles.subtitle}>Fit with Friends</Text>
-            ) : null
-          }
           </View>
 
           <View style={styles.emailContainer}>
@@ -91,7 +72,7 @@ export default class Main extends React.Component {
           <View style={styles.signupContainer}>  
             <Text style={styles.signupText}
                onPress={() => this.props.navigation.navigate('Signup')}
-               >
+            >
                No account yet? Create one
             </Text>
           </View>
@@ -121,11 +102,11 @@ const styles = StyleSheet.create({
 
   loginContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
-    marginRight: 10,
+    marginTop: 35,
   },
   signupContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
-    marginLeft: 10,
+    marginTop: 35,
   },
   titleContainer:{
     backgroundColor: 'rgba(0,0,0,0)',

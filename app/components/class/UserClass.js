@@ -7,5 +7,6 @@ export default class User{
 		this.gender = gender;
 		this.height = height;
 		this.weight = weight;
+		this.friends = [1, 2, 3, 4, 5];
 	}
 }

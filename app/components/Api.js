@@ -30,7 +30,7 @@ var Api = {
 	},
 
 	signup: function(userName, password){
-		return fetch('http://192.168.1.58:9090', {
+		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {
 				    'Accept': 'application/json',

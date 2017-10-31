@@ -21,7 +21,7 @@ export default class Signup extends React.Component {
     var password = this.state.password;
 
     Api.signup(userName, password).then((response) => {
-      console.log(response);     
+      console.log(response);
 
       //Set global user
       GLOBAL.currentUser = new User(response.UserID, response.Age, response.Gender, response.Height, response.Weight);
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     marginTop: 35
   },
   titleContainer:{
-
+    backgroundColor: 'rgba(0,0,0,0)'
   },
   nameContainer: {
     backgroundColor: 'rgba(0,0,0,0)',
@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
   },
   subtitleContainer:{
     marginTop: 15,
+    backgroundColor: 'rgba(0,0,0,0)'
   },
   signupButton:{
     borderRadius:0,
@@ -161,6 +162,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFF',
     opacity: 0.5,
+    backgroundColor: 'rgba(0,0,0,0)'
   },
 
 });

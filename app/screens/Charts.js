@@ -7,49 +7,41 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Charts extends React.Component{
 	state = {
-		fontLoaded: false,
 	};
   
-  async componentDidMount(){
-    /* Load the assets for Expo app*/
-    await Font.loadAsync({
-      'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
-    });
+  // async componentDidMount(){
+  //   /* Load the assets for Expo app*/
+  //   await Font.loadAsync({
+  //     'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
+  //   });
 
-    this.setState({fontLoaded: true});
-  }
+  //   this.setState({fontLoaded: true});
+  // }
 
 	render() {
 		return (
 			<View style = {styles.container}>
-				{
-          			this.state.fontLoaded ? 
-          			(
-            		<Text style={styles.title}>Visualize...</Text>
-          			) : null
+            <View style={styles.textBoxContainer}>
+				    {
+            	<Text style={styles.title}>Visualize...</Text>
         		}
         		{
-        			this.state.fontLoaded ?
-        			(
         			<Text style={styles.subtitle}>During the last 7 days</Text>
-        			) : null
         		}
+            </View>
         		{
         		<View style={styles.textBoxContainer}>
-        			{
-        				this.state.fontLoaded ?
-        				(	
         				<Text style={styles.boxtitle}>Calorie Output</Text>
-        				) : null
-        			}
+        		</View>
+            }
+            {
         			<View style={styles.chartBoxContainer}>
         				<ScrollView>
         					<Text style = {styles.boxtext}>
-                    {GLOBAL.currentUser.username}
+                    {GLOBAL.currentUser.username}'s Chart
                   </Text>
         				</ScrollView>
         			</View>
-        		</View>
         		}
 			</View>
 		);
@@ -75,29 +67,27 @@ const styles = StyleSheet.create({
     color: '#686868'
   },
   boxtitle: {
-  	fontFamily: 'Helvetica',
+    fontFamily: 'Helvetica',
     fontSize: 25,
     fontWeight: 'bold',
     color: '#686868'
   },
   boxtext:{
-  	fontFamily: 'Helvetica',
-  	fontSize: 20,
-  	color: '#686868'
+    fontFamily: 'Helvetica',
+    fontSize: 18,
+    color: '#686868'
   },
   textBoxContainer: {
-  	backgroundColor: '#fff',
-    height: 30,
-    width: 300,
-  	margin: 20,
-  	justifyContent: 'flex-start',
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    padding: 10,
   },
   chartBoxContainer: {
-  	backgroundColor: '#bbb',
-  	height: 150,
-  	width: 300,
-  	margin: 20,
-  	justifyContent: 'flex-start'
+    flex: 3,
+    backgroundColor: '#bbb',
+    justifyContent: 'flex-start',
+    aspectRatio: 3
   },
   buttonContainer: {
     margin: 50,

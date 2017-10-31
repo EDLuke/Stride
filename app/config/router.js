@@ -15,7 +15,14 @@ export const StackNavSocial = StackNavigator({
 	},
 	SocialDetail:{
 		screen: SocialDetail,
+		navigationOptions: ({navigation}) => ({
+      	title: `${navigation.state.params.name}'s Profile`
+    }),
+
 	}
+},
+{
+	// headerMode: 'none',
 });
 
 export const TabNav = TabNavigator({
@@ -31,6 +38,9 @@ export const TabNav = TabNavigator({
 	Settings:{
 		screen: Setting,
 	},
+},
+{
+	headerMode: 'float'
 });
 
 

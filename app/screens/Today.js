@@ -4,35 +4,26 @@ import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default class Today extends React.Component{
 	state = {
-		fontLoaded: false,
 	};
   
-  async componentDidMount(){
-    /* Load the assets for Expo app*/
-    await Font.loadAsync({
-      'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
-    });
+  // async componentDidMount(){
+  //   /* Load the assets for Expo app*/
+  //   await Font.loadAsync({
+  //     'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
+  //   });
 
-    this.setState({fontLoaded: true});
-  }
+  //   this.setState({fontLoaded: true});
+  // }
 
 	render() {
 		return (
 			<View style = {styles.container}>
-				    {
-          			this.state.fontLoaded ? 
-          			(
-            		<Text style={styles.title}>Today...</Text>
-          			) : null
-        		}
+            <View style={styles.textBoxContainer}>
+            <Text style={styles.title}>Today...</Text>
+            </View>
         		{
         		<View style={styles.textBoxContainer}>
-        			{
-        				this.state.fontLoaded ?
-        				(	
         				<Text style={styles.boxtitle}>MealPlan</Text>
-        				) : null
-        			}
             </View>
             }
             {
@@ -49,12 +40,7 @@ export default class Today extends React.Component{
         		}
         		{
         		  <View style={styles.textBoxContainer}>
-        			 {
-        			 	this.state.fontLoaded ?
-        				(	
         				<Text style={styles.boxtitle}>Exercise</Text>
-        				) : null
-        			 }  
               </View> 
             }
             {
@@ -106,7 +92,6 @@ const styles = StyleSheet.create({
   boxtext:{
   	fontFamily: 'Helvetica',
   	fontSize: 18,
-    height: 33,
   	color: '#686868'
   },
   textBoxContainer: {
@@ -116,9 +101,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   chartBoxContainer: {
-    flex: 2,
+    flex: 5,
   	backgroundColor: '#bbb',
   	justifyContent: 'flex-start',
+    aspectRatio: 3
   },
   buttonContainer: {
     margin: 50,

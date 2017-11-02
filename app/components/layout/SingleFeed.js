@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListItem, Thumbnail, Text, Body } from 'native-base';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 export default (props) => (
   <ListItem>

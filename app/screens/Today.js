@@ -1,11 +1,11 @@
 import React from 'react';
 import {Font} from 'expo';
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { Container, Content, List, Button, Icon, Text } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
 
-const renderFeed = (post, index) => (
-  <SinglePost
-    key={index}
+const renderFeed = (post) => (
+  <SingleFeed
     name={post.name}
     username={post.username}
     profilePicture={post.profilePicture}
@@ -15,11 +15,7 @@ const renderFeed = (post, index) => (
 
 export default class Today extends React.Component{
 	state = {
-	};
-
-  componentDidMount(){
-    this.props.posts = 
-    [
+    posts: [
       {
         profilePicture:'https://randomuser.me/api/portraits/thumb/men/83.jpg',
         name:'Romain',
@@ -56,7 +52,7 @@ export default class Today extends React.Component{
         content:'Finally at the top of my leaderboard!'
       }
     ]
-  }
+	};
 
 	render() {
 		return (
@@ -64,10 +60,10 @@ export default class Today extends React.Component{
        <Content>
           <List>
             {
-              !!this.props.posts.length && this.props.posts.map(renderPost)
+              //console.log(this.state.posts)
+              this.state.posts.map((feed) => renderFeed(feed))
             }
           </List>
-          <Text style={styles.end}>{endMsg}</Text>
         </Content>
         <Button
           rounded

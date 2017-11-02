@@ -18,15 +18,20 @@ export default class Main extends React.Component {
     var userName = this.state.email;
     var password = this.state.password;
 
-    Api.login(userName, password).then((response) => {
-      console.log(response);     
+    //Hardcode this until backend is up
+    // Api.login(userName, password).then((response) => {
+    //   //console.log(response);     
 
-      //Set global user
-      GLOBAL.currentUser = new User(response.UserID, response.Age, response.Gender, response.Height, response.Weight);
+    //   //Set global user
+    //   //GLOBAL.currentUser = new User(response.UserID, response.Age, response.Gender, response.Height, response.Weight);
 
-      //Navigate to the tabs
-      this.props.navigation.navigate('TabNav');
-    });
+    //   //Navigate to the tabs
+    //   //this.props.navigation.navigate('TabNav');
+    // });
+
+    //Navigate to the tabs
+    GLOBAL.currentUser = new User(1, 2, 3, 4, 5);
+    this.props.navigation.navigate('TabNav');
   }
   
   render() {

@@ -17,16 +17,6 @@ import { Button, FlatList, ScrollView, StyleSheet, Text, View } from 'react-nati
 export default class Social extends React.Component{
 	state = {
 	};
-  
-  // async componentDidMount(){
-  //   /* Load the assets for Expo app*/
-  //   await Font.loadAsync({
-  //     'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
-  //   });
-
-  //   this.setState({fontLoaded: true});
-  // }
-
 
 	render() {
 		return (

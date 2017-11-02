@@ -4,11 +4,11 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Container, Content, List, Button, Icon, Text } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
 
-const renderFeed = (post) => (
+const renderFeed = (post, index) => (
   <SingleFeed
+    key={index}
     name={post.name}
     username={post.username}
-    profilePicture={post.profilePicture}
     content={post.content}
   />
 )
@@ -61,7 +61,7 @@ export default class Today extends React.Component{
           <List>
             {
               //console.log(this.state.posts)
-              this.state.posts.map((feed) => renderFeed(feed))
+              this.state.posts.map((feed, index) => renderFeed(feed, index))
             }
           </List>
         </Content>
@@ -82,46 +82,11 @@ export default class Today extends React.Component{
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    marginTop: 64,
   },
-  title: {
-    fontFamily: 'Helvetica',
-    fontSize: 35,
-    fontWeight: 'bold',
-    color: '#494949'
+  button: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
   },
-  subtitle: {
-    fontFamily: 'Helvetica',
-    fontSize: 25,
-    color: '#686868'
-  },
-  boxtitle: {
-  	fontFamily: 'Helvetica',
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#686868'
-  },
-  boxtext:{
-  	fontFamily: 'Helvetica',
-  	fontSize: 18,
-  	color: '#686868'
-  },
-  textBoxContainer: {
-  	flex: 1,
-  	backgroundColor: '#fff',
-  	justifyContent: 'flex-start',
-    padding: 10,
-  },
-  chartBoxContainer: {
-    flex: 5,
-  	backgroundColor: '#bbb',
-  	justifyContent: 'flex-start',
-    aspectRatio: 3
-  },
-  buttonContainer: {
-    margin: 50,
-  }
 });

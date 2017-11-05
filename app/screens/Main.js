@@ -1,11 +1,14 @@
 import React from 'react';
 import {Font} from 'expo';
 
-import { Button, StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import { Button, StyleSheet, Text, View, TextInput, Alert, Dimensions } from 'react-native';
 import SwipeBackgroundView from '../components/animation/SwipeBackgroundView';
+import VideoBackgroundView from '../components/animation/VideoBackgroundView';
+import { AssetUtils } from '../components/AssetUtils.js';
+
 import Api from '../components/Api';
 import User from '../components/class/UserClass.js'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -44,9 +47,11 @@ export default class Main extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <SwipeBackgroundView> 
+        <VideoBackgroundView source={AssetUtils.background_1}> 
+        </VideoBackgroundView>
+        <View style={styles.contentContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Stride</Text>  
+            <Text style={styles.title}>STRIDE</Text>  
           </View>
           <View style={styles.subtitleContainer}>  
             <Text style={styles.subtitle}>Fit with Friends</Text>
@@ -97,7 +102,7 @@ export default class Main extends React.Component {
                No account yet? Create one
             </Text>
           </View>
-        </SwipeBackgroundView>
+        </View>
       </View>
     );
   }
@@ -106,21 +111,29 @@ export default class Main extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   title: {
     backgroundColor: 'rgba(0,0,0,0)',
-    fontFamily: 'Helvetica',
-    fontSize: 50,
-    fontWeight: '900',
+    fontFamily: 'Fibre',
+    fontSize: 130,
     color: '#fff'
   },
   subtitle: {
-    fontFamily: 'Helvetica',
-    fontSize: 20,
+    fontFamily: 'Fibre',
+    fontSize: 35,
     color: '#fff'
   },
-
+  contentContainer:{
+    opacity:1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: Dimensions.get('window').width, 
+    height: Dimensions.get('window').height,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   loginContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 15,
@@ -131,22 +144,18 @@ const styles = StyleSheet.create({
   },
   titleContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
-    width: 250,
-    marginTop: 35
+    marginTop: 75,
   },
   signupContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
     width: 250,
     marginTop: 35
   },
-  titleContainer:{
-
-  },
   emailContainer: {
     backgroundColor: 'rgba(0,0,0,0)',
     height: 30,
     width: 250,
-    marginTop: 50,
+    marginTop: 100,
     borderBottomWidth: 1,
     borderColor: "#FFF",
   },

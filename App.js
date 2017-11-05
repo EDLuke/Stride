@@ -20,7 +20,7 @@ export default class App extends React.Component {
     if(!this.state.assetLoaded){
       return <Text>Loading</Text>;
     }
-
+    
     return <StackNav />;
   }
   

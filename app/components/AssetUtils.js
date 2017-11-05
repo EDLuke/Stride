@@ -5,5 +5,5 @@ export const AssetUtils = {
 		await Font.loadAsync({
 	      'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
 	    });
-	}
+	},
 };

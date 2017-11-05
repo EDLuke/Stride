@@ -1,17 +1,19 @@
 import React from 'react';
 import {Font} from 'expo';
 
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Button, StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import SwipeBackgroundView from '../components/animation/SwipeBackgroundView';
 import Api from '../components/Api';
 import User from '../components/class/UserClass.js'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 GLOBAL = require('../components/CurrentUser');
 
 export default class Main extends React.Component {
   state = {
-      email: '',
-      password: '',
+      email: 'yz3083',
+      password: 'yingshuangzheng',
+      error: '',
   };
 
   onPressLogin = () => {
@@ -19,19 +21,24 @@ export default class Main extends React.Component {
     var password = this.state.password;
 
     //Hardcode this until backend is up
-    // Api.login(userName, password).then((response) => {
-    //   //console.log(response);     
+    Api.login(userName, password).then((response) => {
+      console.log(response);     
 
-    //   //Set global user
-    //   //GLOBAL.currentUser = new User(response.UserID, response.Age, response.Gender, response.Height, response.Weight);
+      if(response.Error != null){
+        this.setState({
+          email:'',
+          password:'',
+          error: response.Error,
+        });
+      }
+      else{
+        //Set global user
+        GLOBAL.currentUser = new User(response.UserID, response.Age, response.Gender, response.Height, response.Weight);
 
-    //   //Navigate to the tabs
-    //   //this.props.navigation.navigate('TabNav');
-    // });
-
-    //Navigate to the tabs
-    GLOBAL.currentUser = new User(1, 2, 3, 4, 5);
-    this.props.navigation.navigate('TabNav');
+        //Navigate to the tabs
+        this.props.navigation.navigate('TabNav');
+      }
+    });
   }
   
   render() {
@@ -68,6 +75,15 @@ export default class Main extends React.Component {
               />
             </View>
 
+          <View style={styles.alertContainer}>
+            {this.state.error != '' &&
+              <MaterialCommunityIcons name="alert-box" size={16} color="#FFF"/>
+            }
+            <Text style={styles.alertText}>
+              {this.state.error}
+            </Text>
+            
+          </View>
           <View style={styles.loginContainer}>
             <Button style={styles.loginButton}
               onPress={this.onPressLogin}
@@ -107,7 +123,7 @@ const styles = StyleSheet.create({
 
   loginContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
-    marginTop: 35,
+    marginTop: 15,
   },
   signupContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
@@ -142,6 +158,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "#FFF",
   },
+  alertContainer: {
+    width: 250,
+    height: 15,
+    marginTop: 10,
+    flexDirection: 'row',
+  },
   subtitleContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 15,
@@ -154,5 +176,8 @@ const styles = StyleSheet.create({
     color: '#FFF',
     opacity: 0.5,
   },
-
+  alertText: {
+    color: '#FFF',
+    fontSize: 12
+  }
 });

@@ -5,6 +5,9 @@
 
 `screen`: contains each screen, the views of the app
 
+## Manual Step required for the following libraries
+https://github.com/oblador/react-native-vector-icons
+
 ## Reference
 https://docs.expo.io/versions/latest/guides/using-custom-fonts.html
 

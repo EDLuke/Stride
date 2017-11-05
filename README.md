@@ -24,3 +24,7 @@ https://stackoverflow.com/questions/44227235/global-state-in-react-native
 https://stackoverflow.com/questions/35804841/react-native-how-to-define-a-javascript-class
 
 https://stackoverflow.com/questions/31578069/repeat-animation-with-new-animated-api
+
+https://cosmicjs.com/blog/how-to-make-a-simple-twitter-clone-with-react-native
+
+http://rationalappdev.com/logging-into-react-native-apps-with-facebook-or-google/

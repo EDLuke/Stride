@@ -92,6 +92,7 @@ export default class Main extends React.Component {
             <Button style={styles.loginButton}
               onPress={this.onPressLogin}
               title="Login"
+              color="#92B6D5"
             />
           </View>
           <View style={styles.signupContainer}>  
@@ -178,7 +179,6 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   loginButton:{
-    borderRadius:0,
   },
   signupText:{
     textAlign: 'center',

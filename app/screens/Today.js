@@ -3,6 +3,7 @@ import {Font} from 'expo';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Container, Content, List, Button, Icon, Text } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
+import { Octicons } from '@expo/vector-icons';
 
 const renderFeed = (post, index) => (
   <SingleFeed
@@ -70,9 +71,15 @@ export default class Today extends React.Component{
           style={styles.button}
           onPress={() => Actions.newPost()}
         >
-          <Icon
-            name="create"
-            style={{padding: 5}}
+          <Octicons
+            name="plus"
+            size={16}
+            color="#FFF"
+            style=
+            {{
+            	left: 2,
+            	padding: 15
+            }}
           />
         </Button>
       </Container>

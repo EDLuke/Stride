@@ -1,9 +1,14 @@
+[![Nevercode build status](https://app.nevercode.io/api/projects/743c8eb2-76d8-4870-b1d8-f051c2d0ba04/workflows/509cf478-5487-4df5-b33e-256c87667dd9/status_badge.svg?branch=backend_blocker_1)](https://app.nevercode.io/#/project/743c8eb2-76d8-4870-b1d8-f051c2d0ba04/workflow/509cf478-5487-4df5-b33e-256c87667dd9/latestBuild?branch=backend_blocker_1)
+
 ## Architecture
 `components`: components that provides functionalities and business logic
 
 `config`: currently only contains `router.js`, which contains navigation logic of the app
 
 `screen`: contains each screen, the views of the app
+
+## Manual Step required for the following libraries
+https://github.com/oblador/react-native-vector-icons
 
 ## Reference
 https://docs.expo.io/versions/latest/guides/using-custom-fonts.html
@@ -25,3 +30,5 @@ https://stackoverflow.com/questions/31578069/repeat-animation-with-new-animated-
 https://cosmicjs.com/blog/how-to-make-a-simple-twitter-clone-with-react-native
 
 http://rationalappdev.com/logging-into-react-native-apps-with-facebook-or-google/
+
+https://medium.com/react-native-training/learning-to-test-react-native-with-jest-part-1-f782c4e30101

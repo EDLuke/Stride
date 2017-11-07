@@ -2,6 +2,7 @@ import React from 'react';
 import {Font} from 'expo';
 import { Button, FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+GLOBAL = require('../components/CurrentUser');
 
 // class MyListItem extends React.PureComponent { 
 //   _onPress = () => { 

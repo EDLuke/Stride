@@ -28,6 +28,9 @@ export const StackNavSocial = StackNavigator({
 export const TabNav = TabNavigator({
 	Today:{
 		screen: Today,
+		tabBarIcon: () => (
+			<MaterialCommunityIcons name="home" size={16} color="#FFF"/>
+		)
 	},
 	Charts:{
 		screen: Charts,
@@ -40,7 +43,23 @@ export const TabNav = TabNavigator({
 	},
 },
 {
-	headerMode: 'float'
+	headerMode: 'float',
+	tabBarPosition: 'bottom',
+	tabBarOptions:{
+		activeTintColor: "#FFF",
+		inactiveTintColor: "#FFF",
+		labelStyle: {
+			margin: 0,
+			fontSize: 12,
+		},
+		indicatorStyle: {
+			backgroundColor: "#004B8D",
+		},
+		style:{
+			height: 30,
+			backgroundColor: "#578CA9",
+		}
+	}
 });
 
 

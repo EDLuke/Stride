@@ -4,11 +4,8 @@ import ServerUtils from "./ServerUtils"
 
 
 var Api = {
-	//Login
-	
-
+	/*Credential*/
 	login: function(userName, password){
-
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {

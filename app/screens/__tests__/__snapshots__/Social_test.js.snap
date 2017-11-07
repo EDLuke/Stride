@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "flex": 1,
+        "justifyContent": "flex-start",
+        "marginTop": 10,
+        "padding": 10,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#494949",
+          "fontFamily": "Helvetica",
+          "fontSize": 35,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Friends' Circle
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "flex": 1,
+        "justifyContent": "flex-start",
+        "marginTop": 10,
+        "padding": 10,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#686868",
+          "fontFamily": "Helvetica",
+          "fontSize": 25,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      LeaderBoard
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "aspectRatio": 3,
+        "backgroundColor": "#bbb",
+        "flex": 3,
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <RCTScrollView>
+      <View>
+        <RCTScrollView
+          data={undefined}
+          disableVirtualization={false}
+          getItem={[Function]}
+          getItemCount={[Function]}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          numColumns={1}
+          onContentSizeChange={[Function]}
+          onEndReachedThreshold={2}
+          onLayout={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          onViewableItemsChanged={undefined}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          stickyHeaderIndices={Array []}
+          updateCellsBatchingPeriod={50}
+          windowSize={21}
+        >
+          <View />
+        </RCTScrollView>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

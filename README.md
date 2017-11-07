@@ -1,3 +1,5 @@
+[![Nevercode build status](https://app.nevercode.io/api/projects/743c8eb2-76d8-4870-b1d8-f051c2d0ba04/workflows/509cf478-5487-4df5-b33e-256c87667dd9/status_badge.svg?branch=backend_blocker_1)](https://app.nevercode.io/#/project/743c8eb2-76d8-4870-b1d8-f051c2d0ba04/workflow/509cf478-5487-4df5-b33e-256c87667dd9/latestBuild?branch=backend_blocker_1)
+
 ## Architecture
 `components`: components that provides functionalities and business logic
 

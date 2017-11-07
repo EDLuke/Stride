@@ -1,12 +1,12 @@
 import 'react-native';
 import React from 'react';
-import VideoBackgroundView from '../VideoBackgroundView';
+import Setting from '../Setting';
 
 import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
   const tree = renderer.create(
-    <VideoBackgroundView />
+    <Setting />
     ).toJSON();
   expect(tree).toMatchSnapshot();
 });

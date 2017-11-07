@@ -1,12 +1,12 @@
 import 'react-native';
 import React from 'react';
-import SwipeBackgroundView from '../SwipeBackgroundView';
+import Social from '../Social';
 
 import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
   const tree = renderer.create(
-    <SwipeBackgroundView />
+    <Social />
     ).toJSON();
   expect(tree).toMatchSnapshot();
 });

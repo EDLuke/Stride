@@ -35,7 +35,13 @@ export default class Main extends React.Component {
       }
       else{
         //Set global user
-        GLOBAL.currentUser = new User(response.UserID, response.Age, response.Gender, response.Height, response.Weight);
+        GLOBAL.currentUser = new User(response.UserID, 
+                                      response.Age, 
+                                      response.Gender, 
+                                      response.Height, 
+                                      response.Weight, 
+                                      response.Friendlist, 
+                                      response.Fitnesslist);
 
         //Navigate to the tabs
         this.props.navigation.navigate('TabNav');

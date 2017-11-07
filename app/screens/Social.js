@@ -23,7 +23,7 @@ export default class Social extends React.Component{
 		return (
 			<View style = {styles.container}>
               <View style={styles.textBoxContainer}>
-            		<Text style={styles.title}>Friends' Circle</Text>
+            		<Text style={styles.title}>Friends</Text>
               </View>
         		<View style={styles.textBoxContainer}>	
         				<Text style={styles.boxtitle}>LeaderBoard</Text>

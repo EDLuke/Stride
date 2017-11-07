@@ -1,8 +1,10 @@
 import React from 'react';
 import {Font} from 'expo';
 
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
-import SwipeBackgroundView from '../components/animation/SwipeBackgroundView';
+import { Button, StyleSheet, Text, View, TextInput, Dimensions } from 'react-native';
+import VideoBackgroundView from '../components/animation/VideoBackgroundView';
+import { AssetUtils } from '../components/AssetUtils.js';
+
 import Api from '../components/Api';
 import User from '../components/class/UserClass.js'
 
@@ -40,9 +42,12 @@ export default class Signup extends React.Component {
   }
 
   render() {
+  	const {goBack} = this.props.navigation;
     return (
       <View style={styles.container}>
-        <SwipeBackgroundView> 
+        <VideoBackgroundView source={AssetUtils.background_1}> 
+        </VideoBackgroundView>
+        <View style={styles.contentContainer}>
           <View style={styles.titleContainer}>  
             <Text style={styles.title}>Stride</Text>  
           </View>
@@ -91,9 +96,13 @@ export default class Signup extends React.Component {
             />
           </View>
           <View style={styles.signupContainer}>  
-            <Text style={styles.signupText}>Already a member? Login</Text>
+            <Text style={styles.signupText}
+            	onPress={() => goBack()}
+            >
+            	Already a member? Login
+            </Text>
           </View>
-        </SwipeBackgroundView>
+        </View>
       </View>
     );
   }
@@ -105,27 +114,33 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   title: {
-    fontFamily: 'Helvetica',
-    fontSize: 100,
-    fontWeight: '900',
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontFamily: 'Fibre',
+    fontSize: 130,
     color: '#fff'
   },
   subtitle: {
-    fontFamily: 'Helvetica',
-    fontSize: 20,
+    fontFamily: 'Fibre',
+    fontSize: 35,
     color: '#fff'
   },
-
-  signupContainer:{
-    width: 250,
-    marginTop: 35
+  contentContainer:{
+    opacity:1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: Dimensions.get('window').width, 
+    height: Dimensions.get('window').height,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   signupContainer:{
     width: 250,
     marginTop: 35
   },
   titleContainer:{
-    backgroundColor: 'rgba(0,0,0,0)'
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginTop: 75,
   },
   nameContainer: {
     backgroundColor: 'rgba(0,0,0,0)',
@@ -152,8 +167,8 @@ const styles = StyleSheet.create({
     borderColor: "#FFF",
   },
   subtitleContainer:{
+    backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 15,
-    backgroundColor: 'rgba(0,0,0,0)'
   },
   signupButton:{
     borderRadius:0,

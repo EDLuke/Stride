@@ -1,8 +1,7 @@
 import React from 'react';
 import {Font} from 'expo';
 
-import { Button, StyleSheet, Text, View, TextInput, Alert, Dimensions } from 'react-native';
-import SwipeBackgroundView from '../components/animation/SwipeBackgroundView';
+import { Button, StyleSheet, Text, View, TextInput, Dimensions } from 'react-native';
 import VideoBackgroundView from '../components/animation/VideoBackgroundView';
 import { AssetUtils } from '../components/AssetUtils.js';
 
@@ -15,7 +14,7 @@ GLOBAL = require('../components/CurrentUser');
 export default class Main extends React.Component {
   state = {
       email: 'yz3083',
-      password: 'yingshuangzheng',
+      password: 'VBbigidiot',
       error: '',
   };
 
@@ -27,7 +26,7 @@ export default class Main extends React.Component {
     Api.login(userName, password).then((response) => {
       console.log(response);     
 
-      if(response.Error != null){
+      if(response.Error != ""){
         this.setState({
           email:'',
           password:'',
@@ -135,6 +134,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   loginContainer:{
+    width: 250,
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 15,
   },

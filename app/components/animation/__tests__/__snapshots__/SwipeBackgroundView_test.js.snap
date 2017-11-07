@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  collapsable={undefined}
+  style={
+    Object {
+      "backgroundColor": "#DC4C46",
+      "height": 1334,
+      "width": 750,
+    }
+  }
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backgroundColor": "#92B558",
+        "height": 1334,
+        "right": 0,
+        "top": 0,
+        "width": 750,
+      }
+    }
+  />
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "alignItems": "center",
+        "height": 1334,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "top": 0,
+        "width": 750,
+      }
+    }
+  />
+</View>
+`;

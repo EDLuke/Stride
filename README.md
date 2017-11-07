@@ -28,3 +28,5 @@ https://stackoverflow.com/questions/31578069/repeat-animation-with-new-animated-
 https://cosmicjs.com/blog/how-to-make-a-simple-twitter-clone-with-react-native
 
 http://rationalappdev.com/logging-into-react-native-apps-with-facebook-or-google/
+
+https://medium.com/react-native-training/learning-to-test-react-native-with-jest-part-1-f782c4e30101

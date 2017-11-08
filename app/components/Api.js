@@ -25,7 +25,29 @@ var Api = {
 				});
 	},
 
-	signup: function(userName, password){
+
+	signup: function(userName, password) {
+		return fetch(ServerUtils.getIPAddress(), {
+				  method: 'POST',
+				  headers: {
+				  	'Accept': 'application/json',
+				  	'Content-Type': 'application/json',
+				  },
+				  body: JSON.stringify({
+				  	Act: 'SI',
+				  	UserID: userName,
+				  	Password: password,
+				  })
+				})
+				.then(ApiUtils.checkStatus)
+				.then(response => response.json())
+				.catch(error => {
+					console.error(error);
+				});
+	},
+
+
+	update: function(userName, password){
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {

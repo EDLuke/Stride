@@ -1,5 +1,5 @@
 import React from 'react';
-import {Font} from 'expo';
+import { Font } from 'expo';
 import { Button, FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 GLOBAL = require('../components/CurrentUser');
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: '#686868'
   },
   textBoxContainer: {
-  	flex: 1,
+  	flex: 2,
   	backgroundColor: '#fff',
   	justifyContent: 'flex-start',
     marginTop: 10,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   leaderBoardBoxContainer: {
     flex: 3, 
-  	backgroundColor: '#bbb',
+  	backgroundColor: '#fff',
   	justifyContent: 'flex-start',
     aspectRatio: 3
 

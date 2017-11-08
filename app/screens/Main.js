@@ -28,20 +28,20 @@ export default class Main extends React.Component {
 
       if(response.Error != ""){
         this.setState({
-          email:'',
-          password:'',
+          // email: '',
+          // password:'',
           error: response.Error,
         });
       }
       else{
         //Set global user
-        GLOBAL.currentUser = new User(response.UserID, 
-                                      response.Age, 
-                                      response.Gender, 
-                                      response.Height, 
-                                      response.Weight, 
-                                      response.Friendlist, 
-                                      response.Fitnesslist);
+        GLOBAL.currentUser = User.initLoginInfo(response.UserID, 
+                                                response.Age, 
+                                                response.Gender, 
+                                                response.Height, 
+                                                response.Weight, 
+                                                response.Friendlist, 
+                                                response.Fitnesslist);
 
         //Navigate to the tabs
         this.props.navigation.navigate('TabNav');
@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
     height: 15,
     marginTop: 10,
     flexDirection: 'row',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   subtitleContainer:{
     backgroundColor: 'rgba(0,0,0,0)',

@@ -24,7 +24,7 @@ export const StackNavSocial = StackNavigator({
 	}
 },
 {
-	// headerMode: 'none',
+	headerMode: 'none',
 });
 
 export const TabNav = TabNavigator({

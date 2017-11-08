@@ -10,7 +10,7 @@ export default class SocialDetail extends React.Component{
 	render() { 
 		return (
 		<View style = {styles.container}>
-			<View style = {styles.titleContainer}>
+			    <View style = {styles.titleContainer}>
 	          <Text style = {styles.boxtext}>Loading</Text>
 	        </View>
 	        <View style = {styles.loginContainer}>
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    marginTop: 64
   },
   title: {
     backgroundColor: 'rgba(0,0,0,0)',

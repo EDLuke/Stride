@@ -61,7 +61,6 @@ export default class Signup extends React.Component {
       <View style={styles.container}>
         <VideoBackgroundView source={AssetUtils.background_1}> 
         </VideoBackgroundView>
-        <ScrollView>
         <View style={styles.contentContainer}>
           <View style={styles.titleContainer}>  
             <Text style={styles.title}>Stride</Text>  
@@ -126,7 +125,7 @@ export default class Signup extends React.Component {
             </Text>
           </View>
         </View>
-        </ScrollView>
+
       </View>
     );
   }

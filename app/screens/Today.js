@@ -1,6 +1,6 @@
 import React from 'react';
 import {Font} from 'expo';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, ToolbarAndroid  } from 'react-native';
 import { Container, Content, List, Button, Icon, Text } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
 import { Octicons } from '@expo/vector-icons';
@@ -57,39 +57,54 @@ export default class Today extends React.Component{
 
 	render() {
 		return (
+		
+		<View style={styles.container}>
+			<ToolbarAndroid
+		      title="Stride"
+		      titleColor="#FFF"
+		      style={styles.toolbar}
+		    />
 			<Container>
-       <Content>
-          <List>
-            {
-              //console.log(this.state.posts)
-              this.state.posts.map((feed, index) => renderFeed(feed, index))
-            }
-          </List>
-        </Content>
-        <Button
-          rounded
-          style={styles.button}
-          onPress={() => Actions.newPost()}
-        >
-          <Octicons
-            name="plus"
-            size={16}
-            color="#FFF"
-            style=
-            {{
-            	left: 2,
-            	padding: 15
-            }}
-          />
-        </Button>
-      </Container>
+				
+		       	<Content>
+		          <List>
+		            {
+		              //console.log(this.state.posts)
+		              this.state.posts.map((feed, index) => renderFeed(feed, index))
+		            }
+		          </List>
+		        </Content>
+		        <Button
+		          rounded
+		          style={styles.button}
+		          onPress={() => Actions.newPost()}
+		        >
+		          <Octicons
+		            name="plus"
+		            size={16}
+		            color="#FFF"
+		            style=
+		            {{
+		            	left: 2,
+		            	padding: 15
+		            }}
+		          />
+		        </Button>
+	      	</Container>
+		</View>
+		
 		);
 	}
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 64,
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  toolbar: {
+    backgroundColor: '#578CA9',
+    height: 56,
   },
   button: {
     position: 'absolute',

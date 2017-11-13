@@ -1,6 +1,4 @@
 import React from 'react';
-import {Font} from 'expo';
-
 import { Button, StyleSheet, Text, View, TextInput, Dimensions } from 'react-native';
 import VideoBackgroundView from '../components/animation/VideoBackgroundView';
 import { AssetUtils } from '../components/AssetUtils.js';

@@ -20,7 +20,10 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
-    "setupTestFrameworkScriptFile": "./jest_setup.js"
+    "setupTestFrameworkScriptFile": "./jest_setup.js",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|native-base))"
+    ]
   },
   "dependencies": {
     "babel-jest": "^21.2.0",

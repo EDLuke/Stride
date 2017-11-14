@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+    }
+  }
+>
+  <UnimplementedView
+    style={
+      Object {
+        "backgroundColor": "#578CA9",
+        "height": 56,
+      }
+    }
+    title="Stride"
+    titleColor="#FFF"
+  />
+  <Styled(Container)>
+    <Styled(Content)>
+      <Styled(List)>
+        <Component
+          content="I just hit my goal of the day!"
+          key="0"
+          name="Romain"
+        />
+        <Component
+          content="I had cabbage, carrots and yogurt for lunch with about 1000 calorie"
+          key="1"
+          name="Mary"
+        />
+        <Component
+          content="I had steak for dinner with about 1200 calorie"
+          key="2"
+          name="Elizabeth"
+        />
+        <Component
+          content="I am looking for workout tips, any suggestions?"
+          key="3"
+          name="Shea"
+        />
+        <Component
+          content="Just had a great workout burning 2000 calorie!"
+          key="4"
+          name="Linda"
+        />
+        <Component
+          content="Almost hit my goal today...will try harder tmr"
+          key="5"
+          name="Sindy"
+        />
+        <Component
+          content="Finally at the top of my leaderboard!"
+          key="6"
+          name="Jacob"
+        />
+      </Styled(List)>
+    </Styled(Content)>
+    <Styled(Button)
+      onPress={[Function]}
+      rounded={true}
+      style={
+        Object {
+          "bottom": 20,
+          "position": "absolute",
+          "right": 20,
+        }
+      }
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="plus"
+        size={16}
+        style={
+          Object {
+            "left": 2,
+            "padding": 15,
+          }
+        }
+      />
+    </Styled(Button)>
+  </Styled(Container)>
+</View>
+`;

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "flex-start",
+      "marginTop": 64,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgba(0,0,0,0)",
+        "marginTop": 35,
+        "width": 250,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#686868",
+          "fontFamily": "Helvetica",
+          "fontSize": 20,
+        }
+      }
+    >
+      Loading
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgba(0,0,0,0)",
+        "marginTop": 15,
+      }
+    }
+  >
+    <Button
+      onPress={[Function]}
+      style={
+        Object {
+          "borderRadius": 0,
+        }
+      }
+      title="Return"
+    />
+  </View>
+</View>
+`;

@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+    }
+  }
+>
+  <VideoBackgroundView />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "height": 1334,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "top": 0,
+        "width": 750,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "marginTop": 75,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "backgroundColor": "rgba(0,0,0,0)",
+            "color": "#fff",
+            "fontFamily": "Fibre",
+            "fontSize": 130,
+          }
+        }
+      >
+        STRIDE
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "marginTop": 15,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#fff",
+            "fontFamily": "Fibre",
+            "fontSize": 35,
+          }
+        }
+      >
+        Fit with Friends
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "borderBottomWidth": 1,
+          "borderColor": "#FFF",
+          "height": 30,
+          "marginTop": 100,
+          "width": 250,
+        }
+      }
+    >
+      <TextInput
+        onChangeText={[Function]}
+        placeholder="Email"
+        placeholderTextColor="#FFF"
+        style={
+          Object {
+            "alignItems": "center",
+            "color": "#FFF",
+          }
+        }
+        underlineColorAndroid="transparent"
+        value="yz3083"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "borderBottomWidth": 1,
+          "borderColor": "#FFF",
+          "height": 30,
+          "marginTop": 35,
+          "width": 250,
+        }
+      }
+    >
+      <TextInput
+        onChangeText={[Function]}
+        placeholder="Password"
+        placeholderTextColor="#FFF"
+        secureTextEntry={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "color": "#FFF",
+          }
+        }
+        underlineColorAndroid="transparent"
+        value="VBbigidiot"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "flexDirection": "row",
+          "height": 15,
+          "marginTop": 10,
+          "width": 250,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#FFF",
+            "fontSize": 12,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "marginTop": 15,
+          "width": 250,
+        }
+      }
+    >
+      <Button
+        color="#92B6D5"
+        onPress={[Function]}
+        style={Object {}}
+        title="Login"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "marginTop": 35,
+          "width": 250,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        onPress={[Function]}
+        style={
+          Object {
+            "color": "#FFF",
+            "opacity": 0.5,
+            "textAlign": "center",
+          }
+        }
+      >
+        No account yet? Create one
+      </Text>
+    </View>
+  </View>
+</View>
+`;

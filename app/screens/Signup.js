@@ -28,11 +28,11 @@ export default class Signup extends React.Component {
       console.log(response);
 
       //Set global user
-      // GLOBAL.currentUser = User.initSignUpInfo(response.UserID, 
-      //                                          response.Age, 
-      //                                          response.Gender, 
-      //                                          response.Height, 
-      //                                          response.Weight);
+      GLOBAL.currentUser = User.initSignUpInfo(response.UserID, 
+                                               response.Age, 
+                                               response.Gender, 
+                                               response.Height, 
+                                               response.Weight);
 
       //Navigate to the tabs
 
@@ -56,7 +56,9 @@ export default class Signup extends React.Component {
   }
 
   render() {
-  	const {goBack} = this.props.navigation;
+  	if(this.props.navigation != null){
+  		const {goBack} = this.props.navigation;
+  	}
     return (
       <View style={styles.container}>
         <VideoBackgroundView source={AssetUtils.background_1}> 

@@ -4,6 +4,7 @@ import VideoBackgroundView from '../components/animation/VideoBackgroundView';
 import { AssetUtils } from '../components/AssetUtils.js';
 
 import Api from '../components/Api';
+import ApiUtils from '../components/utils/ApiUtils';
 import User from '../components/class/UserClass.js'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -11,23 +12,50 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Main extends React.Component {
   state = {
-      email: 'yz3083',
-      password: 'VBbigidiot',
+      email: 'luke@columbia.edu',
+      password: '123qweasdzxc',
       error: '',
+      keyboardFocused: false,
   };
+
+  toggleKeyboardFocused = () => {
+    this.setState({
+      keyboardFocused: !this.state.keyboardFocused,
+    });
+
+    console.log(this.state.keyboardFocused);
+  }
 
   onPressLogin = () => {
     var userName = this.state.email;
     var password = this.state.password;
 
-    //Hardcode this until backend is up
+    //First check locally if email is valid
+    if(!ApiUtils.validateEmail(userName)){
+      this.setState({
+          email: '',
+          password:'',
+          error: "This email address is not in a valid format.",
+      });
+
+      return;
+    }
+
+    //Then make the request
     Api.login(userName, password).then((response) => {
       console.log(response);     
 
-      if(response.Error != ""){
+      if (typeof response === "undefined") {
         this.setState({
-          // email: '',
-          // password:'',
+          email: '',
+          password:'',
+          error: "Network error.",
+        });
+      }
+      else if(response.Error != ""){
+        this.setState({
+          email: '',
+          password:'',
           error: response.Error,
         });
       }
@@ -59,7 +87,6 @@ export default class Main extends React.Component {
           <View style={styles.subtitleContainer}>  
             <Text style={styles.subtitle}>Fit with Friends</Text>
           </View>
-
           <View style={styles.emailContainer}>
              <TextInput
                 style = {{alignItems:'center', color: '#FFF'}}
@@ -67,6 +94,7 @@ export default class Main extends React.Component {
                 placeholder="Email"
                 placeholderTextColor="#FFF"
                 onChangeText={(text) => this.setState({email:text})}
+                onFocus={this.toggleKeyboardFocused}
                 value = {this.state.email}
               />
           </View>
@@ -79,6 +107,7 @@ export default class Main extends React.Component {
                 placeholder="Password"
                 placeholderTextColor="#FFF"
                 onChangeText={(text) => this.setState({password:text})}
+                onFocus={this.toggleKeyboardFocused}
                 value = {this.state.password}
               />
             </View>
@@ -143,9 +172,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 15,
   },
-  signupContainer:{
+  alertContainer: {
+    width: 250,
+    height: 15,
+    marginTop: 10,
+    flexDirection: 'row',
     backgroundColor: 'rgba(0,0,0,0)',
-    marginTop: 35,
   },
   titleContainer:{
     backgroundColor: 'rgba(0,0,0,0)',

@@ -6,6 +6,8 @@ import VideoBackgroundView from '../components/animation/VideoBackgroundView';
 import { AssetUtils } from '../components/AssetUtils.js';
 
 import Api from '../components/Api';
+import ApiUtils from '../components/utils/ApiUtils';
+import renderIf from '../components/utils/renderIf';
 import User from '../components/class/UserClass.js'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -13,37 +15,55 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Signup extends React.Component {
   state = {
-    fontLoaded: false,
-  	name: '',
     email: '',
     password: '',
     error: '',
   }
 
   onPressSignup = () => {
-    var userName = this.state.name;
+    var userName = this.state.email;
     var password = this.state.password;
 
+    //First check locally if email is valid
+    if(!ApiUtils.validateEmail(userName)){
+      this.setState({
+          email: '',
+          password:'',
+          error: "This email address is not in a valid format.",
+      });
+
+      return;
+    }
+
+    //Then make the request
     Api.signup(userName, password).then((response) => {
       console.log(response);
 
-      //Set global user
-      GLOBAL.currentUser = User.initSignUpInfo(response.UserID, 
-                                               response.Age, 
-                                               response.Gender, 
-                                               response.Height, 
-                                               response.Weight);
-
-      //Navigate to the tabs
-
-      if (response.Error == "") {
-        GLOBAL.currentUser = User.initSignUpInfo(response.UserID);
-        this.props.navigation.navigate('TabNav');
-      } else {
-        this.setState({error: response.Error});
+      if (typeof response === "undefined") {
+        this.setState({
+          email: '',
+          password:'',
+          error: "Network error.",
+        });
       }
+      else if(response.Error != ""){
+        this.setState({
+          email: '',
+          password:'',
+          error: response.Error,
+        });
+      }
+      else{
+        //Set global user
+        GLOBAL.currentUser = User.initSignUpInfo(response.UserID, 
+                                                 response.Age, 
+                                                 response.Gender, 
+                                                 response.Height, 
+                                                 response.Weight);
 
-      
+        //Navigate to the tabs
+        this.props.navigation.navigate('TabNav');
+      }
     });
   }
   
@@ -56,9 +76,6 @@ export default class Signup extends React.Component {
   }
 
   render() {
-  	if(this.props.navigation != null){
-  		const {goBack} = this.props.navigation;
-  	}
     return (
       <View style={styles.container}>
         <VideoBackgroundView source={AssetUtils.background_1}> 
@@ -69,17 +86,6 @@ export default class Signup extends React.Component {
           </View>
           <View style={styles.subtitleContainer}>  
             <Text style={styles.subtitle}>Fit with Friends</Text>
-          </View>
-
-          <View style={styles.nameContainer}>
-             <TextInput
-                style = {{alignItems:'center', color: '#FFF'}}
-                underlineColorAndroid="transparent"
-                placeholder="Name"
-                placeholderTextColor="#FFF"
-                onChangeText={(text) => this.setState({name:text})}
-                value = {this.state.name}
-              />
           </View>
 
           <View style={styles.emailContainer}>
@@ -116,12 +122,17 @@ export default class Signup extends React.Component {
           <View style={styles.signupContainer}>
             <Button style={styles.signupButton}
               onPress={this.onPressSignup}
-              title="CREATE ACCOUNT"
+              title="Create Account"
+              color="#92B558"
             />
           </View>
-          <View style={styles.signupContainer}>  
-            <Text style={styles.signupText}
-            	onPress={() => goBack()}
+          <View style={styles.loginContainer}>  
+            <Text style={styles.loginText}
+            	onPress={() => {
+                  const {goBack} = this.props.navigation;
+                  goBack();
+                }
+              }
             >
             	Already a member? Login
             </Text>
@@ -136,7 +147,7 @@ export default class Signup extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   title: {
     backgroundColor: 'rgba(0,0,0,0)',
@@ -161,7 +172,8 @@ const styles = StyleSheet.create({
   },
   signupContainer:{
     width: 250,
-    marginTop: 35
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginTop: 15,
   },
   alertContainer: {
     width: 250,
@@ -174,19 +186,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 75,
   },
-  nameContainer: {
+  loginContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
-    height: 30,
     width: 250,
-    marginTop: 50,
-    borderBottomWidth: 1,
-    borderColor: "#FFF",
+    marginTop: 35
   },
   emailContainer: {
     backgroundColor: 'rgba(0,0,0,0)',
     height: 30,
     width: 250,
-    marginTop: 35,
+    marginTop: 100,
     borderBottomWidth: 1,
     borderColor: "#FFF",
   },
@@ -198,22 +207,26 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "#FFF",
   },
+  alertContainer: {
+    width: 250,
+    height: 15,
+    marginTop: 10,
+    flexDirection: 'row',
+    backgroundColor: 'rgba(0,0,0,0)',
+  },
   subtitleContainer:{
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 15,
   },
   signupButton:{
-    borderRadius:0,
   },
-  signupText:{
+  loginText:{
     textAlign: 'center',
     color: '#FFF',
     opacity: 0.5,
-    backgroundColor: 'rgba(0,0,0,0)'
   },
   alertText: {
     color: '#FFF',
     fontSize: 12
   }
-
 });

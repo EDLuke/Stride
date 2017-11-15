@@ -1,5 +1,5 @@
-import ApiUtils from "./ApiUtils"
-import ServerUtils from "./ServerUtils"
+import ApiUtils from "./utils/ApiUtils"
+import ServerUtils from "./utils/ServerUtils"
 
 
 

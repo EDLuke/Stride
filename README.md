@@ -32,3 +32,5 @@ https://cosmicjs.com/blog/how-to-make-a-simple-twitter-clone-with-react-native
 http://rationalappdev.com/logging-into-react-native-apps-with-facebook-or-google/
 
 https://medium.com/react-native-training/learning-to-test-react-native-with-jest-part-1-f782c4e30101
+
+https://medium.com/@childsmaidment/testing-react-native-components-with-enzyme-d46bf735540

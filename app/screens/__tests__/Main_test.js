@@ -12,3 +12,23 @@ it('renders correctly', () => {
     );
     expect(wrapper).toMatchSnapshot();
 });
+
+it('has only two text input fields' , () => {
+	const wrapper = shallow(
+      <Main/>
+    );
+    expect(wrapper.dive().find('TextInput')).to.have.length(2);
+})
+
+it('prompts error with invalid email address', () => {
+	const wrapper = shallow(
+      <Main/>
+    );
+
+    const render = wrapper.dive();
+
+    const emailInput = render.find('TextInput').first();
+    //const alertText  = render.find('');
+
+	expect(1).toBe(1);
+});

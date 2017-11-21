@@ -3,7 +3,9 @@ import {Font} from 'expo';
 import { ScrollView, StyleSheet, View, ToolbarAndroid  } from 'react-native';
 import { Container, Content, List, Button, Icon, Text } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
-import { Octicons } from '@expo/vector-icons';
+import { Octicons, MaterialIcons } from '@expo/vector-icons';
+import { AssetUtils } from '../components/AssetUtils.js';
+
 
 const renderFeed = (post, index) => (
   <SingleFeed
@@ -62,6 +64,7 @@ export default class Today extends React.Component{
 			<ToolbarAndroid
 		      title="Stride"
 		      titleColor="#FFF"
+		      actions={toolBarActions}
 		      style={styles.toolbar}
 		    />
 			<Container>
@@ -96,6 +99,12 @@ export default class Today extends React.Component{
 		);
 	}
 }
+
+const addIcon = (<MaterialIcons name="add" size={13} color="#FFF" />);
+
+const toolBarActions = [
+	{title: 'Add', icon: require('../../assets/images/plus.png'), show: 'always'},
+];
 
 const styles = StyleSheet.create({
   container: {

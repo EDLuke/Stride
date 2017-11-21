@@ -11,6 +11,10 @@ export const AssetUtils = {
 	    	require('../../assets/videos/background_1.mp4'),
 	    ]);
 
+	    await Asset.loadAsync([
+	    	require('../../assets/images/plus.png'),
+	    ]);
+
 	    this.background_1 = Asset.fromModule(require('../../assets/videos/background_1.mp4')).uri
 	},
 };

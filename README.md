@@ -34,3 +34,5 @@ http://rationalappdev.com/logging-into-react-native-apps-with-facebook-or-google
 https://medium.com/react-native-training/learning-to-test-react-native-with-jest-part-1-f782c4e30101
 
 https://medium.com/@childsmaidment/testing-react-native-components-with-enzyme-d46bf735540
+
+http://codingmiles.com/react-native-creating-a-navigation-toolbar-for-android/

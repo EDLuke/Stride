@@ -1,10 +1,15 @@
 import React from 'react';
-import {Font} from 'expo';
-import { Button, FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text, View, ToolbarAndroid } from 'react-native';
+import { Container, Button } from 'native-base';
 import User from '../components/class/UserClass.js';
-import { SmoothLine } from 'react-native-pathjs-charts';
+import { SmoothLine, StockLine } from 'react-native-pathjs-charts';
+import moment from 'moment';
+import { Octicons } from '@expo/vector-icons';
 
 GLOBAL = require('../components/CurrentUser');
+
+const TOOLBAR_HEIGHT = ToolbarAndroid.currentHeight;
+console.log(ToolbarAndroid);
 
 export default class Charts extends React.Component{
 	state = {
@@ -12,7 +17,7 @@ export default class Charts extends React.Component{
       {
         'date':'10-17',
         'calorie':'1500',
-        goal:'1500'
+        'goal':'1500'
       },
       {
         'date':'10-18',
@@ -90,147 +95,37 @@ export default class Charts extends React.Component{
     }
 	};
 
+	onPressAdd = () => {
+		//Navigate to the ChartsAdd
+        this.props.navigation.navigate('ChartsAdd');
+	}
+
 	render() {
     let data = [
       [{
-        "x": -10,
-        "y": -1000
-      }, {
-        "x": -9,
-        "y": -729
-      }, {
-        "x": -8,
-        "y": -512
-      }, {
-        "x": -7,
-        "y": -343
-      }, {
-        "x": -6,
-        "y": -216
-      }, {
-        "x": -5,
-        "y": -125
-      }, {
-        "x": -4,
-        "y": -64
-      }, {
-        "x": -3,
-        "y": -27
-      }, {
-        "x": -2,
-        "y": -8
-      }, {
-        "x": -1,
-        "y": -1
-      }, {
         "x": 0,
-        "y": 0
+        "y": 47782
       }, {
         "x": 1,
-        "y": 1
+        "y": 48497
       }, {
         "x": 2,
-        "y": 8
+        "y": 77128
       }, {
         "x": 3,
-        "y": 27
-      }, {
-        "x": 4,
-        "y": 64
-      }, {
-        "x": 5,
-        "y": 125
-      }, {
-        "x": 6,
-        "y": 216
-      }, {
-        "x": 7,
-        "y": 343
-      }, {
-        "x": 8,
-        "y": 512
-      }, {
-        "x": 9,
-        "y": 729
-      }, {
-        "x": 10,
-        "y": 1000
-      }],
-      [{
-        "x": -10,
-        "y": 100
-      }, {
-        "x": -9,
-        "y": 81
-      }, {
-        "x": -8,
-        "y": 64
-      }, {
-        "x": -7,
-        "y": 49
-      }, {
-        "x": -6,
-        "y": 36
-      }, {
-        "x": -5,
-        "y": 25
-      }, {
-        "x": -4,
-        "y": 16
-      }, {
-        "x": -3,
-        "y": 9
-      }, {
-        "x": -2,
-        "y": 4
-      }, {
-        "x": -1,
-        "y": 1
-      }, {
-        "x": 0,
-        "y": 0
-      }, {
-        "x": 1,
-        "y": 1
-      }, {
-        "x": 2,
-        "y": 4
-      }, {
-        "x": 3,
-        "y": 9
-      }, {
-        "x": 4,
-        "y": 16
-      }, {
-        "x": 5,
-        "y": 25
-      }, {
-        "x": 6,
-        "y": 36
-      }, {
-        "x": 7,
-        "y": 49
-      }, {
-        "x": 8,
-        "y": 64
-      }, {
-        "x": 9,
-        "y": 81
-      }, {
-        "x": 10,
-        "y": 100
+        "y": 73413
       }]
     ]
 
     let options = {
-      width: 280,
-      height: 280,
+      width: 250,
+      height: 250,
       color: '#2980B9',
       margin: {
-        top: 20,
+        top: 0,
         left: 45,
-        bottom: 25,
-        right: 20
+        bottom: 35,
+        right: 25,
       },
       animate: {
         type: 'delayed',
@@ -243,9 +138,14 @@ export default class Charts extends React.Component{
         showTicks: true,
         zeroAxis: false,
         orient: 'bottom',
+        tickValues: [],
+        labelFunction: ((v) => {
+          let d = moment('2016-10-08 14:00','YYYY-MM-DD HH:mm')
+          return d.add((v * 2),'hours').format('h:mm A')
+        }),
         label: {
           fontFamily: 'Arial',
-          fontSize: 14,
+          fontSize: 8,
           fontWeight: true,
           fill: '#34495E'
         }
@@ -257,9 +157,10 @@ export default class Charts extends React.Component{
         showTicks: true,
         zeroAxis: false,
         orient: 'left',
+        tickValues: [],
         label: {
           fontFamily: 'Arial',
-          fontSize: 14,
+          fontSize: 8,
           fontWeight: true,
           fill: '#34495E'
         }
@@ -268,54 +169,55 @@ export default class Charts extends React.Component{
     
 		return (
 			<View style={styles.container}>
-        <SmoothLine data={data} options={options} xKey='x' yKey='y' />
-      </View>
+				<ToolbarAndroid
+			      title="Progression"
+			      titleColor="#FFF"
+			      style={styles.toolbar}
+			    />
+			    <Container>
+				    <View style={styles.chartContainer}>
+		       		 <StockLine  data={data} options={options} xKey='x' yKey='y' />
+				    </View>
+		      	</Container>
+		      	<Button
+		          rounded
+		          style={styles.button}
+		          onPress={() => this.onPressAdd()}
+		        >
+		        	<Octicons
+		            name="plus"
+		            size={16}
+		            color="#FFF"
+		            style=
+		            {{
+		            	left: 2,
+		            	padding: 15
+		            }}
+		          />
+		        </Button>
+	      </View>
 		);
 	}
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
   },
-  title: {
-    fontFamily: 'Helvetica',
-    fontSize: 35,
-    fontWeight: 'bold',
-    color: '#494949'
+  chartContainer: {
+  	marginTop: 10,
+  	alignItems: 'center',
+    justifyContent: 'center',
   },
-  subtitle: {
-    fontFamily: 'Helvetica',
-    fontSize: 25,
-    color: '#686868'
+  toolbar: {
+    backgroundColor: '#578CA9',
+    height: 56,
   },
-  boxtitle: {
-    fontFamily: 'Helvetica',
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#686868'
+  button: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
   },
-  boxtext:{
-    fontFamily: 'Helvetica',
-    fontSize: 18,
-    color: '#686868'
-  },
-  textBoxContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'flex-start',
-    padding: 10,
-  },
-  chartBoxContainer: {
-    flex: 3,
-    backgroundColor: '#bbb',
-    justifyContent: 'flex-start',
-    aspectRatio: 3
-  },
-  buttonContainer: {
-    margin: 50,
-  }
 });

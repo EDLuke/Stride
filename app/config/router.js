@@ -8,6 +8,8 @@ import Social from '../screens/Social';
 import Setting from '../screens/Setting';
 import Signup from '../screens/Signup';
 import SocialDetail from '../screens/SocialDetail';
+import ChartsAdd from '../screens/ChartsAdd';
+
 import { MaterialCommunityIcons, 
 SimpleLineIcons, FontAwesome } from '@expo/vector-icons';
 
@@ -27,6 +29,18 @@ export const StackNavSocial = StackNavigator({
 	headerMode: 'none',
 });
 
+export const StackNavChart = StackNavigator({
+	Charts:{
+		screen: Charts,
+	},
+	ChartsAdd:{
+		screen: ChartsAdd,
+	}
+},
+{
+	headerMode: 'none',
+});
+
 export const TabNav = TabNavigator({
 	Today:{
 		screen: Today,
@@ -38,7 +52,7 @@ export const TabNav = TabNavigator({
 		
 	},
 	Charts:{
-		screen: Charts,
+		screen: StackNavChart,
 		navigationOptions : ({navigation}) => ({
 			tabBarIcon: ({ tintColor }) => (
 				<SimpleLineIcons name="graph" size={25} color={tintColor}/>

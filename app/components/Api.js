@@ -69,7 +69,6 @@ var Api = {
 	},
 
 	addFitness: function(userName, calorie, date){
-		
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {

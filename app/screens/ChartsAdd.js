@@ -21,8 +21,7 @@ export default class ChartsAdd extends React.Component{
 		var calorie = this.state.calorie;
 
 		Api.addFitness(userName, calorie, date).then((response) => {
-			console.log(response);
-
+			
 			 if (typeof response === "undefined") {
 		        this.setState({
 		          calorie: '0',
@@ -44,6 +43,9 @@ export default class ChartsAdd extends React.Component{
 		      		date: date,
 		      		calorie: calorie,
 		      	});
+
+		      	//call Chart's refresh function
+		      	this.props.navigation.state.params.refresh();
 
 		      	//go back to the previous screen
 		      	const {goBack} = this.props.navigation;

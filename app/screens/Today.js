@@ -13,6 +13,7 @@ const renderFeed = (post, index) => (
     name={post.name}
     username={post.username}
     content={post.content}
+    profilePicture={post.profilePicture}
   />
 )
 
@@ -72,7 +73,6 @@ export default class Today extends React.Component{
 		       	<Content>
 		          <List>
 		            {
-		              //console.log(this.state.posts)
 		              this.state.posts.map((feed, index) => renderFeed(feed, index))
 		            }
 		          </List>

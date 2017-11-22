@@ -36,3 +36,5 @@ https://medium.com/react-native-training/learning-to-test-react-native-with-jest
 https://medium.com/@childsmaidment/testing-react-native-components-with-enzyme-d46bf735540
 
 http://codingmiles.com/react-native-creating-a-navigation-toolbar-for-android/
+
+https://github.com/react-community/react-navigation/issues/922

@@ -3,11 +3,9 @@ import { StyleSheet, Text, TextInput, View, ToolbarAndroid } from 'react-native'
 import { Container, Button } from 'native-base';
 import moment from 'moment';
 import DatePicker from 'react-native-datepicker'
+import Api from '../components/Api';
 
 GLOBAL = require('../components/CurrentUser');
-
-const TOOLBAR_HEIGHT = ToolbarAndroid.currentHeight;
-console.log(ToolbarAndroid);
 
 export default class ChartsAdd extends React.Component{
 
@@ -18,8 +16,40 @@ export default class ChartsAdd extends React.Component{
   	};
 
 	onActionSelected = () => {
-		//Navigate to the ChartsAdd
-        this.props.navigation.navigate('ChartsAdd');
+		var userName = GLOBAL.currentUser.username;
+		var date = moment(this.state.date).format("YYYY-MM-DD");
+		var calorie = this.state.calorie;
+
+		Api.addFitness(userName, calorie, date).then((response) => {
+			console.log(response);
+
+			 if (typeof response === "undefined") {
+		        this.setState({
+		          calorie: '0',
+		          date: moment(),
+		          error: "Network error.",
+		        });
+		      }
+		      else if(response.Error != ""){
+		        this.setState({
+		          calorie: '0',
+		          date: moment(),
+		          error: response.Error,
+		        });
+		      }
+		      else{
+		      	//If successful, append to the GLOBAL user
+		      	GLOBAL.currentUser.FitnessRecord.push(
+		      	{
+		      		date: date,
+		      		calorie: calorie,
+		      	});
+
+		      	//go back to the previous screen
+		      	const {goBack} = this.props.navigation;
+                goBack();
+		      }
+		})
 	}
 
 	render() {
@@ -39,7 +69,6 @@ export default class ChartsAdd extends React.Component{
 				    		<TextInput
 				                style = {styles.calorieTextInput}
 				                underlineColorAndroid="transparent"
-				                placeholderTextColor="#FFF"
 				                onChangeText={(text) => this.setState({calorie:text})}
 				                value = {this.state.calorie}
 				              />
@@ -95,8 +124,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   calorieTextInput: {
-  	alignItems:'center', 
-  	color: '#FFF',
+  	textAlign:"center",
+  	color: '#000',
   	borderColor: 'gray', 
   	borderWidth: 1,
   	width: 250,

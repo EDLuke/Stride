@@ -37,7 +37,6 @@ export default class Signup extends React.Component {
 
     //Then make the request
     Api.signup(userName, password).then((response) => {
-      console.log(response);
 
       if (typeof response === "undefined") {
         this.setState({

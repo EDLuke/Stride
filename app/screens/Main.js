@@ -42,8 +42,7 @@ export default class Main extends React.Component {
     }
 
     //Then make the request
-    Api.login(userName, password).then((response) => {
-      console.log(response);     
+    Api.login(userName, password).then((response) => {  
 
       if (typeof response === "undefined") {
         this.setState({

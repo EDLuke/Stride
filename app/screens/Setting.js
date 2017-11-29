@@ -20,13 +20,17 @@ export default class Setting extends React.Component{
     weightErrorMsg: "",
     heightErrorMsg: "",
     ageErrorMsg: "",
+    pwErrorMsg: "",
+    
+
     pw1: "",
     pw2: "",
-    pwErrorMsg: "",
     userWeight: "",
     userHeight: "",
     userGender: "",
     userAge: "",
+    
+
     isUpdating: false,
     updateErrorMsg: "",
   }
@@ -108,6 +112,21 @@ export default class Setting extends React.Component{
     }
   }
 
+  heightTextChange = (height) => {
+    this.setState({userHeight: height});
+    this.checkNumericFormatHeight(height);
+  }
+
+  weightTextChange = (weight) => {
+    this.setState({userWeight: weight});
+    this.checkNumericFormatHeight(weight);
+  }
+
+  ageTextChange = (age) => {
+    this.setState({userAge: age});
+    this.checkNumericFormatHeight(age);
+  }
+
   onPressUpdate = () => {
     this.setState({isUpdating: true});
 
@@ -146,7 +165,7 @@ export default class Setting extends React.Component{
                                                 response.Friendlist, 
                                                 response.Fitnesslist);
 
-        console.log(GLOBAL.currentUser);
+        console.log(response);
 
         //Navigate to the tabs
         this.setState({
@@ -208,7 +227,7 @@ export default class Setting extends React.Component{
 
               <FormLabel>Weight (kg)</FormLabel>
               <FormInput
-                onChangeText={(text) => this.setState({userWeight: text}), (text) => this.checkNumericFormatWeight(text)}
+                onChangeText={(text) => this.weightTextChange(text)}
                 onFocus={this.toggleKeyboardFocused}
               />
               <FormValidationMessage>
@@ -217,7 +236,7 @@ export default class Setting extends React.Component{
 
               <FormLabel>Height (cm)</FormLabel>
               <FormInput
-                onChangeText={(text) => this.setState({userHeight: text}), (text) => this.checkNumericFormatHeight(text)}
+                onChangeText={(text) => this.heightTextChange(text)}
                 onFocus={this.toggleKeyboardFocused}
               />
               <FormValidationMessage>
@@ -235,7 +254,7 @@ export default class Setting extends React.Component{
 
               <FormLabel>Age</FormLabel>
               <FormInput
-                onChangeText={(text) => this.setState({userAge: text}), (text) => this.checkNumericFormatAge(text)}
+                onChangeText={(text) => this.ageTextChange(text)}
                 onFocus={this.toggleKeyboardFocused}
               />
               <FormValidationMessage>

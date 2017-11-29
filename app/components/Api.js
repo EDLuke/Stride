@@ -48,6 +48,8 @@ var Api = {
 
 
 	update: function(userName, userpw, userHeight, userWeight, userGender, userAge){
+		
+
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {

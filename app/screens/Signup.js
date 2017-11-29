@@ -15,16 +15,28 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Signup extends React.Component {
   state = {
-    email: '',
-    password: '',
+    email: 'sfsdf@sdfsdf.com',
+    password: '123qwe',
+    passwordCfn: '123qwe',
     error: '',
   }
 
   onPressSignup = () => {
-    var userName = this.state.email;
-    var password = this.state.password;
+    //First check if the two passwords match
+    
+    if(this.state.password != this.state.passwordCfn){
+      this.setState({
+        passwordCfn: '',
+        error: "These passwords don't match. Try again?",
+      });
 
-    //First check locally if email is valid
+      return;
+    }
+
+    var userName = this.state.email;
+    var password = ApiUtils.hashPassword(this.state.password);
+  
+    //Check locally if email is valid
     if(!ApiUtils.validateEmail(userName)){
       this.setState({
           email: '',
@@ -37,6 +49,7 @@ export default class Signup extends React.Component {
 
     //Then make the request
     Api.signup(userName, password).then((response) => {
+      console.log(response);
 
       if (typeof response === "undefined") {
         this.setState({
@@ -108,7 +121,18 @@ export default class Signup extends React.Component {
                 onChangeText={(text) => this.setState({password:text})}
                 value = {this.state.password}
               />
-            </View>
+          </View>
+          <View style={styles.passwordConfirmContainer}>
+              <TextInput
+                secureTextEntry = {true}
+                underlineColorAndroid="transparent"
+                style = {{alignItems:'center', color: '#FFF'}}
+                placeholder="Verify Password"
+                placeholderTextColor="#FFF"
+                onChangeText={(text) => this.setState({passwordCfn :text})}
+                value = {this.state.passwordCfn}
+              />
+          </View>
           <View style={styles.alertContainer}>
             {this.state.error != '' &&
               <MaterialCommunityIcons name="alert-box" size={16} color="#FFF"/>
@@ -194,11 +218,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     height: 30,
     width: 250,
-    marginTop: 100,
+    marginTop: 50,
     borderBottomWidth: 1,
     borderColor: "#FFF",
   },
   passwordContainer: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    height: 30,
+    width: 250,
+    marginTop: 35,
+    borderBottomWidth: 1,
+    borderColor: "#FFF",
+  },
+  passwordConfirmContainer: {
     backgroundColor: 'rgba(0,0,0,0)',
     height: 30,
     width: 250,

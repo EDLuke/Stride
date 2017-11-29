@@ -16,8 +16,8 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Main extends React.Component {
   state = {
-      email: 'luke@columbia.edu',
-      password: '123qweasdzxc',
+      email: 'lz2504@columbia.edu',
+      password: '123qwe',
       error: '',
       keyboardFocused: false,
   };
@@ -32,7 +32,7 @@ export default class Main extends React.Component {
 
   onPressLogin = () => {
     var userName = this.state.email;
-    var password = this.state.password;
+    var password = ApiUtils.hashPassword(this.state.password);
 
     //First check locally if email is valid
     if(!ApiUtils.validateEmail(userName)){

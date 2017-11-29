@@ -45,9 +45,15 @@ export default class User{
 		return thisUser;
 	}
 
-	static initSignUpInfo(username) {
+	static initSignUpInfo(username, age, gender, height, weight) {
 		let thisUser = new User();
 		thisUser.username = username;
+		thisUser.age = age;
+		thisUser.gender = gender;
+		thisUser.height = height;
+		thisUser.weight = weight;
+		thisUser.friends = [];
+		thisUser.FitnessRecord = [];
 		return thisUser;
 	}
 

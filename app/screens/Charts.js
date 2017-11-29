@@ -68,6 +68,7 @@ export default class Charts extends React.Component{
 	        orient: 'bottom',
 	        tickValues: [],
 	        labelFunction: ((v) => {
+	          console.log("SDLKFJSDLKJ")
 	          let d = moment(GLOBAL.currentUser.FitnessRecord[0].date)
 
 	          if(v % 1 === 0)
@@ -119,7 +120,7 @@ export default class Charts extends React.Component{
 			    />
 
 			    <View style={styles.chartContainer}>
-	       		 <StockLine data={data} options={options} xKey='days' yKey='calorie' />
+	       		 {GLOBAL.currentUser.FitnessRecord.length > 0 && <StockLine  data={data} options={options} xKey='days' yKey='calorie' />}
 			    </View>
 			    <ScrollView style={styles.listContainer}>			
 	          		<List>

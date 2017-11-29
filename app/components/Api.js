@@ -15,7 +15,7 @@ var Api = {
 				  body: JSON.stringify({
 				  	Act: 'LI',
 				  	UserID: userName,
-				  	Password: password
+				  	Password: password,
 				  })
 				})
 				.then(ApiUtils.checkStatus)

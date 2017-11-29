@@ -18,22 +18,22 @@ export default class User{
 		if (!(typeof age === "undefined") && age != null) {
 			thisUser.age = age;
 		}
-		if (!(typeof age === "undefined") && gender != null) { 
+		if (!(typeof gender === "undefined") && gender != null) { 
 			thisUser.gender = gender;
 		}
-		if (!(typeof age === "undefined") && height != null) {
+		if (!(typeof height === "undefined") && height != null) {
 			thisUser.height = height;
 		}
-		if (!(typeof age === "undefined") && weight != null) {
+		if (!(typeof weight === "undefined") && weight != null) {
 			thisUser.weight = weight;
 		}
-		if (!(typeof age === "undefined") && friendlist != null) {
+		if (!(typeof friends === "undefined") && friendlist != null) {
 			thisUser.friends = friendlist;
 		} else {
 			thisUser.friends = [];
 		}
 		thisUser.FitnessRecord = [];
-		if (fitnesslist != null) {
+		if (!(typeof fitnesslist === "undefined") && fitnesslist != null) {
 			for (var i = 0; i < fitnesslist.length; i++) {
 				var entry = fitnesslist[i].split(" ");
 				thisUser.FitnessRecord.push({

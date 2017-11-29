@@ -206,7 +206,7 @@ export default class Setting extends React.Component{
                 {this.state.pwErrorMsg}
               </FormValidationMessage>
 
-              <FormLabel>Weight</FormLabel>
+              <FormLabel>Weight (kg)</FormLabel>
               <FormInput
                 onChangeText={(text) => this.setState({userWeight: text}), (text) => this.checkNumericFormatWeight(text)}
                 onFocus={this.toggleKeyboardFocused}
@@ -215,7 +215,7 @@ export default class Setting extends React.Component{
                 {this.state.weightErrorMsg}
               </FormValidationMessage>
 
-              <FormLabel>Height</FormLabel>
+              <FormLabel>Height (cm)</FormLabel>
               <FormInput
                 onChangeText={(text) => this.setState({userHeight: text}), (text) => this.checkNumericFormatHeight(text)}
                 onFocus={this.toggleKeyboardFocused}

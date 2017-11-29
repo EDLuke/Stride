@@ -21,7 +21,8 @@ export default class ChartsAdd extends React.Component{
 		var calorie = this.state.calorie;
 
 		Api.addFitness(userName, calorie, date).then((response) => {
-			
+			 console.log(response);
+			 
 			 if (typeof response === "undefined") {
 		        this.setState({
 		          calorie: '0',

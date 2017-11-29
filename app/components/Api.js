@@ -58,11 +58,12 @@ var Api = {
 				  	Act: 'CI',
 				  	UserID: userName,
 				  	Account: {
+				  		UserID: userName,
 				  		Password: userpw,
 				  		Height: userHeight,
 				  		Weight: userWeight,
 				  		Gender: userGender,
-				  		Age: userAge
+				  		Age: userAge,
 				  	}
 				  })
 				})

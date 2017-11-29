@@ -2,8 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
+import { Octicons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
 import ApiUtils from '../components/utils/ApiUtils';
+import Api from '../components/Api';
+import User from '../components/class/UserClass';
 
 // const backAction = NavigationActions.back({
 //   	key: 'Main',
@@ -14,6 +17,9 @@ export default class Setting extends React.Component{
     keyboardFocused: false,
     email: GLOBAL.currentUser.username,
     emailErrorMsg: "",
+    weightErrorMsg: "",
+    heightErrorMsg: "",
+    ageErrorMsg: "",
     pw1: "",
     pw2: "",
     pwErrorMsg: "",
@@ -21,6 +27,8 @@ export default class Setting extends React.Component{
     userHeight: "",
     userGender: "",
     userAge: "",
+    isUpdating: false,
+    updateErrorMsg: "",
   }
 
   toggleKeyboardFocused = () => {
@@ -62,6 +70,96 @@ export default class Setting extends React.Component{
 
   }
 
+
+
+  checkNumericFormatWeight = (num) => {
+    if (isNaN(num)) {
+      this.setState({
+        weightErrorMsg: "Entry must be a number.",
+      });
+    } else {
+      this.setState({
+        weightErrorMsg: "",
+      })
+    }
+  }
+
+  checkNumericFormatHeight = (num) => {
+    if (isNaN(num)) {
+      this.setState({
+        heightErrorMsg: "Entry must be a number.",
+      });
+    } else {
+      this.setState({
+        heightErrorMsg: "",
+      })
+    }
+  }
+
+  checkNumericFormatAge = (num) => {
+    if (isNaN(num)) {
+      this.setState({
+        ageErrorMsg: "Entry must be a number.",
+      });
+    } else {
+      this.setState({
+        ageErrorMsg: "",
+      })
+    }
+  }
+
+  onPressUpdate = () => {
+    this.setState({isUpdating: true});
+
+    var username = this.state.email
+    var password = this.state.pw1
+    var userheight = this.state.userHeight
+    var userweight = this.state.userWeight
+    var usergender = this.state.userGender
+    var userage = this.state.userAge
+
+    Api.update(username, password, userheight, userweight, usergender, userage).then((response) => {
+    
+    if (typeof response === "undefined") {
+        this.setState({
+          pw1: "",
+          pw2: "",
+          updateErrorMsg: "Network error.",
+          isUpdating: false,
+        });
+      }
+      else if(response.Error != ""){
+        this.setState({
+          pw1: "",
+          pw2: "",
+          updateErrorMsg: response.Error,
+          isUpdating: false,
+        });
+      }
+      else{
+        //Set global user
+        GLOBAL.currentUser = User.initLoginInfo(response.UserID, 
+                                                response.Age, 
+                                                response.Gender, 
+                                                response.Height, 
+                                                response.Weight, 
+                                                response.Friendlist, 
+                                                response.Fitnesslist);
+
+        console.log(GLOBAL.currentUser);
+
+        //Navigate to the tabs
+        this.setState({
+          isUpdating: false,
+        });
+      }
+    });
+
+  }
+
+
+
+
 	render() {
 		return (
 		<View style = {styles.container}>
@@ -70,6 +168,9 @@ export default class Setting extends React.Component{
           />
 	        <View style = {styles.contentContainer}>
           <ScrollView>
+              <FormValidationMessage>
+                {this.state.updateErrorMsg}
+              </FormValidationMessage>
               <FormLabel>Email</FormLabel>
               <FormInput
                 // containerStyle={styles.input}
@@ -107,27 +208,39 @@ export default class Setting extends React.Component{
 
               <FormLabel>Weight</FormLabel>
               <FormInput
-                onChangeText={(text) => this.setState({userWeight: text})}
+                onChangeText={(text) => this.setState({userWeight: text}), (text) => this.checkNumericFormatWeight(text)}
                 onFocus={this.toggleKeyboardFocused}
               />
+              <FormValidationMessage>
+                {this.state.weightErrorMsg}
+              </FormValidationMessage>
 
               <FormLabel>Height</FormLabel>
               <FormInput
-                onChangeText={(text) => this.setState({userHeight: text})}
+                onChangeText={(text) => this.setState({userHeight: text}), (text) => this.checkNumericFormatHeight(text)}
                 onFocus={this.toggleKeyboardFocused}
               />
+              <FormValidationMessage>
+                {this.state.heightErrorMsg}
+              </FormValidationMessage>
 
               <FormLabel>Gender</FormLabel>
               <FormInput
+                placeholder="M or F"
                 onChangeText={(text) => this.setState({userGender: text})}
                 onFocus={this.toggleKeyboardFocused}
               />
+              <FormValidationMessage>
+              </FormValidationMessage>
 
               <FormLabel>Age</FormLabel>
               <FormInput
-                onChangeText={(text) => this.setState({userAge: text})}
+                onChangeText={(text) => this.setState({userAge: text}), (text) => this.checkNumericFormatAge(text)}
                 onFocus={this.toggleKeyboardFocused}
               />
+              <FormValidationMessage>
+               {this.state.ageErrorMsg}
+              </FormValidationMessage>
             </ScrollView>
 
             </View>
@@ -136,6 +249,8 @@ export default class Setting extends React.Component{
                 raised
                 buttonStyle={styles.buttonStyle}
                 title="Update Account Info"
+                onPress={this.onPressUpdate}
+                loading={this.state.isUpdating}
               />
               <Button
                 raised
@@ -191,7 +306,7 @@ const styles = StyleSheet.create({
     // height: Dimensions.get('window').height,
     justifyContent: 'flex-start',
     marginBottom: 15,
-    
+
   },
   loginContainer:{
     backgroundColor: 'rgba(0,0,0,0)',

@@ -1,10 +1,11 @@
-import {Font, Asset} from 'expo';
+import { Font, Asset} from 'expo';
 
 export const AssetUtils = {
 	loadAssets: async function(){
 		await Font.loadAsync({
 	      'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
 	      'Fibre': require('../../assets/fonts/Fibre.otf'),
+	      'Roboto': require('../../assets/fonts/Roboto-Regular.ttf')
 	    });
 
 	    await Asset.loadAsync([

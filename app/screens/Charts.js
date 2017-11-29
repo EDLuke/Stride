@@ -5,7 +5,8 @@ import User from '../components/class/UserClass.js';
 import { SmoothLine, StockLine } from 'react-native-pathjs-charts';
 import SingleCalorie from '../components/layout/SingleCalorie';
 import moment from 'moment';
-import { Octicons } from '@expo/vector-icons';
+import { Octicons, MaterialIcons } from '@expo/vector-icons';
+import { Toolbar } from 'react-native-material-ui';
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -15,13 +16,12 @@ const renderCalorie = (post, index) => (
 	    date={post.date}
 	    calorie={post.calorie}
   	/>
-
 )
 
 export default class Charts extends React.Component{
 
 	refresh = () => {
-		//refresh the state
+		// refresh the state
 		this.setState({
 			records: GLOBAL.currentUser.FitnessRecord.map(
 			    	function(fitness){
@@ -101,7 +101,7 @@ export default class Charts extends React.Component{
 	};
 
 	onPressAdd = () => {
-		//Navigate to the ChartsAdd
+		// Navigate to the ChartsAdd
         this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh});
 	}
 
@@ -115,12 +115,10 @@ export default class Charts extends React.Component{
     
 		return (
 			<View style={styles.container}>
-				<ToolbarAndroid
-			      title="Progression"
-			      titleColor="#FFF"
-			      style={styles.toolbar}
+				<Toolbar
+					centerElement="Progression"
 			    />
-			    
+
 			    <View style={styles.chartContainer}>
 	       		 {GLOBAL.currentUser.FitnessRecord.length > 0 && <StockLine  data={data} options={options} xKey='days' yKey='calorie' />}
 			    </View>

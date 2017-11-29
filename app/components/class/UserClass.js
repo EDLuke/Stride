@@ -3,11 +3,11 @@ import FitnessRecord from './FitnessRecordClass.js'
 export default class User{
 	
 	constructor(){
-		this.username = null;
-		this.age = null;
+		this.username = "";
+		this.age = "";
 		this.gender = "";
-		this.height = -1;
-		this.weight = -1;
+		this.height = "";
+		this.weight = "";
 		this.friends = [];
 		this.FitnessRecord = [];
 	}
@@ -15,11 +15,23 @@ export default class User{
 	static initLoginInfo(username, age, gender, height, weight, friendlist, fitnesslist) {
 		let thisUser = new User();
 		thisUser.username = username;
-		thisUser.age = age;
-		thisUser.gender = gender;
-		thisUser.height = height;
-		thisUser.weight = weight;
-		thisUser.friends = friendlist;
+		if (!(typeof age === "undefined") && age != null) {
+			thisUser.age = age;
+		}
+		if (!(typeof age === "undefined") && gender != null) { 
+			thisUser.gender = gender;
+		}
+		if (!(typeof age === "undefined") && height != null) {
+			thisUser.height = height;
+		}
+		if (!(typeof age === "undefined") && weight != null) {
+			thisUser.weight = weight;
+		}
+		if (!(typeof age === "undefined") && friendlist != null) {
+			thisUser.friends = friendlist;
+		} else {
+			thisUser.friends = [];
+		}
 		thisUser.FitnessRecord = [];
 		if (fitnesslist != null) {
 			for (var i = 0; i < fitnesslist.length; i++) {
@@ -43,5 +55,16 @@ export default class User{
 		thisUser.friends = [];
 		thisUser.FitnessRecord = [];
 		return thisUser;
+	}
+
+	static friendsWithName(friendName) {
+		if (this.friends != []) {
+			for (var i = 0; i < friends.length; i++) {
+				if (friendName == this.friends[i]) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }

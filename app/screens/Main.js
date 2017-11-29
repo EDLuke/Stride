@@ -5,15 +5,19 @@ import { AssetUtils } from '../components/AssetUtils.js';
 
 import Api from '../components/Api';
 import ApiUtils from '../components/utils/ApiUtils';
-import User from '../components/class/UserClass.js'
+import User from '../components/class/UserClass.js';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 GLOBAL = require('../components/CurrentUser');
 
+
+
+
 export default class Main extends React.Component {
   state = {
-      email: 'luke@columbia.edu',
-      password: '123qweasdzxc',
+      email: 'lz2504@columbia.edu',
+      password: '123qwe',
       error: '',
       keyboardFocused: false,
   };
@@ -67,6 +71,8 @@ export default class Main extends React.Component {
                                                 response.Weight, 
                                                 response.Friendlist, 
                                                 response.Fitnesslist);
+
+        console.log(GLOBAL.currentUser);
 
         //Navigate to the tabs
         this.props.navigation.navigate('TabNav');

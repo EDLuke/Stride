@@ -47,7 +47,7 @@ var Api = {
 	},
 
 
-	update: function(userName, password){
+	update: function(userName, userpw, userHeight, userWeight, userGender, userAge){
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {
@@ -57,8 +57,14 @@ var Api = {
 				  body: JSON.stringify({
 				  	Act: 'CI',
 				  	UserID: userName,
-				  	Password: password,
-				  	account: ''
+				  	Account: {
+				  		UserID: userName,
+				  		Password: userpw,
+				  		Height: userHeight,
+				  		Weight: userWeight,
+				  		Gender: userGender,
+				  		Age: userAge,
+				  	}
 				  })
 				})
 				.then(ApiUtils.checkStatus)

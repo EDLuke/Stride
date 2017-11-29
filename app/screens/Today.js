@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Font} from 'expo';
-import { ScrollView, StyleSheet, View, ToolbarAndroid  } from 'react-native';
+import { ScrollView, StyleSheet, View, ToolbarAndroid, Image  } from 'react-native';
 import { Container, Content, List, Button, Icon, Text } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { AssetUtils } from '../components/AssetUtils.js';
-
+import { Toolbar } from 'react-native-material-ui';
 
 const renderFeed = (post, index) => (
   <SingleFeed
@@ -14,10 +14,10 @@ const renderFeed = (post, index) => (
     username={post.username}
     content={post.content}
     profilePicture={post.profilePicture}
-  />
-)
+   />
+);
 
-export default class Today extends React.Component{
+export default class Today extends React.Component {
 	state = {
     posts: [
       {
@@ -62,12 +62,11 @@ export default class Today extends React.Component{
 		return (
 		
 		<View style={styles.container}>
-			<ToolbarAndroid
-		      title="Stride"
-		      titleColor="#FFF"
-		      actions={toolBarActions}
-		      style={styles.toolbar}
-		    />
+		  <Toolbar
+        centerElement="Stride"
+        rightElement={addIcon}
+      />
+
 			<Container>
 				
 		       	<Content>
@@ -100,7 +99,7 @@ export default class Today extends React.Component{
 	}
 }
 
-const addIcon = (<MaterialIcons name="add" size={13} color="#FFF" />);
+const addIcon = (<MaterialIcons name="add" size={25} color="#FFF" />);
 
 const toolBarActions = [
 	{title: 'Add', icon: require('../../assets/images/plus.png'), show: 'always'},

@@ -1,32 +1,95 @@
-import React from 'react';
-import { Button, FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import User from '../components/class/UserClass.js';
+import { Font, AppLoading } from 'expo';
+import { FlatList, ScrollView, StyleSheet, View, ToolbarAndroid, Image, Navigator, NativeModules, StatusBar } from 'react-native';
+import { Container, Content, List, Button, Icon, Text } from 'native-base';
+import SingleFeed from '../components/layout/SingleFeed';
+import { Octicons, MaterialIcons } from '@expo/vector-icons';
+import { AssetUtils } from '../components/AssetUtils.js';
+import { Toolbar, Dialog, DialogDefaultActions } from 'react-native-material-ui';
+import { SearchBar } from 'react-native-elements';
 
 GLOBAL = require('../components/CurrentUser');
 
-// class MyListItem extends React.PureComponent { 
-//   _onPress = () => { 
-//     this.props.onPressItem(this.props.id); 
-//   }; 
-//   render() {
-//     <Text style={styles.boxtext}
-//       onPress={() => this.props.navigation.navigate('SocialDetail')}
-//     >{item}</Text>
-//     } 
+
+function searchFriendPromise(friendID) {
+
+  var foundFriend = new Promise((resolve, reject) => {
+      console.log(GLOBAL.currentUser.friendsWithName(friendID));
+      resolve(GLOBAL.currentUser.friendsWithName(friendID) == true);
+    }
+  );
+
+  foundFriend.then(
+      ()=>this.props.navigation.navigate('SocialDetail', {name: friendID})
+    )
+  .catch({
+      render() {
+        return(
+                     <View>
+                      <Dialog>
+                      <Dialog.Title>
+                        <Text>Friend not found</Text>
+                      </Dialog.Title>
+                      <Dialog.Content>
+                        <Text>Try with another name!</Text>
+                      </Dialog.Content>
+                      <Dialog.Actions>
+                        <DialogDefaultActions>
+                          actions={['Dismiss']}
+                          onActionPress={() => {}}
+                        </DialogDefaultActions>
+                      </Dialog.Actions>
+                      </Dialog>
+                      </View>
+              );
+        }
+    });
+
+};
+
+
+// function cacheFonts(fonts) {
+//   return fonts.map(font => Font.loadAsync(font));
 // }
 
 export default class Social extends React.Component{
 	state = {
+    // fontLoaded: false,
+    searchID: "",
 	};
 
+
+  // var SearchBar = require('react-native-search-bar');
+
+  // async _loadMaterialIcons(){
+
+  //   const fontAssets = cacheFonts([MaterialIcons.font]);
+
+  //   await Promise.all([fontAssets]);
+
+  // }
+
+
 	render() {
+    // if (!this.state.fontLoaded) {
+    //   return (
+    //     <AppLoading
+    //       start={this._loadMaterialIcons}
+    //       onFinish={() => this.setState({ fontLoaded: true })}
+    //       onError={console.warn}
+    //     />
+    //   );
+    // }
+
 		return (
-			<View style = {styles.container}>
-              <View style={styles.textBoxContainer}>
-            		<Text style={styles.title}>Friends</Text>
-              </View>
-        		<View style={styles.textBoxContainer}>	
-        				<Text style={styles.boxtitle}>LeaderBoard</Text>
-            </View>
+			<View style={styles.container}>
+            <Toolbar
+              centerElement="Friends"
+              rightElement={addIcon}
+              // onPressRightElement={this.search.focus()}
+            />
+
         			<View style={styles.leaderBoardBoxContainer}>
                   <ScrollView>
                   <FlatList
@@ -42,6 +105,8 @@ export default class Social extends React.Component{
       );
 	}
 }
+
+const addIcon = (<MaterialIcons name="add" size={25} color="#FFF" />);
 
 const styles = StyleSheet.create({
   container: {
@@ -64,7 +129,6 @@ const styles = StyleSheet.create({
   boxtitle: {
   	fontFamily: 'Helvetica',
     fontSize: 25,
-    fontWeight: 'bold',
     color: '#686868'
   },
   boxtext:{

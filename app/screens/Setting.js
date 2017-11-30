@@ -7,6 +7,7 @@ import { Toolbar } from 'react-native-material-ui';
 import ApiUtils from '../components/utils/ApiUtils';
 import Api from '../components/Api';
 import User from '../components/class/UserClass';
+import { Toast } from 'native-base';
 
 // const backAction = NavigationActions.back({
 //   	key: 'Main',
@@ -33,6 +34,9 @@ export default class Setting extends React.Component{
 
     isUpdating: false,
     updateErrorMsg: "",
+
+
+    showToast: false,
   }
 
   toggleKeyboardFocused = () => {
@@ -119,19 +123,19 @@ export default class Setting extends React.Component{
 
   weightTextChange = (weight) => {
     this.setState({userWeight: weight});
-    this.checkNumericFormatHeight(weight);
+    this.checkNumericFormatWeight(weight);
   }
 
   ageTextChange = (age) => {
     this.setState({userAge: age});
-    this.checkNumericFormatHeight(age);
+    this.checkNumericFormatAge(age);
   }
 
   onPressUpdate = () => {
     this.setState({isUpdating: true});
 
     var username = this.state.email
-    var password = this.state.pw1
+    var password = ApiUtils.hashPassword(this.state.pw1);
     var userheight = this.state.userHeight
     var userweight = this.state.userWeight
     var usergender = this.state.userGender
@@ -139,6 +143,8 @@ export default class Setting extends React.Component{
 
     Api.update(username, password, userheight, userweight, usergender, userage).then((response) => {
     
+    console.log(username, password, userheight, userweight, usergender, userage);
+
     if (typeof response === "undefined") {
         this.setState({
           pw1: "",
@@ -146,6 +152,14 @@ export default class Setting extends React.Component{
           updateErrorMsg: "Network error.",
           isUpdating: false,
         });
+
+        Toast.show({
+          text: "Network error. Please try again.",
+          position: 'bottom',
+          buttonText: 'Okay',
+        });
+
+
       }
       else if(response.Error != ""){
         this.setState({
@@ -154,7 +168,16 @@ export default class Setting extends React.Component{
           updateErrorMsg: response.Error,
           isUpdating: false,
         });
+        
+        Toast.show({
+          text: this.state.updateErrorMsg,
+          position: 'bottom',
+          buttonText: 'Okay',
+        });
+
       }
+
+
       else{
         //Set global user
         GLOBAL.currentUser = User.initLoginInfo(response.UserID, 
@@ -169,7 +192,16 @@ export default class Setting extends React.Component{
 
         //Navigate to the tabs
         this.setState({
+          pw1: "",
+          pw2: "",
+          updateErrorMsg: "",
           isUpdating: false,
+        });
+
+        Toast.show({
+          text: "Updated successfully.",
+          position: 'bottom',
+          buttonText: 'Okay',
         });
       }
     });

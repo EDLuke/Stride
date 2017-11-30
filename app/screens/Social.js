@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import User from '../components/class/UserClass.js';
 import { Font, AppLoading } from 'expo';
 import { FlatList, ScrollView, StyleSheet, View, ToolbarAndroid, Image, Navigator, NativeModules, StatusBar } from 'react-native';
-import { Container, Content, List, Button, Icon, Text } from 'native-base';
+import { Container, Content, List, Button, Icon, Text, Tab, Tabs, TabHeading, Header } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { AssetUtils } from '../components/AssetUtils.js';

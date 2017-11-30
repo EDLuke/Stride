@@ -1,4 +1,5 @@
- import React from 'react';
+import React from 'react';
+import { Root } from 'native-base';
 import { Font } from 'expo';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { StackNav } from './app/config/router.js';
@@ -38,10 +39,11 @@ export default class App extends React.Component {
     }
     
     return (
-      <ThemeProvider uiTheme={uiTheme}>
-        <StackNav />
-      </ThemeProvider>
-      
+      <Root>
+        <ThemeProvider uiTheme={uiTheme}>
+          <StackNav />
+        </ThemeProvider>
+      </Root>
     );
   }
   

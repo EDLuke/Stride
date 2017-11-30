@@ -1,21 +1,60 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, ToolbarAndroid } from 'react-native';
-import { Container, Button } from 'native-base';
+import { StyleSheet, Text, TextInput, View, ToolbarAndroid, Dimensions } from 'react-native';
+import { Container, Toast } from 'native-base';
 import moment from 'moment';
 import DatePicker from 'react-native-datepicker'
 import Api from '../components/Api';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Toolbar } from 'react-native-material-ui';
+import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
+import { NavigationActions } from 'react-navigation';
 
 GLOBAL = require('../components/CurrentUser');
+
+
 
 export default class ChartsAdd extends React.Component{
 
 	state = {
       calorie: '0',
+      calErrorMsg: "",
       error: '',
       date: moment(),
+
+      isAdding: false,
+
+      keyboardFocused: false,
   	};
 
+  	toggleKeyboardFocused = () => {
+    	this.setState({
+      		keyboardFocused: !this.state.keyboardFocused,
+    	});
+
+  	}
+
+  	setCalorie = (cal) =>{
+  		this.setState({calorie: cal});
+  		if (isNaN(this.state.calorie)) {
+  			this.setState({
+  				calErrorMsg: "Entry must be a number.",
+  			});
+  		} else {
+  			this.setState({
+  				calErrorMsg: "",
+  			})
+  		}
+
+  	}
+
 	onActionSelected = () => {
+
+		console.log("adding");
+
+		this.setState({
+			isAdding: true,
+		});
+
 		var userName = GLOBAL.currentUser.username;
 		var date = moment(this.state.date).format("YYYY-MM-DD");
 		var calorie = this.state.calorie;
@@ -29,6 +68,17 @@ export default class ChartsAdd extends React.Component{
 		          date: moment(),
 		          error: "Network error.",
 		        });
+
+		        this.setState({
+		      		isAdding: false,
+		      	});
+
+		        Toast.show({
+		          text: "Network error. Please try again.",
+		          position: 'bottom',
+		          buttonText: 'Okay',
+		        });
+
 		      }
 		      else if(response.Error != ""){
 		        this.setState({
@@ -36,6 +86,17 @@ export default class ChartsAdd extends React.Component{
 		          date: moment(),
 		          error: response.Error,
 		        });
+
+		        this.setState({
+		      		isAdding: false,
+		      	});
+
+		        Toast.show({
+		          text: this.state.error,
+		          position: 'bottom',
+		          buttonText: 'Okay',
+		        });
+
 		      }
 		      else{
 		      	//If successful, append to the GLOBAL user
@@ -45,12 +106,24 @@ export default class ChartsAdd extends React.Component{
 		      		calorie: calorie,
 		      	});
 
+		      	this.setState({
+		      		isAdding: false,
+		      	});
+
+		      	Toast.show({
+		          text: "Record added successfully.",
+		          position: 'bottom',
+		          buttonText: 'Okay',
+		        });
+
 		      	//call Chart's refresh function
 		      	this.props.navigation.state.params.refresh();
 
-		      	//go back to the previous screen
-		      	const {goBack} = this.props.navigation;
-                goBack();
+		      	// go back to the previous screen
+		      	// const {goBack} = this.props.navigation;
+
+
+         //        goBack();
 		      }
 		})
 	}
@@ -58,31 +131,27 @@ export default class ChartsAdd extends React.Component{
 	render() {
 		return (
 			<View style={styles.container}>
-				<ToolbarAndroid
-			      title="Add Record"
-			      titleColor="#FFF"
-			      style={styles.toolbar}
-			      actions={toolbarActions}
-			      onActionSelected={() => this.onActionSelected()}
+				<Toolbar
+			      centerElement="Add Record"
 			    />
-			    <Container>
 				    <View style={styles.chartContainer}>
-				    	<View style={styles.calorieContainer}>
-				    		<Text style={styles.calorieText}>Calorie</Text>
-				    		<TextInput
-				                style = {styles.calorieTextInput}
-				                underlineColorAndroid="transparent"
-				                onChangeText={(text) => this.setState({calorie:text})}
-				                value = {this.state.calorie}
+				    		<FormLabel>Calorie</FormLabel>
+				    		<FormInput
+				                placeholder="0"
+				                onChangeText={(text) => this.setCalorie(text)}
+				                onFocus={this.toggleKeyboardFocused}
 				              />
-				    	</View>
-				    	<View style={styles.dateContainer}>
-				    		<Text style={styles.dateText}>Date</Text>
+				             <FormValidationMessage>
+				             	{this.state.calErrorMsg}
+				             </FormValidationMessage>
+				    		<FormLabel>Date</FormLabel>
 				    		<DatePicker
-						        style={{width: 250}}
+						        style={{
+						        	width: 300
+						        }}
 						        date={this.state.date}
 						        mode="date"
-						        showIcon={false}
+						        showIcon={true}
 						        placeholder="select date"
 						        format="YYYY-MM-DD"
 						        minDate="2017-01-01"
@@ -90,14 +159,39 @@ export default class ChartsAdd extends React.Component{
 						        confirmBtnText="Confirm"
 						        cancelBtnText="Cancel"
 						        onDateChange={(date) => {this.setState({date: date})}}
+						        iconSource={require('../../assets/images/google_calendar.png')}
+						        customStyles={{
+						        	dateInput: {
+						        		marginLeft: 23
+						        	}
+						        }}
 						      />
-				    	</View>
+						      
 				    </View>
-		      	</Container>
+
+				    		<Button
+                				raised
+                				buttonStyle={styles.buttonStyle}
+                				title="Back"
+                				onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
+
+              				  />
+              				  <Button
+                				raised
+                				buttonStyle={styles.buttonStyle}
+                				title="Add"
+                				onPress={this.onActionSelected}
+                				loading={this.state.isAdding}
+              				  />
 	      </View>
 		);
 	}
 }
+
+
+const backIcon = (<MaterialIcons name="arrow-back" size={25} color="#FFF"/>);
+
+const checkIcon = (<MaterialIcons name="check" size={25} color="#FFF" />);
 
 const toolbarActions = [
 	{title: 'Add', icon: require('../../assets/images/check.png'), show: 'always'},	
@@ -107,10 +201,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    alignItems:'center',
+    justifyContent: 'center',
   },
   chartContainer: {
-  	marginLeft: 35,
-  	marginTop: 50,
+  	flex: 6,
+  	marginTop: 15,
+  	marginBottom: 15,
+  	width: Dimensions.get('window').width,
+  	justifyContent: 'flex-start',
   },
   calorieContainer: {
 
@@ -137,5 +236,12 @@ const styles = StyleSheet.create({
   toolbar: {
     backgroundColor: '#578CA9',
     height: 56,
+  },
+  buttonStyle:{
+    backgroundColor: '#bbb',
+    width: 300,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 15,
   },
 });

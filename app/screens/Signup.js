@@ -67,7 +67,7 @@ export default class Signup extends React.Component {
       }
       else{
         //Set global user
-        GLOBAL.currentUser = User.initSignUpInfo(response.UserID, 
+        GLOBAL.currentUser = User.initSignUpInfo(userName, 
                                                  response.Age, 
                                                  response.Gender, 
                                                  response.Height, 

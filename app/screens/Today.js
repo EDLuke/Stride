@@ -65,6 +65,7 @@ export default class Today extends React.Component {
 		  <Toolbar
         centerElement="Stride"
         rightElement={addIcon}
+        onRightElementPress={console.log("sb")}
       />
 
 			<Container>

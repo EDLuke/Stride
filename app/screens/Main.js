@@ -16,8 +16,8 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Main extends React.Component {
   state = {
-      email: 'lz2504@columbia.edu',
-      password: '123qwe',
+      email: 'yhyhyh@columbia.edu',
+      password: '123123',
       error: '',
       keyboardFocused: false,
   };

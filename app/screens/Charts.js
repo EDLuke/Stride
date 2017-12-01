@@ -102,7 +102,7 @@ export default class Charts extends React.Component{
 
 	onPressAdd = () => {
 		// Navigate to the ChartsAdd
-        this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh});
+        this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh, calorie: 0});
 	}
 
 	render() {

@@ -12,11 +12,10 @@ import { NavigationActions } from 'react-navigation';
 GLOBAL = require('../components/CurrentUser');
 
 
-
 export default class ChartsAdd extends React.Component{
 
 	state = {
-      calorie: '0',
+      calorie: this.props.navigation.state.params.calorie,
       calErrorMsg: "",
       error: '',
       date: moment(),
@@ -130,7 +129,7 @@ export default class ChartsAdd extends React.Component{
 				    <View style={styles.chartContainer}>
 				    		<FormLabel>Calorie</FormLabel>
 				    		<FormInput
-				                placeholder="0"
+				    			placeholder={this.state.calorie.toString()}
 				                onChangeText={(text) => this.setCalorie(text)}
 				                onFocus={this.toggleKeyboardFocused}
 				              />

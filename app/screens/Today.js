@@ -5,22 +5,56 @@ import { Container, Content, List, Button, Icon, Text } from 'native-base';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { AssetUtils } from '../components/AssetUtils.js';
 import { Toolbar } from 'react-native-material-ui';
+import SingleCalorieCard from '../components/layout/SingleCalorieCard';
 
 import Api from '../components/Api';
 
 GLOBAL = require('../components/CurrentUser');
 
-
 export default class Today extends React.Component {
 	state = {
     searchText: "",
+    calorieInfo: [],
 	};
 
+  onPressAdd = (calorie) => {
+    console.log("Function pointer " + calorie);
+
+    this.props.navigation.navigate('ChartsAdd', {calorie: calorie}); 
+  }
+
+  renderCalorieCard = (post, index) => {
+    return (
+      <SingleCalorieCard
+        key={index}
+        calorie={post.calorie}
+        foodPicture={post.foodPicture}
+        name={post.name} 
+        onPress={() => this.onPressAdd(post.calorie)}
+      />
+    )
+  }
+
+
   onChangeSearchText = (text) => {
-    console.log(text);
+    if(text.length == 0)
+      return;
 
     Api.searchFood(GLOBAL.currentUser.username, text).then((response) => {  
-      console.log(response);
+      if(response.branded === "undefined")
+        return;
+
+      this.setState({
+        calorieInfo: response.branded.map(
+          function(res){
+            return {
+              calorie: Math.round(res.nf_calories),
+              foodPicture: res.photo.thumb,
+              name: res.brand_name_item_name,
+            }
+          }
+        ),
+      });
     });
   }
 
@@ -33,13 +67,22 @@ export default class Today extends React.Component {
       />
       <View style={styles.searchContainer}>
         <TextInput
-          style = {{alignItems:'center', color: '#FFF'}}
+          style = {{alignItems:'center', color: '#000'}}
           underlineColorAndroid="transparent"
           placeholder="Search food or exercise"
-          placeholderTextColor="#FFF"
+          placeholderTextColor="#000"
           onChangeText={(text) => this.onChangeSearchText(text)}
         />
       </View>
+      <ScrollView style={styles.searchResult}>
+
+          {
+            this.state.calorieInfo.map((record, index) => {
+              return this.renderCalorieCard(record, index)
+            })
+          }
+
+      </ScrollView>
 		</View>
 		
 		);
@@ -60,4 +103,10 @@ const styles = StyleSheet.create({
     bottom: 20,
     right: 20,
   },
+  searchContainer: {
+  },
+  searchResult: {
+    flex: 1,
+    backgroundColor: 'black'
+  }
 });

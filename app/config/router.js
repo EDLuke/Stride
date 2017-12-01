@@ -41,9 +41,22 @@ export const StackNavChart = StackNavigator({
 	headerMode: 'none',
 });
 
-export const TabNav = TabNavigator({
+
+export const StackNavToday = StackNavigator({
 	Today:{
 		screen: Today,
+	},
+	ChartsAdd:{
+		screen: ChartsAdd,
+	}
+},
+{
+	headerMode: 'none',
+});
+
+export const TabNav = TabNavigator({
+	Today:{
+		screen: StackNavToday,
 		navigationOptions : ({navigation}) => ({
 			tabBarIcon: ({ tintColor }) => (
 				<MaterialCommunityIcons name="home" size={25} color={tintColor}/>

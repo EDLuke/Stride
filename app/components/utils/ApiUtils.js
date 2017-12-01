@@ -21,13 +21,8 @@ var ApiUtils = {
 	    	var char = plainPassword.charCodeAt(i);
 
 	    	hash = ((hash<<5)-hash)+char;
-        	
-	    	console.log(hash);
 
         	hash = hash & hash; // Convert to 32bit integer
-
-	    	console.log(hash);
-
 	    }
 
 	    return hash;

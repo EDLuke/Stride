@@ -35,11 +35,17 @@ export default class User{
 		thisUser.FitnessRecord = [];
 		if (!(typeof fitnesslist === "undefined") && fitnesslist != null) {
 			for (var i = 0; i < fitnesslist.length; i++) {
+				//console.log(fitnesslist[i]);
+
 				var entry = fitnesslist[i].split(" ");
-				thisUser.FitnessRecord.push({
-												date: entry[0],
-												calorie: entry[1],
-											});
+				var calorieIn = (entry[2].length > 0) ? parseInt(entry[2]) : 0;
+				var calorieOut = (entry[4].length > 0) ? parseInt(entry[2]) : 0;
+
+				let record = new FitnessRecord(entry[0], calorieIn, calorieOut);
+				//console.log(record);
+				thisUser.FitnessRecord.push(record);
+
+				//console.log(thisUser.FitnessRecord);
 			}
 		}
 		return thisUser;

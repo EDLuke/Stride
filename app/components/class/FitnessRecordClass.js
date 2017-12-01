@@ -1,6 +1,7 @@
 export default class FitnessRecord{
-	constructor(date, calorie){
+	constructor(date, calorieIn, calorieOut){
 		this.date = date;
-		this.calorie = calorie;
+		this.calorieIn = calorieIn;
+		this.calorieOut = calorieOut;
 	}
 }

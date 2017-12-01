@@ -29,7 +29,7 @@ export default class Charts extends React.Component{
 
 			    		return {
 			    			days: moment(fitness.date).diff(first.date, 'days'),
-			    			calorie: parseInt(fitness.calorie),
+			    			calorie: parseInt(fitness.calorieIn),
 			    		}
 	    			}),
 		});
@@ -42,7 +42,7 @@ export default class Charts extends React.Component{
 
 	    		return {
 	    			days: moment(fitness.date).diff(first.date, 'days'),
-	    			calorie: parseInt(fitness.calorie),
+	    			calorie: parseInt(fitness.calorieIn),
 	    		}
 	    	}),
 	    options: {
@@ -68,7 +68,7 @@ export default class Charts extends React.Component{
 	        orient: 'bottom',
 	        tickValues: [],
 	        labelFunction: ((v) => {
-	          console.log("SDLKFJSDLKJ")
+	        	
 	          let d = moment(GLOBAL.currentUser.FitnessRecord[0].date)
 
 	          if(v % 1 === 0)

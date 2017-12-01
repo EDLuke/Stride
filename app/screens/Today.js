@@ -1,62 +1,28 @@
 import React, { Component } from 'react';
 import {Font} from 'expo';
-import { ScrollView, StyleSheet, View, ToolbarAndroid, Image  } from 'react-native';
+import { ScrollView, StyleSheet, View, ToolbarAndroid, Image, TextInput  } from 'react-native';
 import { Container, Content, List, Button, Icon, Text } from 'native-base';
-import SingleFeed from '../components/layout/SingleFeed';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { AssetUtils } from '../components/AssetUtils.js';
 import { Toolbar } from 'react-native-material-ui';
 
-const renderFeed = (post, index) => (
-  <SingleFeed
-    key={index}
-    name={post.name}
-    username={post.username}
-    content={post.content}
-    profilePicture={post.profilePicture}
-   />
-);
+import Api from '../components/Api';
+
+GLOBAL = require('../components/CurrentUser');
+
 
 export default class Today extends React.Component {
 	state = {
-    posts: [
-      {
-        profilePicture:'https://randomuser.me/api/portraits/thumb/men/83.jpg',
-        name:'Romain',
-        content:'I just hit my goal of the day!'
-      },
-      {
-        profilePicture:'https://randomuser.me/api/portraits/thumb/women/45.jpg',
-        name:'Mary',
-        content:'I had cabbage, carrots and yogurt for lunch with about 1000 calorie'
-      },
-      {
-        profilePicture:'https://randomuser.me/api/portraits/thumb/women/24.jpg',
-        name:'Elizabeth',
-        content:'I had steak for dinner with about 1200 calorie'
-      },
-      {
-        profilePicture:'https://randomuser.me/api/portraits/thumb/women/39.jpg',
-        name:'Shea',
-        content:'I am looking for workout tips, any suggestions?'
-      },
-      {
-        profilePicture:'https://randomuser.me/api/portraits/thumb/women/43.jpg',
-        name:'Linda',
-        content:'Just had a great workout burning 2000 calorie!'
-      },
-      {
-        profilePicture:'https://randomuser.me/api/portraits/thumb/women/41.jpg',
-        name:'Sindy',
-        content:'Almost hit my goal today...will try harder tmr'
-      },
-      {
-        profilePicture:'https://randomuser.me/api/portraits/thumb/men/21.jpg',
-        name:'Jacob',
-        content:'Finally at the top of my leaderboard!'
-      }
-    ]
+    searchText: "",
 	};
+
+  onChangeSearchText = (text) => {
+    console.log(text);
+
+    Api.searchFood(GLOBAL.currentUser.username, text).then((response) => {  
+      console.log(response);
+    });
+  }
 
 	render() {
 		return (
@@ -64,47 +30,21 @@ export default class Today extends React.Component {
 		<View style={styles.container}>
 		  <Toolbar
         centerElement="Stride"
-        rightElement={addIcon}
-        onRightElementPress={console.log("sb")}
       />
-
-			<Container>
-				
-		       	<Content>
-		          <List>
-		            {
-		              this.state.posts.map((feed, index) => renderFeed(feed, index))
-		            }
-		          </List>
-		        </Content>
-		        <Button
-		          rounded
-		          style={styles.button}
-		          onPress={() => Actions.newPost()}
-		        >
-		          <Octicons
-		            name="plus"
-		            size={16}
-		            color="#FFF"
-		            style=
-		            {{
-		            	left: 2,
-		            	padding: 15
-		            }}
-		          />
-		        </Button>
-	      	</Container>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style = {{alignItems:'center', color: '#FFF'}}
+          underlineColorAndroid="transparent"
+          placeholder="Search food or exercise"
+          placeholderTextColor="#FFF"
+          onChangeText={(text) => this.onChangeSearchText(text)}
+        />
+      </View>
 		</View>
 		
 		);
 	}
 }
-
-const addIcon = (<MaterialIcons name="add" size={25} color="#FFF" />);
-
-const toolBarActions = [
-	{title: 'Add', icon: require('../../assets/images/plus.png'), show: 'always'},
-];
 
 const styles = StyleSheet.create({
   container: {

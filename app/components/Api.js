@@ -27,6 +27,8 @@ var Api = {
 
 
 	signup: function(userName, password) {
+		console.log(userName);
+
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {
@@ -49,7 +51,6 @@ var Api = {
 
 	update: function(userName, userpw, userHeight, userWeight, userGender, userAge){
 		
-
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {
@@ -76,7 +77,7 @@ var Api = {
 				});
 	},
 
-	addFitness: function(userName, calorie, date){
+	addFitness: function(userName, calorie, date){		
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {
@@ -100,7 +101,9 @@ var Api = {
 				});
 	},
 
+
 	searchFood: function(userName, food){
+
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {

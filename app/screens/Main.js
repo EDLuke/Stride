@@ -70,8 +70,6 @@ export default class Main extends React.Component {
                                                 response.Friendlist, 
                                                 response.Fitnesslist);
 
-        console.log(GLOBAL.currentUser);
-
         //Navigate to the tabs
         this.props.navigation.navigate('TabNav');
       }

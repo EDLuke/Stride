@@ -12,8 +12,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 GLOBAL = require('../components/CurrentUser');
 
 
-
-
 export default class Main extends React.Component {
   state = {
       email: 'yhyhyh@columbia.edu',
@@ -33,7 +31,7 @@ export default class Main extends React.Component {
   onPressLogin = () => {
     var userName = this.state.email;
     var password = ApiUtils.hashPassword(this.state.password);
-
+    
     //First check locally if email is valid
     if(!ApiUtils.validateEmail(userName)){
       this.setState({

@@ -99,6 +99,26 @@ var Api = {
 					console.error(error);
 				});
 	},
+
+	searchFood: function(userName, food){
+		return fetch(ServerUtils.getIPAddress(), {
+				  method: 'POST',
+				  headers: {
+				    'Accept': 'application/json',
+				    'Content-Type': 'application/json',
+				  },
+				  body: JSON.stringify({
+				  	Act: 'APIF',
+				  	UserID: userName,
+				  	Nutrition: food
+				  })
+				})
+				.then(ApiUtils.checkStatus)
+				.then(response => response.json())
+				.catch(error => {
+					console.error(error);
+				});
+	}
 }
 
 export { Api as default };

@@ -17,10 +17,17 @@ var ApiUtils = {
 	hashPassword: function(plainPassword){
 		var hash = 0;
 
-	    for(var i = 0; i < this.length; i++){
-	    	var char = this.charCodeAt(i);
-	    	hash = ((hash<<5)-hash)+character;
+	    for(var i = 0; i < plainPassword.length; i++){
+	    	var char = plainPassword.charCodeAt(i);
+
+	    	hash = ((hash<<5)-hash)+char;
+        	
+	    	console.log(hash);
+
         	hash = hash & hash; // Convert to 32bit integer
+
+	    	console.log(hash);
+
 	    }
 
 	    return hash;

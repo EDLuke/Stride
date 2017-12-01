@@ -1,0 +1,61 @@
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\components\animation\SwipeBackgroundView.js
+  6:8  error  Parsing error: Unexpected token =
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\components\animation\VideoBackgroundView.js
+  27:5  error  Parsing error: Unexpected token ..
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\components\AssetUtils.js
+  4:20  error  Parsing error: Unexpected token function
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\components\layout\SingleFeed.js
+  26:3  error  Unused style detected: styles.username  react-native/no-unused-styles
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\components\SocialUser.js
+  4:19  error  Parsing error: Unexpected token ]
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\screens\Charts.js
+  23:10  error  Parsing error: Unexpected token =
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\screens\ChartsAdd.js
+  18:8  error  Parsing error: Unexpected token =
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\screens\Main.js
+  18:9  error  Parsing error: Unexpected token =
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\screens\Setting.js
+  17:8  error  Parsing error: Unexpected token =
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\screens\Signup.js
+  17:9  error  Parsing error: Unexpected token =
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\screens\Social.js
+  57:8  error  Parsing error: Unexpected token =
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\screens\SocialDetail.js
+  28:14  error  Color literal: { backgroundColor: '#fff' }                                react-native/no-color-literals
+  35:3   error  Unused style detected: styles.title                                       react-native/no-unused-styles
+  35:10  error  Color literal: { backgroundColor: 'rgba(0,0,0,0)', color: '#fff' }        react-native/no-color-literals
+  42:11  error  Color literal: { color: '#686868' }                                       react-native/no-color-literals
+  47:3   error  Unused style detected: styles.subtitle                                    react-native/no-unused-styles
+  47:13  error  Color literal: { color: '#fff' }                                          react-native/no-color-literals
+  53:18  error  Color literal: { backgroundColor: 'rgba(0,0,0,0)' }                       react-native/no-color-literals
+  57:3   error  Unused style detected: styles.signupContainer                             react-native/no-unused-styles
+  57:19  error  Color literal: { backgroundColor: 'rgba(0,0,0,0)' }                       react-native/no-color-literals
+  61:18  error  Color literal: { backgroundColor: 'rgba(0,0,0,0)' }                       react-native/no-color-literals
+  66:3   error  Unused style detected: styles.signupContainer                             react-native/no-unused-styles
+  66:19  error  Color literal: { backgroundColor: 'rgba(0,0,0,0)' }                       react-native/no-color-literals
+  71:3   error  Unused style detected: styles.emailContainer                              react-native/no-unused-styles
+  71:19  error  Color literal: { backgroundColor: 'rgba(0,0,0,0)', borderColor: '#FFF' }  react-native/no-color-literals
+  79:3   error  Unused style detected: styles.passwordContainer                           react-native/no-unused-styles
+  79:22  error  Color literal: { backgroundColor: 'rgba(0,0,0,0)', borderColor: '#FFF' }  react-native/no-color-literals
+  87:3   error  Unused style detected: styles.subtitleContainer                           react-native/no-unused-styles
+  87:21  error  Color literal: { backgroundColor: 'rgba(0,0,0,0)' }                       react-native/no-color-literals
+  94:3   error  Unused style detected: styles.signupText                                  react-native/no-unused-styles
+  94:14  error  Color literal: { color: '#FFF' }                                          react-native/no-color-literals
+
+d:\College\Fall 2017\COMS 4156\Stride\Stride\app\screens\Today.js
+  21:8  error  Parsing error: Unexpected token =
+
+✖ 32 problems (32 errors, 0 warnings)
+

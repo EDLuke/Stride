@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, View, ToolbarAndroid, ART } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text, View, ToolbarAndroid} from 'react-native';
 import { Container, Button, Content, List } from 'native-base';
 import User from '../components/class/UserClass.js';
 import { SmoothLine, StockLine } from 'react-native-pathjs-charts';
@@ -7,12 +7,7 @@ import SingleCalorie from '../components/layout/SingleCalorie';
 import moment from 'moment';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
-
-const {
-  Surface,
-  Group,
-  Shape,
-} = ART;
+import { ArtyCharty } from 'arty-charty';
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -27,10 +22,38 @@ const renderCalorie = (post, index) => (
 
 export default class Charts extends React.Component{
 
+	groupByDate(records){
+		console.log(records);
+
+		var sorted = records.sort(function(a, b){
+			return a.days - b.days;
+		});
+
+		var ret = [];
+		var idx = 0;
+		var current = records[0];
+		for(var i = 1; i < sorted.length; i++){
+			var iter = sorted[i];
+			if(iter.days == current.days){
+				current.calorieIn = current.calorieIn + iter.calorieIn;
+				current.calorieOut = current.calorieOut + iter.calorieOut; 
+			}
+			else{
+				ret.push(current);
+				current = iter;
+			}
+		}
+		ret.push(current);
+
+		console.log(ret);
+
+		return ret;
+	}
+
 	refresh = () => {
 		// refresh the state
 		this.setState({
-			records: GLOBAL.currentUser.FitnessRecord.map(
+			records: this.groupByDate(GLOBAL.currentUser.FitnessRecord.map(
 			    	function(fitness){
 			    		var first = GLOBAL.currentUser.FitnessRecord[0];
 
@@ -39,12 +62,12 @@ export default class Charts extends React.Component{
 			    			calorieIn: parseInt(fitness.calorieIn),
 			    			calorieOut: parseInt(fitness.calorieOut)
 			    		}
-	    			}),
+	    			})),
 		});
 	}
 
 	state = {
-	    records: GLOBAL.currentUser.FitnessRecord.map(
+	    records: this.groupByDate(GLOBAL.currentUser.FitnessRecord.map(
 	    	function(fitness){
 	    		var first = GLOBAL.currentUser.FitnessRecord[0];
 
@@ -53,73 +76,23 @@ export default class Charts extends React.Component{
 	    			calorieIn: parseInt(fitness.calorieIn),
 	    			calorieOut: parseInt(fitness.calorieOut)
 	    		}
-	    	}),
-	    options: {
-	      width: 250,
-	      height: 250,
-	      color: '#2980B9',
-	      margin: {
-	        top: 0,
-	        left: 45,
-	        bottom: 35,
-	        right: 25,
-	      },
-	      animate: {
-	        type: 'delayed',
-	        duration: 200
-	      },
-	      axisX: {
-	        showAxis: true,
-	        showLines: true,
-	        showLabels: true,
-	        showTicks: true,
-	        zeroAxis: false,
-	        orient: 'bottom',
-	        tickValues: [],
-	        labelFunction: ((v) => {
-	        	
-	          let d = moment(GLOBAL.currentUser.FitnessRecord[0].date)
-
-	          if(v % 1 === 0)
-	          	return d.add(v,'days').format('MM-DD') 
-	          return ""
-	        }),
-	        label: {
-	          fontFamily: 'Arial',
-	          fontSize: 8,
-	          fontWeight: true,
-	          fill: '#34495E'
-	        }
-	      },
-	      axisY: {
-	        showAxis: true,
-	        showLines: true,
-	        showLabels: true,
-	        showTicks: true,
-	        zeroAxis: false,
-	        orient: 'left',
-	        tickValues: [],
-	        label: {
-	          fontFamily: 'Arial',
-	          fontSize: 8,
-	          fontWeight: true,
-	          fill: '#34495E'
-	        }
-	      }
-	  	}
+	    	})),
 	};
 
 	onPressAdd = () => {
 		// Navigate to the ChartsAdd
-        this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh, calorieIn: 0, calorieOut: 0});
+        this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh, calorie: 0, calorieType: 'food'});
+	}
+
+	onMarkerClick(chartIdx, entryIdx){
+		console.log(chartIdx);
+		console.log(entryIdx);
 	}
 
 	render() {
 	    let data = [
 	      this.state.records
 	    ]
-
-	    let options = this.state.options
     
 		return (
 			<View style={styles.container}>
@@ -128,14 +101,32 @@ export default class Charts extends React.Component{
 			    />
 
 			    <View style={styles.chartContainer}>
-			      <Surface width={500} height={500}>
-			        <Group x={100} y={0}>
-			          <Shape
-			            d="M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80"
-			            stroke="#000"
-			            strokeWidth={1} />
-			        </Group>
-			      </Surface>
+			      	<ArtyCharty
+				      	interactive={true}
+					    animated={true}
+					    yAxisLeft={{numberOfTicks: 5}}
+					    clickFeedback={true}
+					    pointsOnScreen={this.state.records.length}
+					    onMarkerClick={this.onMarkerClick.bind(this)}
+					    data={[
+					    {
+					        type: 'line',
+					        lineColor: 'green',
+					        data: this.state.records.map((record) => {
+					        	return {value: record.calorieIn};
+					        })
+					    },
+					    {
+					        type: 'line',
+					        lineColor: 'red',
+					        data: this.state.records.map((record) => {
+					        	return {value: record.calorieOut};
+					        })
+					    },
+					       
+				        ]} 
+				   	/>
+					
 			    </View>	
 			    <ScrollView style={styles.listContainer}>			
 	          		<List>

@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, ToolbarAndroid, Dimensions } from 'react-native';
-import { Container, Toast } from 'native-base';
+import { Container, Toast, Picker } from 'native-base';
 import moment from 'moment';
 import DatePicker from 'react-native-datepicker'
 import Api from '../components/Api';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
-import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
+import { FormLabel, FormInput, FormValidationMessage, Button} from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
+
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -15,8 +16,8 @@ GLOBAL = require('../components/CurrentUser');
 export default class ChartsAdd extends React.Component{
 
 	state = {
-      calorieIn: this.props.navigation.state.params.calorieIn,
-      calorieOut: this.props.navigation.state.params.calorieOut,
+      calorie: this.props.navigation.state.params.calorie,
+      calorieType: this.props.navigation.state.params.calorieType,
 
       calErrorMsg: "",
       error: '',
@@ -35,8 +36,8 @@ export default class ChartsAdd extends React.Component{
   	}
 
   	setCalorie = (cal) =>{
-  		this.setState({calorieIn: cal});
-  		if (isNaN(this.state.calorieIn)) {
+  		this.setState({calorie: cal});
+  		if (isNaN(this.state.calorie)) {
   			this.setState({
   				calErrorMsg: "Entry must be a number.",
   			});
@@ -55,15 +56,14 @@ export default class ChartsAdd extends React.Component{
 
 		var userName = GLOBAL.currentUser.username;
 		var date = moment(this.state.date).format("YYYY-MM-DD");
-		var calorieIn = this.state.calorieIn;
-		var calorieOut = 0;
+		var calorieIn = this.state.calorieType == 'food' ? this.state.calorie : 0;
+		var calorieOut = this.state.calorieType == 'exercise' ? this.state.calorie : 0;
 
 		Api.addFitness(userName, calorieIn, calorieOut, date).then((response) => {	
 
 			 if (typeof response === "undefined") {
 		        this.setState({
-		          calorieIn: '0',
-		          calorieOut: '0',
+		          calorie: '0',
 		          date: moment(),
 		          error: "Network error.",
 		        });
@@ -81,8 +81,7 @@ export default class ChartsAdd extends React.Component{
 		      }
 		      else if(response.Error != ""){
 		        this.setState({
-		          calorieIn: '0',
-		          calorieOut: '0',
+		          calorie: '0',
 		          date: moment(),
 		          error: response.Error,
 		        });
@@ -123,6 +122,12 @@ export default class ChartsAdd extends React.Component{
 		})
 	}
 
+	onCalorieTypeChanged(type: string){
+	    this.setState({
+	      	calorieType: type
+    	});
+  	}
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -132,7 +137,7 @@ export default class ChartsAdd extends React.Component{
 				    <View style={styles.chartContainer}>
 				    		<FormLabel>Calorie</FormLabel>
 				    		<FormInput
-				    			placeholder={this.state.calorieIn.toString()}
+				    			placeholder={this.state.calorie.toString()}
 				                onChangeText={(text) => this.setCalorie(text)}
 				                onFocus={this.toggleKeyboardFocused}
 				              />
@@ -161,6 +166,15 @@ export default class ChartsAdd extends React.Component{
 						        	}
 						        }}
 						      />
+						    <Picker
+				              iosHeader="Select calorie type"
+				              mode="dropdown"
+				              selectedValue={this.state.calorieType}
+				              onValueChange={this.onCalorieTypeChanged.bind(this)}
+				            >
+				              <Picker.Item label="Food" value="food" />
+				              <Picker.Item label="Exercise" value="exercise" />
+				            </Picker>
 						      
 				    </View>
 

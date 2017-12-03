@@ -69,7 +69,6 @@ export default class Main extends React.Component {
                                                 response.Weight, 
                                                 response.Friendlist, 
                                                 response.Fitnesslist);
-
         //Navigate to the tabs
         this.props.navigation.navigate('TabNav');
       }

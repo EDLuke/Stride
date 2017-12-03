@@ -35,11 +35,13 @@ const styles = StyleSheet.create({
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'green',
   },
   calorieOutContainer: {
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'red',
   },
   date: {
     fontSize: 14,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, View, ToolbarAndroid } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text, View, ToolbarAndroid, ART } from 'react-native';
 import { Container, Button, Content, List } from 'native-base';
 import User from '../components/class/UserClass.js';
 import { SmoothLine, StockLine } from 'react-native-pathjs-charts';
@@ -8,13 +8,20 @@ import moment from 'moment';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
 
+const {
+  Surface,
+  Group,
+  Shape,
+} = ART;
+
 GLOBAL = require('../components/CurrentUser');
 
 const renderCalorie = (post, index) => (
 	<SingleCalorie
 	    key={index}
 	    date={post.date}
-	    calorie={post.calorie}
+	    calorieIn={post.calorieIn}
+	    calorieOut={post.calorieOut}
   	/>
 )
 
@@ -29,7 +36,8 @@ export default class Charts extends React.Component{
 
 			    		return {
 			    			days: moment(fitness.date).diff(first.date, 'days'),
-			    			calorie: parseInt(fitness.calorieIn),
+			    			calorieIn: parseInt(fitness.calorieIn),
+			    			calorieOut: parseInt(fitness.calorieOut)
 			    		}
 	    			}),
 		});
@@ -42,7 +50,8 @@ export default class Charts extends React.Component{
 
 	    		return {
 	    			days: moment(fitness.date).diff(first.date, 'days'),
-	    			calorie: parseInt(fitness.calorieIn),
+	    			calorieIn: parseInt(fitness.calorieIn),
+	    			calorieOut: parseInt(fitness.calorieOut)
 	    		}
 	    	}),
 	    options: {
@@ -102,14 +111,13 @@ export default class Charts extends React.Component{
 
 	onPressAdd = () => {
 		// Navigate to the ChartsAdd
-        this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh, calorie: 0});
+        this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh, calorieIn: 0, calorieOut: 0});
 	}
 
 	render() {
 	    let data = [
 	      this.state.records
 	    ]
-
 
 	    let options = this.state.options
     
@@ -120,8 +128,15 @@ export default class Charts extends React.Component{
 			    />
 
 			    <View style={styles.chartContainer}>
-	       		 {GLOBAL.currentUser.FitnessRecord.length > 0 && <StockLine  data={data} options={options} xKey='days' yKey='calorie' />}
-			    </View>
+			      <Surface width={500} height={500}>
+			        <Group x={100} y={0}>
+			          <Shape
+			            d="M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80"
+			            stroke="#000"
+			            strokeWidth={1} />
+			        </Group>
+			      </Surface>
+			    </View>	
 			    <ScrollView style={styles.listContainer}>			
 	          		<List>
 		            {
@@ -131,7 +146,8 @@ export default class Charts extends React.Component{
 			          	let date = d.add(record.days,'days').format('MM-DD')
 			          	let recordNew = {
 			          		date: date,
-			          		calorie: record.calorie.toString()
+			          		calorieIn: record.calorieIn.toString(),
+			          		calorieOut: record.calorieOut.toString()
 			          	}
 
 		              	return renderCalorie(recordNew, index)
@@ -168,12 +184,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   chartContainer: {
-  	marginTop: 10,
-  	alignItems: 'center',
-    justifyContent: 'center',
+  	flex: 2,
   },
   listContainer: {
-
+  	flex: 1,
   },
   toolbar: {
     backgroundColor: '#578CA9',

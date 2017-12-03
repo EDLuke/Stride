@@ -9,8 +9,11 @@ export default (props) => (
           <View style={styles.dateContainer}>
             <Text style={styles.date}>{props.date}</Text>
           </View>
-          <View style={styles.calorieContainer}>
-            <Text style={styles.calorie}>{props.calorie}</Text>
+          <View style={styles.calorieInContainer}>
+            <Text style={styles.calorieIn}>{props.calorieIn}</Text>
+          </View>
+          <View style={styles.calorieOutContainer}>
+            <Text style={styles.calorieOut}>{props.calorieOut}</Text>
           </View>
         </View> 
       </Body>
@@ -28,7 +31,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  calorieContainer: {
+  calorieInContainer: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  calorieOutContainer: {
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
@@ -36,7 +44,7 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 14,
   },
-  calorie: {
+  calorieIn: {
     fontSize: 14,
   },
 });

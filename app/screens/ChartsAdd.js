@@ -15,7 +15,9 @@ GLOBAL = require('../components/CurrentUser');
 export default class ChartsAdd extends React.Component{
 
 	state = {
-      calorie: this.props.navigation.state.params.calorie,
+      calorieIn: this.props.navigation.state.params.calorieIn,
+      calorieOut: this.props.navigation.state.params.calorieOut,
+
       calErrorMsg: "",
       error: '',
       date: moment(),
@@ -33,8 +35,8 @@ export default class ChartsAdd extends React.Component{
   	}
 
   	setCalorie = (cal) =>{
-  		this.setState({calorie: cal});
-  		if (isNaN(this.state.calorie)) {
+  		this.setState({calorieIn: cal});
+  		if (isNaN(this.state.calorieIn)) {
   			this.setState({
   				calErrorMsg: "Entry must be a number.",
   			});
@@ -47,22 +49,21 @@ export default class ChartsAdd extends React.Component{
   	}
 
 	onActionSelected = () => {
-
-		console.log("adding");
-
 		this.setState({
 			isAdding: true,
 		});
 
 		var userName = GLOBAL.currentUser.username;
 		var date = moment(this.state.date).format("YYYY-MM-DD");
-		var calorie = this.state.calorie;
+		var calorieIn = this.state.calorieIn;
+		var calorieOut = 0;
 
-		Api.addFitness(userName, calorie, date).then((response) => {	
+		Api.addFitness(userName, calorieIn, calorieOut, date).then((response) => {	
 
 			 if (typeof response === "undefined") {
 		        this.setState({
-		          calorie: '0',
+		          calorieIn: '0',
+		          calorieOut: '0',
 		          date: moment(),
 		          error: "Network error.",
 		        });
@@ -80,7 +81,8 @@ export default class ChartsAdd extends React.Component{
 		      }
 		      else if(response.Error != ""){
 		        this.setState({
-		          calorie: '0',
+		          calorieIn: '0',
+		          calorieOut: '0',
 		          date: moment(),
 		          error: response.Error,
 		        });
@@ -101,7 +103,8 @@ export default class ChartsAdd extends React.Component{
 		      	GLOBAL.currentUser.FitnessRecord.push(
 		      	{
 		      		date: date,
-		      		calorie: calorie,
+		      		calorieIn: calorieIn,
+		      		calorieOut: calorieOut,
 		      	});
 
 		      	this.setState({
@@ -129,7 +132,7 @@ export default class ChartsAdd extends React.Component{
 				    <View style={styles.chartContainer}>
 				    		<FormLabel>Calorie</FormLabel>
 				    		<FormInput
-				    			placeholder={this.state.calorie.toString()}
+				    			placeholder={this.state.calorieIn.toString()}
 				                onChangeText={(text) => this.setCalorie(text)}
 				                onFocus={this.toggleKeyboardFocused}
 				              />

@@ -20,7 +20,7 @@ export default class Today extends React.Component {
   onPressAdd = (calorie) => {
     console.log("Function pointer " + calorie);
 
-    this.props.navigation.navigate('ChartsAdd', {calorie: calorie}); 
+    this.props.navigation.navigate('ChartsAdd', {calorieIn: calorie, calorieOut: 0}); 
   }
 
   renderCalorieCard = (post, index) => {
@@ -107,6 +107,5 @@ const styles = StyleSheet.create({
   },
   searchResult: {
     flex: 1,
-    backgroundColor: 'black'
   }
 });

@@ -42,7 +42,7 @@ export default class User{
 				var calorieOut = (entry[4].length > 0) ? parseInt(entry[2]) : 0;
 
 				let record = new FitnessRecord(entry[0], calorieIn, calorieOut);
-				//console.log(record);
+				// console.log(record);
 				thisUser.FitnessRecord.push(record);
 
 				//console.log(thisUser.FitnessRecord);

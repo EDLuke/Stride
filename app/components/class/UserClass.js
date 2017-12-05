@@ -1,4 +1,5 @@
-import FitnessRecord from './FitnessRecordClass.js'
+import FitnessRecord from './FitnessRecordClass.js';
+import moment from 'moment';
 
 export default class User{
 	
@@ -72,5 +73,27 @@ export default class User{
 			}
 		}
 		return false;
+	}
+
+	getLastActiveDate() {
+		var first = this.FitnessRecord[0].date;
+		var max = this.FitnessRecord[0].date;
+		for (var i = 0; i < this.FitnessRecord.length; i++) {
+			if (moment(this.FitnessRecord[i].date).diff(first, 'days') > 
+				moment(max).diff(first, 'days')) {
+				max = this.FitnessRecord[i].date;
+			}
+		}
+		return max;
+	}
+
+	getMostOutPutEntry() {
+		var max = this.FitnessRecord[0];
+		for (var i = 0; i < this.FitnessRecord.length; i++) {
+			if (this.FitnessRecord[i].calorieOut > max.calorieOut) {
+				max = this.FitnessRecord[i];
+			}
+		}
+		return max;
 	}
 }

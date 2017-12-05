@@ -9,6 +9,7 @@ import { AssetUtils } from '../components/AssetUtils.js';
 import { Toolbar, Dialog, DialogDefaultActions } from 'react-native-material-ui';
 import { SearchBar } from 'react-native-elements';
 import { NavigationBar, Title, Image } from '@shoutem/ui';
+import UserCard from '../components/layout/UserCard.js';
 
 
 GLOBAL = require('../components/CurrentUser');
@@ -95,8 +96,16 @@ export default class Social extends React.Component{
               centerComponent={<Title>PROFILES</Title>}
             />
             </Image>
-            <Tabs initialPage={1}>
+            <Tabs initialPage={0}>
               <Tab heading={ <TabHeading><Text style={styles.tabText}>MY PROFILE</Text></TabHeading>}>
+                <UserCard
+                  name={GLOBAL.currentUser.username}
+                  lastActiveDate={GLOBAL.currentUser.getLastActiveDate()}
+                  mostOutput={GLOBAL.currentUser.getMostOutPutEntry().calorieOut}
+                  mostOutputDate={GLOBAL.currentUser.getMostOutPutEntry().date}
+                  age={GLOBAL.currentUser.age}
+                  gender={GLOBAL.currentUser.gender}
+                />
               </Tab>
               <Tab heading={ <TabHeading><Text style={styles.tabText}>FRIEND PROFILES</Text></TabHeading>}>
                 <View style={styles.leaderBoardBoxContainer}>

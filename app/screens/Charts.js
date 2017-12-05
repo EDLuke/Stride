@@ -77,10 +77,7 @@ export default class Charts extends React.Component{
 	    			calorieIn: parseInt(fitness.calorieIn),
 	    			calorieOut: parseInt(fitness.calorieOut)
 	    		}
-	    	})),
-	    DataClicked: false,
-	    LeftText: "",
-	    RightText: "",
+	    	}))
 	};
 
 	onPressAdd = () => {

@@ -10,6 +10,7 @@ import { Toolbar, Dialog, DialogDefaultActions } from 'react-native-material-ui'
 import { SearchBar } from 'react-native-elements';
 import { NavigationBar, Title, Image } from '@shoutem/ui';
 
+
 GLOBAL = require('../components/CurrentUser');
 
 
@@ -86,7 +87,7 @@ export default class Social extends React.Component{
 		return (
 			<View style={styles.container}>
             <Image
-              source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+              source={{ uri: AssetUtils.toolbarimg}}
               style={{ width: 375, height: 70 }}
             >
             <NavigationBar
@@ -94,8 +95,11 @@ export default class Social extends React.Component{
               centerComponent={<Title>PROFILES</Title>}
             />
             </Image>
-
-        			<View style={styles.leaderBoardBoxContainer}>
+            <Tabs initialPage={1}>
+              <Tab heading={ <TabHeading><Text style={styles.tabText}>MY PROFILE</Text></TabHeading>}>
+              </Tab>
+              <Tab heading={ <TabHeading><Text style={styles.tabText}>FRIEND PROFILES</Text></TabHeading>}>
+                <View style={styles.leaderBoardBoxContainer}>
                   <ScrollView>
                   <FlatList
                     data = {GLOBAL.currentUser.friends}
@@ -105,7 +109,10 @@ export default class Social extends React.Component{
                                               >{item}</Text>}
                   />
                   </ScrollView>
-              </View>
+                </View>
+              </Tab>
+            </Tabs>
+        			
 			</View>
       );
 	}
@@ -158,5 +165,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: 50,
-  }
+  },
+  tabText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: 'Rubik-Regular',
+    overflow: 'scroll',
+  },
 });

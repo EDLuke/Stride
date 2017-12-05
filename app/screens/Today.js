@@ -9,6 +9,7 @@ import { NavigationBar, Title, Image } from '@shoutem/ui';
 import SingleCalorieCard from '../components/layout/SingleCalorieCard';
 import { SearchBar } from 'react-native-elements';
 
+
 import Api from '../components/Api';
 
 GLOBAL = require('../components/CurrentUser');
@@ -66,7 +67,7 @@ export default class Today extends React.Component {
 		
 		<View style={styles.container}>
 		  <Image
-        source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+        source={{uri: AssetUtils.toolbarimg}}
         style={{ width: 375, height: 70 }}
       >
       <NavigationBar

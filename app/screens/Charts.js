@@ -9,6 +9,7 @@ import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
 import { ArtyCharty } from 'arty-charty';
 import { NavigationBar, Title, Image } from '@shoutem/ui';
+import { AssetUtils } from '../components/AssetUtils.js';
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -94,7 +95,7 @@ export default class Charts extends React.Component{
 		return (
 			<View style={styles.container}>
 				<Image
-			        source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+			        source={{uri: AssetUtils.toolbarimg}}
 			        style={{ width: 375, height: 70 }}
 			     >
 			      <NavigationBar

@@ -6,9 +6,10 @@ import DatePicker from 'react-native-datepicker'
 import Api from '../components/Api';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
-import { FormLabel, FormInput, FormValidationMessage, Button} from 'react-native-elements';
+import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
-import { NavigationBar, Title, Image } from '@shoutem/ui';
+import { NavigationBar, Title, Image, DropDownMenu, Screen, Icon } from '@shoutem/ui';
+import { AssetUtils } from '../components/AssetUtils.js';
 
 
 GLOBAL = require('../components/CurrentUser');
@@ -27,6 +28,11 @@ export default class ChartsAdd extends React.Component{
       isAdding: false,
 
       keyboardFocused: false,
+
+      types: [
+      	{ name: 'Add Calorie Intake', value: 'food' },
+		{ name: 'Add Calorie Output', value: 'exercise' },
+      ]
   	};
 
   	toggleKeyboardFocused = () => {
@@ -123,6 +129,15 @@ export default class ChartsAdd extends React.Component{
 		})
 	}
 
+	onOptionSelected(type: object){
+		this.setState({
+			selectedType: type,
+			calorieType: type.value,
+		})
+
+		console.log(type.value);
+	}
+
 	onCalorieTypeChanged(type: string){
 	    this.setState({
 	      	calorieType: type
@@ -133,14 +148,22 @@ export default class ChartsAdd extends React.Component{
 		return (
 			<View style={styles.container}>
 				<Image
-			        source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+			        source={{uri: AssetUtils.toolbarimg}}
 			        style={{ width: 375, height: 70 }}
 			      >
 			      <NavigationBar
-			        styleName="clear"
+			      	styleName='clear'
 			        centerComponent={<Title>ADD RECORD</Title>}
 			      />
 			    </Image>
+			    <DropDownMenu
+			    	styleName='horizontal'
+					options={this.state.types}
+					selectedOption={this.state.selectedType ? this.state.selectedType : this.state.types[0]}
+					onOptionSelected={this.onOptionSelected.bind(this)}						    
+					titleProperty="name"
+					valueProperty="value"
+				/>
 				    <View style={styles.chartContainer}>
 				    		<FormLabel>Calorie</FormLabel>
 				    		<FormInput

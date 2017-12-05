@@ -9,6 +9,7 @@ import Api from '../components/Api';
 import User from '../components/class/UserClass';
 import { Toast } from 'native-base';
 import { NavigationBar, Title, Image } from '@shoutem/ui';
+import { AssetUtils } from '../components/AssetUtils.js';
 
 // const backAction = NavigationActions.back({
 //   	key: 'Main',
@@ -216,7 +217,7 @@ export default class Setting extends React.Component{
 		return (
 		<View style = {styles.container}>
           <Image
-              source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+              source={{uri: AssetUtils.toolbarimg}}
               style={{ width: 375, height: 70 }}
             >
             <NavigationBar

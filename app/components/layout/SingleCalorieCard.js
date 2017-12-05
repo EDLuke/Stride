@@ -11,20 +11,22 @@ export default (props) => (
     <Card>
       <CardItem>
         <Left>
+          <Body>
             <Text style={styles.name}>{props.name}</Text>
-            <Text note>{props.calorie}</Text>
+            <Text note>{props.calorie} calories</Text>
+          </Body>
         </Left>
       </CardItem>
       <CardItem cardBody>
         <Image source={{uri :props.foodPicture}} style={styles.foodImage}/>
       </CardItem>
       <CardItem>
-        <Right>
+        <Left>
           <Button transparent onPress={props.onPress}>
             <Icon name="add" />
-            <Text>Add</Text>
+            <Text>Add To Records</Text>
           </Button>
-        </Right>
+        </Left>
       </CardItem>
     </Card>
   </View>
@@ -34,9 +36,15 @@ const styles = StyleSheet.create({
   contentContainer:{
     flex: 1,
     flexDirection: 'row',
+    marginLeft: 15,
+    marginRight: 15,
+    marginTop: 7,
+    marginBottom: 8,
   },
   name: {
     fontSize: 14,
+    fontWeight: 'bold',
+    overflow: 'scroll',
   },
   calorie: {
     fontSize: 14,

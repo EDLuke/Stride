@@ -73,6 +73,19 @@
 		F8E72C4CE8B940768CE012DE /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5CA792982E2405982C0CFAD /* Roboto.ttf */; };
 		FEF563A9A7614A2A92EC3AB9 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D09671FADAB4F91BDF187D1 /* FontAwesome.ttf */; };
 		88121F4117EC4AB38D1FC2C6 /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2735030C5D54239B65EA298 /* libRNSearchBar.a */; };
+		2DD587E77C454DD78EBEAA27 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B10E1AE7909049CFA7AEEB19 /* libBVLinearGradient.a */; };
+		146B00E6D916474BA0924995 /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D590E605683B41ECA7D864DD /* libRNShare.a */; };
+		72ECFBCD4E1840DFA5348549 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37D7037205DB4E37AA3CEF90 /* rubicon-icon-font.ttf */; };
+		85A9333EA1294A3A99895DD0 /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA6803100FE54A878EEA51E5 /* Rubik-Black.ttf */; };
+		822883F1FACF4B17860738AD /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83424F6CFDA24609ACAC5EF5 /* Rubik-BlackItalic.ttf */; };
+		2B0A7ABCD2384D23ACA05EBA /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76A5E9836FA14092BDE4C5F8 /* Rubik-Bold.ttf */; };
+		3833120BBCE245AFA5407A1D /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF5C07EF53694B269D524B19 /* Rubik-BoldItalic.ttf */; };
+		E1CFD2D3268E44C8A7798BB3 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A8B76BCAE842D89A86197B /* Rubik-Italic.ttf */; };
+		48BE03D98FA4494CA4FFA4F7 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86E29209EE5648A6BE8BC4F1 /* Rubik-Light.ttf */; };
+		E9C791AABD6444F9893CA48D /* Rubik-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F48ECB360F9D434FBBA406FE /* Rubik-LightItalic.ttf */; };
+		4A0CDBE18CD548AF914398F6 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67177C2F33904DD7825C6A25 /* Rubik-Medium.ttf */; };
+		8CEE786CBAB24828B2701B65 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F253363E34734B64B10EC13F /* Rubik-MediumItalic.ttf */; };
+		C2CDD5B203B94C15831BE034 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AABC9565FDBE4A7887B6EC6B /* Rubik-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,6 +381,21 @@
 		DE2CF200AC54474A87783387 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		CB1C33813E8946659A6E36E7 /* RNSearchBar.xcodeproj */ = {isa = PBXFileReference; name = "RNSearchBar.xcodeproj"; path = "../node_modules/react-native-search-bar/RNSearchBar.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		E2735030C5D54239B65EA298 /* libRNSearchBar.a */ = {isa = PBXFileReference; name = "libRNSearchBar.a"; path = "libRNSearchBar.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		75EBACEDCD154F87833FF393 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		B10E1AE7909049CFA7AEEB19 /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		005406C987ED4A35B36DFD93 /* RNShare.xcodeproj */ = {isa = PBXFileReference; name = "RNShare.xcodeproj"; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		D590E605683B41ECA7D864DD /* libRNShare.a */ = {isa = PBXFileReference; name = "libRNShare.a"; path = "libRNShare.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		37D7037205DB4E37AA3CEF90 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/@shoutem/ui/fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CA6803100FE54A878EEA51E5 /* Rubik-Black.ttf */ = {isa = PBXFileReference; name = "Rubik-Black.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		83424F6CFDA24609ACAC5EF5 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Rubik-BlackItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		76A5E9836FA14092BDE4C5F8 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; name = "Rubik-Bold.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CF5C07EF53694B269D524B19 /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Rubik-BoldItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D9A8B76BCAE842D89A86197B /* Rubik-Italic.ttf */ = {isa = PBXFileReference; name = "Rubik-Italic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		86E29209EE5648A6BE8BC4F1 /* Rubik-Light.ttf */ = {isa = PBXFileReference; name = "Rubik-Light.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F48ECB360F9D434FBBA406FE /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; name = "Rubik-LightItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		67177C2F33904DD7825C6A25 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; name = "Rubik-Medium.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F253363E34734B64B10EC13F /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Rubik-MediumItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AABC9565FDBE4A7887B6EC6B /* Rubik-Regular.ttf */ = {isa = PBXFileReference; name = "Rubik-Regular.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,6 +427,8 @@
 				0C5B056BF9BE4AE4BEC256EF /* libRNVectorIcons.a in Frameworks */,
 				B0FB1331FA514104A1385416 /* libRCTVideo.a in Frameworks */,
 				88121F4117EC4AB38D1FC2C6 /* libRNSearchBar.a in Frameworks */,
+				2DD587E77C454DD78EBEAA27 /* libBVLinearGradient.a in Frameworks */,
+				146B00E6D916474BA0924995 /* libRNShare.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +644,17 @@
 				D9AC7458023944518E8BBF9B /* Octicons.ttf */,
 				2DCDFBA350294572A1E57B9A /* SimpleLineIcons.ttf */,
 				9A5D799C2EFC4213B33D7257 /* Zocial.ttf */,
+				37D7037205DB4E37AA3CEF90 /* rubicon-icon-font.ttf */,
+				CA6803100FE54A878EEA51E5 /* Rubik-Black.ttf */,
+				83424F6CFDA24609ACAC5EF5 /* Rubik-BlackItalic.ttf */,
+				76A5E9836FA14092BDE4C5F8 /* Rubik-Bold.ttf */,
+				CF5C07EF53694B269D524B19 /* Rubik-BoldItalic.ttf */,
+				D9A8B76BCAE842D89A86197B /* Rubik-Italic.ttf */,
+				86E29209EE5648A6BE8BC4F1 /* Rubik-Light.ttf */,
+				F48ECB360F9D434FBBA406FE /* Rubik-LightItalic.ttf */,
+				67177C2F33904DD7825C6A25 /* Rubik-Medium.ttf */,
+				F253363E34734B64B10EC13F /* Rubik-MediumItalic.ttf */,
+				AABC9565FDBE4A7887B6EC6B /* Rubik-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -636,6 +677,8 @@
 				7FF49D75CC304E04A7E6954F /* RNVectorIcons.xcodeproj */,
 				D09D40B455634213938A3A80 /* RCTVideo.xcodeproj */,
 				CB1C33813E8946659A6E36E7 /* RNSearchBar.xcodeproj */,
+				75EBACEDCD154F87833FF393 /* BVLinearGradient.xcodeproj */,
+				005406C987ED4A35B36DFD93 /* RNShare.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1122,6 +1165,17 @@
 				424F46DD2C5C4625A7AD1665 /* Octicons.ttf in Resources */,
 				DF9FD713CE184AC780C51BC2 /* SimpleLineIcons.ttf in Resources */,
 				E14F24474E5446EAA5D42D53 /* Zocial.ttf in Resources */,
+				72ECFBCD4E1840DFA5348549 /* rubicon-icon-font.ttf in Resources */,
+				85A9333EA1294A3A99895DD0 /* Rubik-Black.ttf in Resources */,
+				822883F1FACF4B17860738AD /* Rubik-BlackItalic.ttf in Resources */,
+				2B0A7ABCD2384D23ACA05EBA /* Rubik-Bold.ttf in Resources */,
+				3833120BBCE245AFA5407A1D /* Rubik-BoldItalic.ttf in Resources */,
+				E1CFD2D3268E44C8A7798BB3 /* Rubik-Italic.ttf in Resources */,
+				48BE03D98FA4494CA4FFA4F7 /* Rubik-Light.ttf in Resources */,
+				E9C791AABD6444F9893CA48D /* Rubik-LightItalic.ttf in Resources */,
+				4A0CDBE18CD548AF914398F6 /* Rubik-Medium.ttf in Resources */,
+				8CEE786CBAB24828B2701B65 /* Rubik-MediumItalic.ttf in Resources */,
+				C2CDD5B203B94C15831BE034 /* Rubik-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1249,12 +1303,16 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-search-bar",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-share/ios",
 				);
 				INFOPLIST_FILE = StrideTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1278,12 +1336,16 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-search-bar",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-share/ios",
 				);
 				INFOPLIST_FILE = StrideTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1308,6 +1370,8 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-search-bar",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-share/ios",
 				);
 				INFOPLIST_FILE = Stride/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1331,6 +1395,8 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-search-bar",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-share/ios",
 				);
 				INFOPLIST_FILE = Stride/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1361,11 +1427,15 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-search-bar",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-share/ios",
 				);
 				INFOPLIST_FILE = "Stride-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1399,11 +1469,15 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-search-bar",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-share/ios",
 				);
 				INFOPLIST_FILE = "Stride-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1438,6 +1512,8 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Stride-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1462,6 +1538,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

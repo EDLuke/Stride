@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@shoutem/ui": "^0.21.3",
     "art": "^0.10.1",
     "arty-charty": "^1.0.4",
     "babel-jest": "^21.2.0",

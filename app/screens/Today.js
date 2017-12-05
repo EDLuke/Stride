@@ -6,6 +6,7 @@ import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { AssetUtils } from '../components/AssetUtils.js';
 import { Toolbar } from 'react-native-material-ui';
 import SingleCalorieCard from '../components/layout/SingleCalorieCard';
+import { SearchBar } from 'react-native-elements';
 
 import Api from '../components/Api';
 
@@ -41,7 +42,8 @@ export default class Today extends React.Component {
       return;
 
     Api.searchFood(GLOBAL.currentUser.username, text).then((response) => {  
-      if(response.branded === "undefined")
+
+      if(typeof response.branded === "undefined")
         return;
 
       this.setState({
@@ -66,11 +68,11 @@ export default class Today extends React.Component {
         centerElement="Stride"
       />
       <View style={styles.searchContainer}>
-        <TextInput
-          style = {{alignItems:'center', color: '#000'}}
-          underlineColorAndroid="transparent"
-          placeholder="Search food or exercise"
-          placeholderTextColor="#000"
+        <SearchBar
+          noIcon
+          lightTheme
+          containerStyle = {{alignItems:'center'}}
+          placeholder="Food or Brand Name (e.g. Tropicana)"
           onChangeText={(text) => this.onChangeSearchText(text)}
         />
       </View>

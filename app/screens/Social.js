@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import User from '../components/class/UserClass.js';
 import { Font, AppLoading } from 'expo';
-import { FlatList, ScrollView, StyleSheet, View, ToolbarAndroid, Image, Navigator, NativeModules, StatusBar } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, View, ToolbarAndroid, Navigator, NativeModules, StatusBar } from 'react-native';
 import { Container, Content, List, Button, Icon, Text, Tab, Tabs, TabHeading, Header } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { AssetUtils } from '../components/AssetUtils.js';
 import { Toolbar, Dialog, DialogDefaultActions } from 'react-native-material-ui';
 import { SearchBar } from 'react-native-elements';
+import { NavigationBar, Title, Image } from '@shoutem/ui';
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -84,11 +85,15 @@ export default class Social extends React.Component{
 
 		return (
 			<View style={styles.container}>
-            <Toolbar
-              centerElement="Friends"
-              rightElement={addIcon}
-              // onPressRightElement={this.search.focus()}
+            <Image
+              source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+              style={{ width: 375, height: 70 }}
+            >
+            <NavigationBar
+              styleName="clear"
+              centerComponent={<Title>PROFILES</Title>}
             />
+            </Image>
 
         			<View style={styles.leaderBoardBoxContainer}>
                   <ScrollView>
@@ -107,6 +112,7 @@ export default class Social extends React.Component{
 }
 
 const addIcon = (<MaterialIcons name="add" size={25} color="#FFF" />);
+
 
 const styles = StyleSheet.create({
   container: {

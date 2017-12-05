@@ -1,6 +1,6 @@
 import React from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, View, ToolbarAndroid} from 'react-native';
-import { Container, Button, Content, List } from 'native-base';
+import { FlatList, ScrollView, StyleSheet, View, ToolbarAndroid, Dimensions } from 'react-native';
+import { Card, CardItem, Text, Body, Button, Icon, Left, Right, Container, List} from 'native-base';
 import User from '../components/class/UserClass.js';
 import { SmoothLine, StockLine } from 'react-native-pathjs-charts';
 import SingleCalorie from '../components/layout/SingleCalorie';
@@ -8,6 +8,7 @@ import moment from 'moment';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
 import { ArtyCharty } from 'arty-charty';
+import { NavigationBar, Title, Image } from '@shoutem/ui';
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -23,7 +24,7 @@ const renderCalorie = (post, index) => (
 export default class Charts extends React.Component{
 
 	groupByDate(records){
-		console.log(records);
+		// console.log(records);
 
 		var sorted = records.sort(function(a, b){
 			return a.days - b.days;
@@ -45,7 +46,7 @@ export default class Charts extends React.Component{
 		}
 		ret.push(current);
 
-		console.log(ret);
+		// console.log(ret);
 
 		return ret;
 	}
@@ -77,6 +78,9 @@ export default class Charts extends React.Component{
 	    			calorieOut: parseInt(fitness.calorieOut)
 	    		}
 	    	})),
+	    DataClicked: false,
+	    LeftText: "",
+	    RightText: "",
 	};
 
 	onPressAdd = () => {
@@ -84,10 +88,6 @@ export default class Charts extends React.Component{
         this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh, calorie: 0, calorieType: 'food'});
 	}
 
-	onMarkerClick(chartIdx, entryIdx){
-		console.log(chartIdx);
-		console.log(entryIdx);
-	}
 
 	render() {
 	    let data = [
@@ -96,37 +96,55 @@ export default class Charts extends React.Component{
     
 		return (
 			<View style={styles.container}>
-				<Toolbar
-					centerElement="Progression"
-			    />
-
+				<Image
+			        source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+			        style={{ width: 375, height: 70 }}
+			     >
+			      <NavigationBar
+			        styleName="clear"
+			        centerComponent={<Title>PROGRESSION</Title>}
+			      />
+			    </Image>
 			    <View style={styles.chartContainer}>
-			      	<ArtyCharty
-				      	interactive={true}
-					    animated={true}
-					    yAxisLeft={{numberOfTicks: 5}}
-					    clickFeedback={true}
-					    pointsOnScreen={this.state.records.length}
-					    onMarkerClick={this.onMarkerClick.bind(this)}
-					    data={[
-					    {
-					        type: 'line',
-					        lineColor: 'green',
-					        data: this.state.records.map((record) => {
-					        	return {value: record.calorieIn};
-					        })
-					    },
-					    {
-					        type: 'line',
-					        lineColor: 'red',
-					        data: this.state.records.map((record) => {
-					        	return {value: record.calorieOut};
-					        })
-					    },
-					       
-				        ]} 
-				   	/>
-					
+			    	<View style={styles.contentContainer}>
+    				  <Card>
+     					<CardItem>
+        				  <Left>
+         					<Body>
+				            <Text style={styles.name}>Calorie Chart</Text>
+				          	</Body>
+				          </Left>
+				      	</CardItem>
+				      	<CardItem cardBody>
+				        <ArtyCharty
+				      		interactive={true}
+					    	animated={true}
+					    	yAxisLeft={{numberOfTicks: 5}}
+					    	clickFeedback={true}
+					    	pointsOnScreen={this.state.records.length}
+						    width={Dimensions.get('window').width - 35}
+						    data={[
+						    {
+						        type: 'line',
+						        lineColor: 'green',
+						        data: this.state.records.map((record) => {
+						        	return {value: record.calorieIn};
+						        }),
+						        drawChart: true
+						    },
+						    {
+						        type: 'line',
+						        lineColor: 'red',
+						        data: this.state.records.map((record) => {
+						        	return {value: record.calorieOut};
+						        }),
+						        drawChart: true
+						    }
+					        ]} 
+					   	/>
+					  	</CardItem>
+					  </Card>
+				  </View>	
 			    </View>	
 			    <ScrollView style={styles.listContainer}>			
 	          		<List>
@@ -188,5 +206,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     right: 20,
+  },
+  contentContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    marginLeft: 15,
+    marginRight: 15,
+    marginTop: 7,
+    marginBottom: 8,
+  },
+  name: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: 'Rubik-Regular',
+    overflow: 'scroll',
   },
 });

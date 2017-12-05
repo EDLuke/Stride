@@ -8,6 +8,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
 import { FormLabel, FormInput, FormValidationMessage, Button} from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
+import { NavigationBar, Title, Image } from '@shoutem/ui';
 
 
 GLOBAL = require('../components/CurrentUser');
@@ -131,9 +132,15 @@ export default class ChartsAdd extends React.Component{
 	render() {
 		return (
 			<View style={styles.container}>
-				<Toolbar
-			      centerElement="Add Record"
-			    />
+				<Image
+			        source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+			        style={{ width: 375, height: 70 }}
+			      >
+			      <NavigationBar
+			        styleName="clear"
+			        centerComponent={<Title>ADD RECORD</Title>}
+			      />
+			    </Image>
 				    <View style={styles.chartContainer}>
 				    		<FormLabel>Calorie</FormLabel>
 				    		<FormInput

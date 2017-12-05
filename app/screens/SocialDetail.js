@@ -2,6 +2,7 @@ import React from 'react';
 import {Font} from 'expo';
 import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import { NavigationBar, Title, Image } from '@shoutem/ui';
 
 export default class SocialDetail extends React.Component{
 	
@@ -10,6 +11,15 @@ export default class SocialDetail extends React.Component{
 	render() { 
 		return (
 		<View style = {styles.container}>
+          <Image
+              source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+              style={{ width: 375, height: 70 }}
+            >
+            <NavigationBar
+              styleName="no-border"
+              centerComponent={<Title>{this.props.navigation.params.name}'s PROFILE</Title>}
+            />
+          </Image>
 			    <View style = {styles.titleContainer}>
 	          <Text style = {styles.boxtext}>Loading</Text>
 	        </View>

@@ -6,6 +6,7 @@ export const AssetUtils = {
 	      'Helvetica': require('../../assets/fonts/Helvetica.ttf'),
 	      'Fibre': require('../../assets/fonts/Fibre.otf'),
 	      'Roboto': require('../../assets/fonts/Roboto-Regular.ttf'),
+	      'Rubik-Regular': require('../../assets/fonts/Rubik-Regular.ttf'),
 		   Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
 		   Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
 	    });

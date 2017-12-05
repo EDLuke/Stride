@@ -8,6 +8,7 @@ import ApiUtils from '../components/utils/ApiUtils';
 import Api from '../components/Api';
 import User from '../components/class/UserClass';
 import { Toast } from 'native-base';
+import { NavigationBar, Title, Image } from '@shoutem/ui';
 
 // const backAction = NavigationActions.back({
 //   	key: 'Main',
@@ -214,9 +215,15 @@ export default class Setting extends React.Component{
 	render() {
 		return (
 		<View style = {styles.container}>
-          <Toolbar
-              centerElement="Settings"
-          />
+          <Image
+              source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+              style={{ width: 375, height: 70 }}
+            >
+            <NavigationBar
+              styleName="clear"
+              centerComponent={<Title>SETTINGS</Title>}
+            />
+          </Image>
 	        <View style = {styles.contentContainer}>
           <ScrollView>
               <FormValidationMessage>

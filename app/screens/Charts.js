@@ -2,24 +2,29 @@ import React from 'react';
 import { FlatList, ScrollView, StyleSheet, View, ToolbarAndroid, Dimensions } from 'react-native';
 import { Card, CardItem, Text, Body, Button, Icon, Left, Right, Container, List} from 'native-base';
 import User from '../components/class/UserClass.js';
-import { SmoothLine, StockLine } from 'react-native-pathjs-charts';
 import SingleCalorie from '../components/layout/SingleCalorie';
+import SingleFriendCard from '../components/layout/SingleFriendCard';
 import moment from 'moment';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { Toolbar } from 'react-native-material-ui';
-import { ArtyCharty } from 'arty-charty';
 import { NavigationBar, Title, Image } from '@shoutem/ui';
 import { AssetUtils } from '../components/AssetUtils.js';
 
 GLOBAL = require('../components/CurrentUser');
 
-const renderCalorie = (post, index) => (
+const renderCalorieList = (post, index) => (
 	<SingleCalorie
 	    key={index}
 	    date={post.date}
 	    calorieIn={post.calorieIn}
 	    calorieOut={post.calorieOut}
   	/>
+)
+
+const renderCalorieCard = (records) => (
+	<SingleFriendCard
+		records = {records}
+	/>
 )
 
 export default class Charts extends React.Component{
@@ -86,7 +91,6 @@ export default class Charts extends React.Component{
         this.props.navigation.navigate('ChartsAdd', {refresh: this.refresh, calorie: 0, calorieType: 'food'});
 	}
 
-
 	render() {
 	    let data = [
 	      this.state.records
@@ -104,45 +108,9 @@ export default class Charts extends React.Component{
 			      />
 			    </Image>
 			    <View style={styles.chartContainer}>
-			    	<View style={styles.contentContainer}>
-    				  <Card>
-     					<CardItem>
-        				  <Left>
-         					<Body>
-				            <Text style={styles.name}>Calorie Chart</Text>
-				          	</Body>
-				          </Left>
-				      	</CardItem>
-				      	<CardItem cardBody>
-				        <ArtyCharty
-				      		interactive={true}
-					    	animated={true}
-					    	yAxisLeft={{numberOfTicks: 5}}
-					    	clickFeedback={true}
-					    	pointsOnScreen={this.state.records.length}
-						    width={Dimensions.get('window').width - 35}
-						    data={[
-						    {
-						        type: 'line',
-						        lineColor: 'green',
-						        data: this.state.records.map((record) => {
-						        	return {value: record.calorieIn};
-						        }),
-						        drawChart: true
-						    },
-						    {
-						        type: 'line',
-						        lineColor: 'red',
-						        data: this.state.records.map((record) => {
-						        	return {value: record.calorieOut};
-						        }),
-						        drawChart: true
-						    }
-					        ]} 
-					   	/>
-					  	</CardItem>
-					  </Card>
-				  </View>	
+			    	{
+			    		renderCalorieCard(this.state.records)
+			    	}
 			    </View>	
 			    <ScrollView style={styles.listContainer}>			
 	          		<List>
@@ -157,7 +125,7 @@ export default class Charts extends React.Component{
 			          		calorieOut: record.calorieOut.toString()
 			          	}
 
-		              	return renderCalorie(recordNew, index)
+		              	return renderCalorieList(recordNew, index)
 		              })
 		            }
 		          	</List>

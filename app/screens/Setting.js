@@ -8,6 +8,8 @@ import ApiUtils from '../components/utils/ApiUtils';
 import Api from '../components/Api';
 import User from '../components/class/UserClass';
 import { Toast } from 'native-base';
+import { NavigationBar, Title, Image } from '@shoutem/ui';
+import { AssetUtils } from '../components/AssetUtils.js';
 
 // const backAction = NavigationActions.back({
 //   	key: 'Main',
@@ -214,9 +216,15 @@ export default class Setting extends React.Component{
 	render() {
 		return (
 		<View style = {styles.container}>
-          <Toolbar
-              centerElement="Settings"
-          />
+          <Image
+              source={{uri: AssetUtils.toolbarimg}}
+              style={{ width: 375, height: 70 }}
+            >
+            <NavigationBar
+              styleName="clear"
+              centerComponent={<Title>SETTINGS</Title>}
+            />
+          </Image>
 	        <View style = {styles.contentContainer}>
           <ScrollView>
               <FormValidationMessage>

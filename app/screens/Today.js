@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {Font} from 'expo';
-import { ScrollView, StyleSheet, View, ToolbarAndroid, Image, TextInput  } from 'react-native';
+import { ScrollView, StyleSheet, View, ToolbarAndroid, TextInput  } from 'react-native';
 import { Container, Content, List, Button, Icon, Text } from 'native-base';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { AssetUtils } from '../components/AssetUtils.js';
 import { Toolbar } from 'react-native-material-ui';
+import { NavigationBar, Title, Image } from '@shoutem/ui';
 import SingleCalorieCard from '../components/layout/SingleCalorieCard';
 import { SearchBar } from 'react-native-elements';
+
 
 import Api from '../components/Api';
 
@@ -64,13 +66,18 @@ export default class Today extends React.Component {
 		return (
 		
 		<View style={styles.container}>
-		  <Toolbar
-        centerElement="Stride"
+		  <Image
+        source={{uri: AssetUtils.toolbarimg}}
+        style={{ width: 375, height: 70 }}
+      >
+      <NavigationBar
+        styleName="clear"
+        centerComponent={<Title>STRIDE</Title>}
       />
+      </Image>
       <View style={styles.searchContainer}>
         <SearchBar
           noIcon
-          lightTheme
           containerStyle = {{alignItems:'center'}}
           placeholder="Food or Brand Name (e.g. Tropicana)"
           onChangeText={(text) => this.onChangeSearchText(text)}
@@ -109,5 +116,5 @@ const styles = StyleSheet.create({
   },
   searchResult: {
     flex: 1,
-  }
+  },
 });

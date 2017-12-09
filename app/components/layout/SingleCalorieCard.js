@@ -24,7 +24,7 @@ export default (props) => (
         <Left>
           <Button transparent onPress={props.onPress}>
             <Icon name="add" />
-            <Text>Add To Records</Text>
+            <Text style={styles.name}>Add To Records</Text>
           </Button>
         </Left>
       </CardItem>
@@ -44,10 +44,12 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 14,
     fontWeight: 'bold',
+    fontFamily: 'Rubik-Regular',
     overflow: 'scroll',
   },
   calorie: {
     fontSize: 14,
+    fontFamily: 'Rubik-Regular',
   },
   foodImage: {
     height: 200,

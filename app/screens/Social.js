@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import User from '../components/class/UserClass.js';
 import { Font, AppLoading } from 'expo';
-import { FlatList, ScrollView, StyleSheet, View, ToolbarAndroid, Image, Navigator, NativeModules, StatusBar } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, View, ToolbarAndroid, Navigator, NativeModules, StatusBar } from 'react-native';
 import { Container, Content, List, Button, Icon, Text, Tab, Tabs, TabHeading, Header } from 'native-base';
 import SingleFeed from '../components/layout/SingleFeed';
 import { Octicons, MaterialIcons } from '@expo/vector-icons';
 import { AssetUtils } from '../components/AssetUtils.js';
 import { Toolbar, Dialog, DialogDefaultActions } from 'react-native-material-ui';
 import { SearchBar } from 'react-native-elements';
+import { NavigationBar, Title, Image } from '@shoutem/ui';
+import UserCard from '../components/layout/UserCard.js';
+
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -84,13 +87,28 @@ export default class Social extends React.Component{
 
 		return (
 			<View style={styles.container}>
-            <Toolbar
-              centerElement="Friends"
-              rightElement={addIcon}
-              // onPressRightElement={this.search.focus()}
+            <Image
+              source={{ uri: AssetUtils.toolbarimg}}
+              style={{ width: 375, height: 70 }}
+            >
+            <NavigationBar
+              styleName="clear"
+              centerComponent={<Title>PROFILES</Title>}
             />
-
-        			<View style={styles.leaderBoardBoxContainer}>
+            </Image>
+            <Tabs initialPage={0}>
+              <Tab heading={ <TabHeading><Text style={styles.tabText}>MY PROFILE</Text></TabHeading>}>
+                <UserCard
+                  name={GLOBAL.currentUser.username}
+                  lastActiveDate={GLOBAL.currentUser.getLastActiveDate()}
+                  mostOutput={GLOBAL.currentUser.getMostOutPutEntry().calorieOut}
+                  mostOutputDate={GLOBAL.currentUser.getMostOutPutEntry().date}
+                  age={GLOBAL.currentUser.age}
+                  gender={GLOBAL.currentUser.gender}
+                />
+              </Tab>
+              <Tab heading={ <TabHeading><Text style={styles.tabText}>FRIEND PROFILES</Text></TabHeading>}>
+                <View style={styles.leaderBoardBoxContainer}>
                   <ScrollView>
                   <FlatList
                     data = {GLOBAL.currentUser.friends}
@@ -100,13 +118,17 @@ export default class Social extends React.Component{
                                               >{item}</Text>}
                   />
                   </ScrollView>
-              </View>
+                </View>
+              </Tab>
+            </Tabs>
+        			
 			</View>
       );
 	}
 }
 
 const addIcon = (<MaterialIcons name="add" size={25} color="#FFF" />);
+
 
 const styles = StyleSheet.create({
   container: {
@@ -152,5 +174,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: 50,
-  }
+  },
+  tabText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: 'Rubik-Regular',
+    overflow: 'scroll',
+  },
 });

@@ -107,11 +107,13 @@ export const TabNav = TabNavigator({
 			fontSize: 12,
 		},
 		indicatorStyle: {
-			backgroundColor: "#004B8D",
+			// backgroundColor: "#004B8D",
+			backgroundColor: "#000000"
 		},
 		style:{
 			height: 30,
-			backgroundColor: "#578CA9",
+			// backgroundColor: "#578CA9",
+			backgroundColor: "#000000"
 		}
 	}
 });

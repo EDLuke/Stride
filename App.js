@@ -9,7 +9,7 @@ import { ThemeProvider } from 'react-native-material-ui';
 
 
 const uiTheme = {
-    fontFamily: 'Roboto',
+    fontFamily: 'Rubik-Regular',
     palette: {
         primaryColor: '#578CA9',
     },

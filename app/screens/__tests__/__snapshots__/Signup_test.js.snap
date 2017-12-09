@@ -87,32 +87,6 @@ exports[`renders correctly 1`] = `
     >
       <TextInput
         onChangeText={[Function]}
-        placeholder="Name"
-        placeholderTextColor="#FFF"
-        style={
-          Object {
-            "alignItems": "center",
-            "color": "#FFF",
-          }
-        }
-        underlineColorAndroid="transparent"
-        value=""
-      />
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "rgba(0,0,0,0)",
-          "borderBottomWidth": 1,
-          "borderColor": "#FFF",
-          "height": 30,
-          "marginTop": 35,
-          "width": 250,
-        }
-      }
-    >
-      <TextInput
-        onChangeText={[Function]}
         placeholder="Email"
         placeholderTextColor="#FFF"
         style={
@@ -122,7 +96,7 @@ exports[`renders correctly 1`] = `
           }
         }
         underlineColorAndroid="transparent"
-        value=""
+        value="sfsdf@sdfsdf.com"
       />
     </View>
     <View
@@ -149,7 +123,34 @@ exports[`renders correctly 1`] = `
           }
         }
         underlineColorAndroid="transparent"
-        value=""
+        value="123qwe"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0)",
+          "borderBottomWidth": 1,
+          "borderColor": "#FFF",
+          "height": 30,
+          "marginTop": 35,
+          "width": 250,
+        }
+      }
+    >
+      <TextInput
+        onChangeText={[Function]}
+        placeholder="Verify Password"
+        placeholderTextColor="#FFF"
+        secureTextEntry={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "color": "#FFF",
+          }
+        }
+        underlineColorAndroid="transparent"
+        value="123qwe"
       />
     </View>
     <View
@@ -179,24 +180,23 @@ exports[`renders correctly 1`] = `
     <View
       style={
         Object {
-          "marginTop": 35,
+          "backgroundColor": "rgba(0,0,0,0)",
+          "marginTop": 15,
           "width": 250,
         }
       }
     >
       <Button
+        color="#92B558"
         onPress={[Function]}
-        style={
-          Object {
-            "borderRadius": 0,
-          }
-        }
-        title="CREATE ACCOUNT"
+        style={Object {}}
+        title="Create Account"
       />
     </View>
     <View
       style={
         Object {
+          "backgroundColor": "rgba(0,0,0,0)",
           "marginTop": 35,
           "width": 250,
         }
@@ -210,7 +210,6 @@ exports[`renders correctly 1`] = `
         onPress={[Function]}
         style={
           Object {
-            "backgroundColor": "rgba(0,0,0,0)",
             "color": "#FFF",
             "opacity": 0.5,
             "textAlign": "center",

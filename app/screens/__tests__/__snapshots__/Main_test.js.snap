@@ -87,6 +87,7 @@ exports[`renders correctly 1`] = `
     >
       <TextInput
         onChangeText={[Function]}
+        onFocus={[Function]}
         placeholder="Email"
         placeholderTextColor="#FFF"
         style={
@@ -96,7 +97,7 @@ exports[`renders correctly 1`] = `
           }
         }
         underlineColorAndroid="transparent"
-        value="yz3083"
+        value="test01@test1.com"
       />
     </View>
     <View
@@ -113,6 +114,7 @@ exports[`renders correctly 1`] = `
     >
       <TextInput
         onChangeText={[Function]}
+        onFocus={[Function]}
         placeholder="Password"
         placeholderTextColor="#FFF"
         secureTextEntry={true}
@@ -123,7 +125,7 @@ exports[`renders correctly 1`] = `
           }
         }
         underlineColorAndroid="transparent"
-        value="VBbigidiot"
+        value="123qwe"
       />
     </View>
     <View

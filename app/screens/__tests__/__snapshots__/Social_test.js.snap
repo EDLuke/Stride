@@ -11,62 +11,27 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <View
-    style={
-      Object {
-        "backgroundColor": "#fff",
-        "flex": 2,
-        "justifyContent": "flex-start",
-        "marginTop": 10,
-        "padding": 10,
-      }
+  <Toolbar
+    centerElement="Friends"
+    elevation={4}
+    hidden={false}
+    isSearchActive={false}
+    leftElement={null}
+    onLeftElementPress={null}
+    onPress={null}
+    onRightElementPress={null}
+    rightElement={
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="add"
+        size={25}
+      />
     }
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#494949",
-          "fontFamily": "Helvetica",
-          "fontSize": 35,
-          "fontWeight": "bold",
-        }
-      }
-    >
-      Friends
-    </Text>
-  </View>
-  <View
-    style={
-      Object {
-        "backgroundColor": "#fff",
-        "flex": 2,
-        "justifyContent": "flex-start",
-        "marginTop": 10,
-        "padding": 10,
-      }
-    }
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#686868",
-          "fontFamily": "Helvetica",
-          "fontSize": 25,
-          "fontWeight": "bold",
-        }
-      }
-    >
-      LeaderBoard
-    </Text>
-  </View>
+    searchable={null}
+    size={24}
+    style={Object {}}
+  />
   <View
     style={
       Object {

@@ -24,6 +24,7 @@ const renderCalorieList = (post, index) => (
 const renderCalorieCard = (records) => (
 	<SingleFriendCard
 		records = {records}
+		addFriend = {false}
 	/>
 )
 
@@ -52,15 +53,13 @@ export default class Charts extends React.Component{
 		}
 		ret.push(current);
 
-		// console.log(ret);
-
 		return ret;
 	}
 
 	refresh = () => {
 		// refresh the state
 		this.setState({
-			records: this.groupByDate(GLOBAL.currentUser.FitnessRecord.map(
+			records: (GLOBAL.currentUser.FitnessRecord.length == 0) ? [] : this.groupByDate(GLOBAL.currentUser.FitnessRecord.map(
 			    	function(fitness){
 			    		var first = GLOBAL.currentUser.FitnessRecord[0];
 
@@ -74,7 +73,7 @@ export default class Charts extends React.Component{
 	}
 
 	state = {
-	    records: this.groupByDate(GLOBAL.currentUser.FitnessRecord.map(
+	    records: (GLOBAL.currentUser.FitnessRecord.length == 0) ? [] : this.groupByDate(GLOBAL.currentUser.FitnessRecord.map(
 	    	function(fitness){
 	    		var first = GLOBAL.currentUser.FitnessRecord[0];
 
@@ -114,7 +113,7 @@ export default class Charts extends React.Component{
 			    </View>	
 			    <ScrollView style={styles.listContainer}>			
 	          		<List>
-		            {
+		            {GLOBAL.currentUser.FitnessRecord.length > 0 && 
 		              this.state.records.map((record, index) => {
 		              	let d = moment(GLOBAL.currentUser.FitnessRecord[0].date)
 

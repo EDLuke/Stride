@@ -13,37 +13,49 @@ export default (props) => {
       <CardItem>
           <Left>
             <Body>
-              <Text style={styles.name}>Calorie Chart</Text>
+              <Text style={styles.name}>{props.friendID}</Text>
             </Body>
           </Left>
       </CardItem>
-      <CardItem cardBody>
-        <ArtyCharty
-        animated={true}
-        yAxisLeft={{numberOfTicks: 5}}
-        clickFeedback={true}
-        pointsOnScreen={props.records.length}
-        width={Dimensions.get('window').width - 35}
-        data={[
-        {
-            type: 'line',
-            lineColor: 'green',
-            data: props.records.map((record) => {
-              return {value: record.calorieIn};
-            }),
-            drawChart: true
-        },
-        {
-            type: 'line',
-            lineColor: 'red',
-            data: props.records.map((record) => {
-              return {value: record.calorieOut};
-            }),
-            drawChart: true
-        }
-          ]} 
-        />
-      </CardItem>
+      {props.records.length > 0 && 
+        <CardItem cardBody>
+          <ArtyCharty
+          animated={true}
+          yAxisLeft={{numberOfTicks: 5}}
+          clickFeedback={true}
+          pointsOnScreen={props.records.length}
+          width={Dimensions.get('window').width - 35}
+          data={[
+          {
+              type: 'line',
+              lineColor: 'green',
+              data: props.records.map((record) => {
+                return {value: record.calorieIn};
+              }),
+              drawChart: true
+          },
+          {
+              type: 'line',
+              lineColor: 'red',
+              data: props.records.map((record) => {
+                return {value: record.calorieOut};
+              }),
+              drawChart: true
+          }
+            ]} 
+          />
+        </CardItem>
+      }
+      {props.addFriend && props.friendID != '' &&
+        <CardItem>
+          <Left>
+            <Button transparent onPress={props.onPress}>
+              <Icon name="add" />
+              <Text style={styles.name}>Add Friend</Text>
+            </Button>
+          </Left>
+        </CardItem>
+      }
     </Card>
   </View> 
   );
@@ -57,6 +69,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
     marginTop: 7,
     marginBottom: 8,
+    backgroundColor: 'black'
   },
   chartContainer: {
     flex: 2,

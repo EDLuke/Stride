@@ -27,8 +27,6 @@ var Api = {
 
 
 	signup: function(userName, password) {
-		console.log(userName);
-
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
 				  headers: {
@@ -115,6 +113,45 @@ var Api = {
 				  	Act: 'APIF',
 				  	UserID: userName,
 				  	Nutrition: food
+				  })
+				})
+				.then(ApiUtils.checkStatus)
+				.then(response => response.json())
+				.catch(error => {
+					console.error(error);
+				});
+	},
+
+	searchFriend: function(userName){
+		return fetch(ServerUtils.getIPAddress(), {
+				  method: 'POST',
+				  headers: {
+				    'Accept': 'application/json',
+				    'Content-Type': 'application/json',
+				  },
+				  body: JSON.stringify({
+				  	Act: 'CA',
+				  	UserID: userName,
+				  })
+				})
+				.then(ApiUtils.checkStatus)
+				.then(response => response.json())
+				.catch(error => {
+					console.error(error);
+				});
+	},
+
+	addFriend: function(userName, friendName){
+		return fetch(ServerUtils.getIPAddress(), {
+				  method: 'POST',
+				  headers: {
+				    'Accept': 'application/json',
+				    'Content-Type': 'application/json',
+				  },
+				  body: JSON.stringify({
+				  	Act: 'FO',
+				  	UserID: userName,
+				  	Friendlist: [friendName],
 				  })
 				})
 				.then(ApiUtils.checkStatus)

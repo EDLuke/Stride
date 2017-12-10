@@ -10,7 +10,9 @@ import { Toolbar, Dialog, DialogDefaultActions } from 'react-native-material-ui'
 import { SearchBar } from 'react-native-elements';
 import { NavigationBar, Title, Image } from '@shoutem/ui';
 import UserCard from '../components/layout/UserCard.js';
-
+import Api from '../components/Api';
+import moment from 'moment';
+import FitnessRecord from '../components/class/FitnessRecordClass.js';
 
 GLOBAL = require('../components/CurrentUser');
 
@@ -63,15 +65,65 @@ export default class Social extends React.Component{
 	};
 
 
-  // var SearchBar = require('react-native-search-bar');
+  onPress(friendID){
+    console.log(friendID);
 
-  // async _loadMaterialIcons(){
+    Api.searchFriend(friendID).then((response) => {  
 
-  //   const fontAssets = cacheFonts([MaterialIcons.font]);
+      if (typeof response === "undefined") {
+        this.setState({
+          friendFitness: [],
+          friendID: '',
+          error: "Network error.",
+        });
+      }
+      else if(response.Error != ""){
+        this.setState({
+          friendFitness: [],
+          friendID: '',
+          error: response.Error,
+        });
+      }
+      else{
+        this.setState({
+          friendID: response.UserID,
+        });
 
-  //   await Promise.all([fontAssets]);
+        console.log(response.Fitnesslist);
 
-  // }
+        if(response.Fitnesslist != null){
+          var fitnessMap = response.Fitnesslist.map(
+            function(fitness){
+              var entry = fitness.split(" ");
+              var calorieIn = (entry[2].length > 0) ? parseInt(entry[2]) : 0;
+              var calorieOut = (entry[4].length > 0) ? parseInt(entry[2]) : 0;
+
+              return new FitnessRecord(entry[0], calorieIn, calorieOut);
+            }
+          )
+          var records = fitnessMap.map(
+              function(fitness){
+                var first = fitnessMap[0];
+
+                return {
+                  days: moment(fitness.date).diff(first.date, 'days'),
+                  calorieIn: parseInt(fitness.calorieIn),
+                  calorieOut: parseInt(fitness.calorieOut)
+                }
+              })
+       
+
+          this.props.navigation.navigate('SocialDetail', {friendID: friendID, records: records});
+        }
+        else{
+          this.setState({
+            friendFitness: [],
+          });
+        }
+      }
+    });
+
+  }
 
 
 	render() {
@@ -114,7 +166,7 @@ export default class Social extends React.Component{
                     data = {GLOBAL.currentUser.friends}
                     keyExtractor = {(item, index) => item}
                     renderItem = {({item}) => <Text style={styles.boxtext}
-                                                onPress={() => this.props.navigation.navigate('SocialDetail', {name: item})}
+                                                onPress={() => this.onPress(item)}
                                               >{item}</Text>}
                   />
                   </ScrollView>

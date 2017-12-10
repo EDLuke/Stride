@@ -9,6 +9,7 @@ import Setting from '../screens/Setting';
 import Signup from '../screens/Signup';
 import SocialDetail from '../screens/SocialDetail';
 import ChartsAdd from '../screens/ChartsAdd';
+import SocialAdd from '../screens/SocialAdd';
 
 import { MaterialCommunityIcons, 
 SimpleLineIcons, FontAwesome } from '@expo/vector-icons';
@@ -17,12 +18,11 @@ export const StackNavSocial = StackNavigator({
 	Social:{
 		screen: Social,
 	},
+	SocialAdd: {
+		screen: SocialAdd,
+	},
 	SocialDetail:{
 		screen: SocialDetail,
-		navigationOptions: ({navigation}) => ({
-      		title: `${navigation.state.params.name}'s Profile`
-   		}),
-
 	}
 },
 {

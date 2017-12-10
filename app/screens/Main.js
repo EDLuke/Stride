@@ -14,7 +14,7 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Main extends React.Component {
   state = {
-      email: 'test01@test1.com',
+      email: 'test12@test12.com',
       password: '123qwe',
       error: '',
       keyboardFocused: false,
@@ -30,7 +30,9 @@ export default class Main extends React.Component {
 
   onPressLogin = () => {
     var userName = this.state.email;
-    var password = ApiUtils.hashPassword(this.state.password);
+    var password = ApiUtils.hashPassword(this.state.password).toString();
+    //var password = this.state.password;
+
     
     //First check locally if email is valid
     if(!ApiUtils.validateEmail(userName)){
@@ -45,7 +47,8 @@ export default class Main extends React.Component {
 
     //Then make the request
     Api.login(userName, password).then((response) => {  
-
+      console.log(response);
+      
       if (typeof response === "undefined") {
         this.setState({
           email: '',

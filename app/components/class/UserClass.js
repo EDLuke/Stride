@@ -28,7 +28,7 @@ export default class User{
 		if (!(typeof weight === "undefined") && weight != null) {
 			thisUser.weight = weight;
 		}
-		if (!(typeof friends === "undefined") && friendlist != null) {
+		if (!(typeof friendlist === "undefined") && friendlist != null) {
 			thisUser.friends = friendlist;
 		} else {
 			thisUser.friends = [];
@@ -49,6 +49,7 @@ export default class User{
 				//console.log(thisUser.FitnessRecord);
 			}
 		}
+
 		return thisUser;
 	}
 
@@ -76,6 +77,9 @@ export default class User{
 	}
 
 	getLastActiveDate() {
+		if(this.FitnessRecord.length == 0)
+			return '';
+
 		var first = this.FitnessRecord[0].date;
 		var max = this.FitnessRecord[0].date;
 		for (var i = 0; i < this.FitnessRecord.length; i++) {
@@ -88,6 +92,9 @@ export default class User{
 	}
 
 	getMostOutPutEntry() {
+		if(this.FitnessRecord.length == 0)
+			return '';
+		
 		var max = this.FitnessRecord[0];
 		for (var i = 0; i < this.FitnessRecord.length; i++) {
 			if (this.FitnessRecord[i].calorieOut > max.calorieOut) {

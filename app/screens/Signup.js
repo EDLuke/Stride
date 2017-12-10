@@ -15,7 +15,7 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Signup extends React.Component {
   state = {
-    email: 'sfsdf@sdfsdf.com',
+    email: 'test12@test12.com',
     password: '123qwe',
     passwordCfn: '123qwe',
     error: '',
@@ -34,7 +34,8 @@ export default class Signup extends React.Component {
     }
 
     var userName = this.state.email;
-    var password = ApiUtils.hashPassword(this.state.password);
+    var password = ApiUtils.hashPassword(this.state.password).toString();
+    //var password = this.state.password;
   
     //Check locally if email is valid
     if(!ApiUtils.validateEmail(userName)){
@@ -49,8 +50,6 @@ export default class Signup extends React.Component {
 
     //Then make the request
     Api.signup(userName, password).then((response) => {
-      console.log(response);
-
       if (typeof response === "undefined") {
         this.setState({
           email: '',

@@ -76,9 +76,9 @@ export default class Today extends React.Component {
       <View style={styles.searchContainer}>
         <SearchBar
           noIcon
-          containerStyle = {{alignItems:'center'}}
           placeholder="Food or Brand Name (e.g. Tropicana)"
           onChangeText={(text) => this.onChangeSearchText(text)}
+          containerStyle={styles.searchBar}
         />
       </View>
       <ScrollView style={styles.searchResult}>
@@ -114,5 +114,8 @@ const styles = StyleSheet.create({
   },
   searchResult: {
     flex: 1,
+  },
+  searchBar:{
+    width: 375,
   },
 });

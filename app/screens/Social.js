@@ -64,6 +64,10 @@ export default class Social extends React.Component{
     searchID: "",
 	};
 
+  onPressAdd = () => {
+    // Navigate to the ChartsAdd
+    this.props.navigation.navigate('SocialAdd');
+  }
 
   onPress(friendID){
     console.log(friendID);
@@ -173,7 +177,22 @@ export default class Social extends React.Component{
                 </View>
               </Tab>
             </Tabs>
-        			
+        		<Button
+              rounded
+              style={styles.button}
+              onPress={() => this.onPressAdd()}
+            >
+              <Octicons
+                name="plus"
+                size={16}
+                color="#FFF"
+                style=
+                {{
+                  left: 2,
+                  padding: 15
+                }}
+              />
+            </Button>
 			</View>
       );
 	}
@@ -232,5 +251,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Rubik-Regular',
     overflow: 'scroll',
+  },
+  button: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
   },
 });

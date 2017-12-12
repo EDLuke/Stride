@@ -5,6 +5,7 @@ export default class User{
 	
 	constructor(){
 		this.username = "";
+		this.displayName = "";
 		this.age = "";
 		this.gender = "";
 		this.height = "";
@@ -13,9 +14,10 @@ export default class User{
 		this.FitnessRecord = [];
 	}
 
-	static initLoginInfo(username, age, gender, height, weight, friendlist, fitnesslist) {
+	static initLoginInfo(username, displayName, age, gender, height, weight, friendlist, fitnesslist) {
 		let thisUser = new User();
 		thisUser.username = username;
+		thisUser.displayName = displayName;
 		if (!(typeof age === "undefined") && age != null) {
 			thisUser.age = age;
 		}

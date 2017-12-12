@@ -47,7 +47,7 @@ var Api = {
 	},
 
 
-	update: function(userName, userpw, userHeight, userWeight, userGender, userAge){
+	update: function(userName, displayName, userpw, userHeight, userWeight, userGender, userAge){
 		
 		return fetch(ServerUtils.getIPAddress(), {
 				  method: 'POST',
@@ -60,6 +60,7 @@ var Api = {
 				  	UserID: userName,
 				  	Account: {
 				  		UserID: userName,
+				  		Name: displayName,
 				  		Password: userpw,
 				  		Height: userHeight,
 				  		Weight: userWeight,

@@ -14,7 +14,7 @@ GLOBAL = require('../components/CurrentUser');
 
 export default class Main extends React.Component {
   state = {
-      email: 'test12@test12.com',
+      email: 'test55@test55.com',
       password: '123qwe',
       error: '',
       keyboardFocused: false,
@@ -66,6 +66,7 @@ export default class Main extends React.Component {
       else{
         //Set global user
         GLOBAL.currentUser = User.initLoginInfo(response.UserID, 
+                                                response.Name,
                                                 response.Age, 
                                                 response.Gender, 
                                                 response.Height, 

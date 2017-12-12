@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     marginRight: 15,
     marginTop: 7,
     marginBottom: 8,
-    backgroundColor: 'black'
   },
   chartContainer: {
     flex: 2,

@@ -123,9 +123,9 @@ export default class SocialAdd extends React.Component {
         <View style={styles.searchContainer}>
           <SearchBar
             noIcon
-            containerStyle = {{alignItems:'center'}}
             placeholder="Type a username"
             onChangeText={(text) => this.onChangeSearchText(text)}
+            containerStyle={styles.searchBar}
           />
         </View>
         <View style={styles.searchResult}>
@@ -168,5 +168,8 @@ const styles = StyleSheet.create({
   },
   searchResult: {
     flex: 1,
+  },
+  searchBar:{
+    width: 375,
   },
 });

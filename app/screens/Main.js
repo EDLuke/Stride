@@ -66,6 +66,7 @@ export default class Main extends React.Component {
       else{
         //Set global user
         GLOBAL.currentUser = User.initLoginInfo(response.UserID, 
+                                                response.Name,
                                                 response.Age, 
                                                 response.Gender, 
                                                 response.Height, 

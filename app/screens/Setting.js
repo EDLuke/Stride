@@ -18,8 +18,8 @@ import { AssetUtils } from '../components/AssetUtils.js';
 export default class Setting extends React.Component{
 	state = {
     keyboardFocused: false,
-    email: GLOBAL.currentUser.username,
-    emailErrorMsg: "",
+    displayName: GLOBAL.currentUser.displayName,
+    dnErrorMsg: "",
     weightErrorMsg: "",
     heightErrorMsg: "",
     ageErrorMsg: "",
@@ -48,21 +48,21 @@ export default class Setting extends React.Component{
 
   }
 
-  onEmailSelectionChanged = () => {
-    var email = this.state.email
+  // onEmailSelectionChanged = () => {
+  //   var email = this.state.email
 
-    if(!ApiUtils.validateEmail(email)){
-      this.setState({
-          emailErrorMsg: "This email address is not in a valid format.",
-      });
+  //   if(!ApiUtils.validateEmail(email)){
+  //     this.setState({
+  //         emailErrorMsg: "This email address is not in a valid format.",
+  //     });
 
-      return;
-    } else {
-      this.setState({
-          emailErrorMsg: "",
-      });
-    }
-  }
+  //     return;
+  //   } else {
+  //     this.setState({
+  //         emailErrorMsg: "",
+  //     });
+  //   }
+  // }
 
   checkPassword = () => {
     var pw1 = this.state.pw1
@@ -136,16 +136,17 @@ export default class Setting extends React.Component{
   onPressUpdate = () => {
     this.setState({isUpdating: true});
 
-    var username = this.state.email
-    var password = ApiUtils.hashPassword(this.state.pw1);
+    var username = GLOBAL.currentUser.username
+    var password = ApiUtils.hashPassword(this.state.pw1).toString();
+    var dispName = this.state.displayName
     var userheight = this.state.userHeight
     var userweight = this.state.userWeight
     var usergender = this.state.userGender
     var userage = this.state.userAge
 
-    Api.update(username, password, userheight, userweight, usergender, userage).then((response) => {
+    Api.update(GLOBAL.currentUser.username, dispName, password, userheight, userweight, usergender, userage).then((response) => {
     
-    console.log(username, password, userheight, userweight, usergender, userage);
+    console.log(GLOBAL.currentUser.username, dispName, password, userheight, userweight, usergender, userage);
 
     if (typeof response === "undefined") {
         this.setState({
@@ -183,6 +184,7 @@ export default class Setting extends React.Component{
       else{
         //Set global user
         GLOBAL.currentUser = User.initLoginInfo(response.UserID, 
+                                                response.Name,
                                                 response.Age, 
                                                 response.Gender, 
                                                 response.Height, 
@@ -214,6 +216,8 @@ export default class Setting extends React.Component{
           position: 'bottom',
           buttonText: 'Okay',
         });
+
+        this.props.navigation.state.params.refresh();
       }
     });
 
@@ -239,16 +243,15 @@ export default class Setting extends React.Component{
               <FormValidationMessage>
                 {this.state.updateErrorMsg}
               </FormValidationMessage>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Display Name</FormLabel>
               <FormInput
                 // containerStyle={styles.input}
-                placeholder={GLOBAL.currentUser.username}
-                onChangeText={(text) => this.setState({email: text})}
-                onEndEditing={this.onEmailSelectionChanged}
+                placeholder={GLOBAL.currentUser.displayName}
+                onChangeText={(text) => this.setState({displayName: text})}
                 onFocus={this.toggleKeyboardFocused}
               />
               <FormValidationMessage>
-                {this.state.emailErrorMsg}
+                {this.state.dnErrorMsg}
               </FormValidationMessage>
              
               <FormLabel>New Password</FormLabel>

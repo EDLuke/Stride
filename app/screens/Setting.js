@@ -190,6 +190,15 @@ export default class Setting extends React.Component{
                                                 response.Friendlist, 
                                                 response.Fitnesslist);
 
+        if(userheight != "")
+          GLOBAL.currentUser.height = userheight;
+        if(userweight != "")
+          GLOBAL.currentUser.weight = userweight;
+        if(usergender != "")
+          GLOBAL.currentUser.gender = usergender;
+        if(userage != "")
+          GLOBAL.currentUser.age = userage;
+
         console.log(response);
 
         //Navigate to the tabs

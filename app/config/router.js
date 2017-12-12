@@ -35,6 +35,9 @@ export const StackNavChart = StackNavigator({
 	},
 	ChartsAdd:{
 		screen: ChartsAdd,
+		navigationOptions : ({navigation}) => ({
+			refresh: Charts.refresh,
+		}),
 	}
 },
 {

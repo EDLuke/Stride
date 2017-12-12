@@ -8,7 +8,7 @@ import { Toolbar } from 'react-native-material-ui';
 import { NavigationBar, Title, Image } from '@shoutem/ui';
 import SingleCalorieCard from '../components/layout/SingleCalorieCard';
 import { SearchBar } from 'react-native-elements';
-
+import Charts from './Charts';
 
 import Api from '../components/Api';
 
@@ -21,6 +21,7 @@ export default class Today extends React.Component {
 	};
 
   onPressAdd = (calorie) => {
+    //console.log(Charts.refresh);
     this.props.navigation.navigate('ChartsAdd', {calorie: calorie, calorieType: 'food'}); 
   }
 

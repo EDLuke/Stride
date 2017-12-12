@@ -43,7 +43,11 @@ export default class SocialAdd extends React.Component {
         });
       }
       else{
-
+        /* Add friend locally first */
+        GLOBAL.currentUser.friends.push(friendID);
+        
+        //call Social's refresh function
+        this.props.navigation.state.params.refresh();
       }
     });
   }

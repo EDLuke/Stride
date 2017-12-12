@@ -54,19 +54,34 @@ function searchFriendPromise(friendID) {
 };
 
 
-// function cacheFonts(fonts) {
-//   return fonts.map(font => Font.loadAsync(font));
-// }
-
 export default class Social extends React.Component{
+  
+
 	state = {
-    // fontLoaded: false,
-    searchID: "",
+    name: GLOBAL.currentUser.username,
+    lastActiveDate: GLOBAL.currentUser.getLastActiveDate(),
+    mostOutput: GLOBAL.currentUser.getMostOutPutEntry().calorieOut,
+    mostOutputDate: GLOBAL.currentUser.getMostOutPutEntry().date,
+    age: GLOBAL.currentUser.age,
+    gender: GLOBAL.currentUser.gender,
+    friends: GLOBAL.currentUser.friends,
 	};
 
   onPressAdd = () => {
     // Navigate to the ChartsAdd
     this.props.navigation.navigate('SocialAdd');
+  }
+
+  refresh = () => {
+    this.setState({
+      name: GLOBAL.currentUser.username,
+      lastActiveDate: GLOBAL.currentUser.getLastActiveDate(),
+      mostOutput: GLOBAL.currentUser.getMostOutPutEntry().calorieOut,
+      mostOutputDate: GLOBAL.currentUser.getMostOutPutEntry().date,
+      age: GLOBAL.currentUser.age,
+      gender: GLOBAL.currentUser.gender,
+      friends: GLOBAL.currentUser.friends,
+    });
   }
 
   onPress(friendID){
@@ -131,15 +146,6 @@ export default class Social extends React.Component{
 
 
 	render() {
-    // if (!this.state.fontLoaded) {
-    //   return (
-    //     <AppLoading
-    //       start={this._loadMaterialIcons}
-    //       onFinish={() => this.setState({ fontLoaded: true })}
-    //       onError={console.warn}
-    //     />
-    //   );
-    // }
 
 		return (
 			<View style={styles.container}>
@@ -155,19 +161,19 @@ export default class Social extends React.Component{
             <Tabs initialPage={0}>
               <Tab heading={ <TabHeading><Text style={styles.tabText}>MY PROFILE</Text></TabHeading>}>
                 <UserCard
-                  name={GLOBAL.currentUser.username}
-                  lastActiveDate={GLOBAL.currentUser.getLastActiveDate()}
-                  mostOutput={GLOBAL.currentUser.getMostOutPutEntry().calorieOut}
-                  mostOutputDate={GLOBAL.currentUser.getMostOutPutEntry().date}
-                  age={GLOBAL.currentUser.age}
-                  gender={GLOBAL.currentUser.gender}
+                  name={this.state.name}
+                  lastActiveDate={this.state.lastActiveDate}
+                  mostOutput={this.state.mostOutput}
+                  mostOutputDate={this.state.mostOutputDate}
+                  age={this.state.age}
+                  gender={this.state.gender}
                 />
               </Tab>
               <Tab heading={ <TabHeading><Text style={styles.tabText}>FRIEND PROFILES</Text></TabHeading>}>
                 <View style={styles.leaderBoardBoxContainer}>
                   <ScrollView>
                   <FlatList
-                    data = {GLOBAL.currentUser.friends}
+                    data = {this.state.friends}
                     keyExtractor = {(item, index) => item}
                     renderItem = {({item}) => <Text style={styles.boxtext}
                                                 onPress={() => this.onPress(item)}
@@ -177,7 +183,7 @@ export default class Social extends React.Component{
                 </View>
               </Tab>
             </Tabs>
-        		<Button
+            <Button
               rounded
               style={styles.button}
               onPress={() => this.onPressAdd()}
@@ -193,12 +199,26 @@ export default class Social extends React.Component{
                 }}
               />
             </Button>
+            <Button
+              rounded
+              style={styles.refresh}
+              onPress={() => this.refresh()}
+            >
+              <Octicons
+                name="sync"
+                size={16}
+                color="#FFF"
+                style=
+                {{
+                  left: 2,
+                  padding: 15
+                }}
+              />
+            </Button>
 			</View>
       );
 	}
 }
-
-const addIcon = (<MaterialIcons name="add" size={25} color="#FFF" />);
 
 
 const styles = StyleSheet.create({
@@ -255,6 +275,11 @@ const styles = StyleSheet.create({
   button: {
     position: 'absolute',
     bottom: 20,
+    right: 20,
+  },
+  refresh: {
+    position: 'absolute',
+    bottom: 70,
     right: 20,
   },
 });

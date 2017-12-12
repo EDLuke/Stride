@@ -10,6 +10,7 @@ import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-nativ
 import { NavigationActions } from 'react-navigation';
 import { NavigationBar, Title, Image, DropDownMenu, Screen, Icon } from '@shoutem/ui';
 import { AssetUtils } from '../components/AssetUtils.js';
+import Charts from './Charts';
 
 
 GLOBAL = require('../components/CurrentUser');
@@ -63,10 +64,14 @@ export default class ChartsAdd extends React.Component{
 
 		var userName = GLOBAL.currentUser.username;
 		var date = moment(this.state.date).format("YYYY-MM-DD");
-		var calorieIn = this.state.calorieType == 'food' ? this.state.calorie : 0;
-		var calorieOut = this.state.calorieType == 'exercise' ? this.state.calorie : 0;
+		var calorieIn = this.state.calorieType == 'food' ? parseInt(this.state.calorie) : 0;
+		var calorieOut = this.state.calorieType == 'exercise' ? parseInt(this.state.calorie) : 0;
 
+		console.log(calorieIn);
+		console.log(calorieOut);
+		
 		Api.addFitness(userName, calorieIn, calorieOut, date).then((response) => {	
+			console.log(response);
 
 			 if (typeof response === "undefined") {
 		        this.setState({
@@ -122,9 +127,6 @@ export default class ChartsAdd extends React.Component{
 		          position: 'bottom',
 		          buttonText: 'Okay',
 		        });
-
-		      	//call Chart's refresh function
-		      	this.props.navigation.state.params.refresh();
 		      }
 		})
 	}

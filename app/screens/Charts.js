@@ -70,6 +70,8 @@ export default class Charts extends React.Component{
 			    		}
 	    			})),
 		});
+
+		console.log(this.state.records);
 	}
 
 	state = {
@@ -146,6 +148,23 @@ export default class Charts extends React.Component{
 		            }}
 		          />
 		        </Button>
+		        <Button
+		          rounded
+		          style={styles.refresh}
+		          onPress={() => this.refresh()}
+		        >
+		        	<Octicons
+		            name="sync"
+		            size={16}
+		            color="#FFF"
+		            style=
+		            {{
+		            	left: 2,
+		            	padding: 15
+		            }}
+		          />
+		        </Button>
+
 	      </View>
 		);
 	}
@@ -170,6 +189,11 @@ const styles = StyleSheet.create({
   button: {
     position: 'absolute',
     bottom: 20,
+    right: 20,
+  },
+  refresh: {
+    position: 'absolute',
+    bottom: 70,
     right: 20,
   },
   contentContainer:{

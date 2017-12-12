@@ -3,6 +3,7 @@ import {Font} from 'expo';
 import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { NavigationBar, Title, Image } from '@shoutem/ui';
+import { AssetUtils } from '../components/AssetUtils.js';
 import SingleFriendCard from '../components/layout/SingleFriendCard';
 
 const renderCalorieCard = (records) => (
@@ -24,11 +25,11 @@ export default class SocialDetail extends React.Component{
 		return (
 		  <View style = {styles.container}>
           <Image
-              source={{uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+              source={{uri: AssetUtils.toolbarimg}}
               style={{ width: 375, height: 70 }}
             >
             <NavigationBar
-              styleName="no-border"
+              styleName="clear"
               centerComponent={<Title>{this.state.friendID}'s PROFILE</Title>}
             />
           </Image>

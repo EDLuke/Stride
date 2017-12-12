@@ -19,6 +19,7 @@ export default (props) => (
       	<Text style={styles.cardText}>
       		Email Address: {props.name} {"\n"}
       		{"\n"}
+          Name: {props.displayname} {"\n"}
       		Age: {props.age} {"\n"}
       		Gender: {props.gender} {"\n"}
       		{"\n"}

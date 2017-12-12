@@ -156,6 +156,7 @@ export default class Social extends React.Component{
               <Tab heading={ <TabHeading><Text style={styles.tabText}>MY PROFILE</Text></TabHeading>}>
                 <UserCard
                   name={GLOBAL.currentUser.username}
+                  displayname = {GLOBAL.currentUser.displayName}
                   lastActiveDate={GLOBAL.currentUser.getLastActiveDate()}
                   mostOutput={GLOBAL.currentUser.getMostOutPutEntry().calorieOut}
                   mostOutputDate={GLOBAL.currentUser.getMostOutPutEntry().date}
